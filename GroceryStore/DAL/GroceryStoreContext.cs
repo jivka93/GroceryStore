@@ -11,7 +11,13 @@ namespace DAL
 
         }
 
-        public virtual DbSet<Client> Clients { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }

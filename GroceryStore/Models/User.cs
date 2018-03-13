@@ -4,25 +4,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
-    public class Client
+    public class User
     {
-        public Client()
+        public User()
         {
             this.Adresses = new HashSet<Address>();
-            this.BankCards = new HashSet<BankCard>();
         }
 
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [Index(IsUnique = true)]
+        [MinLength(5)]
+        [MaxLength(15)]
+        //[Index(IsUnique = true)]
         public string Username { get; set; }
 
         [Required]
+        [MinLength(5)]
+        [MaxLength(15)]
         public string Password { get; set; }
 
-        public ICollection<Address> Adresses { get; set; }
-        public ICollection<BankCard> BankCards { get; set; }
+        public virtual ICollection<Address> Adresses { get; set; }
+        //public virtual ICollection<BankCard> BankCards { get; set; }
     }
 }
