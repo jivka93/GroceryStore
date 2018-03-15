@@ -9,8 +9,8 @@ namespace Models
         public User()
         {
             this.Adresses = new HashSet<Address>();
-            //this.BankCards = new HashSet<BankCard>();
-            //this.Orders = new HashSet<Order>();
+            this.BankCards = new HashSet<BankCard>();
+            this.Orders = new HashSet<Order>();
         }
 
         [Key]
@@ -43,7 +43,7 @@ namespace Models
 
 
         public virtual ICollection<Address> Adresses { get; set; }
-        //public virtual ICollection<BankCard> BankCards { get; set; }
-        //public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<BankCard> BankCards { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

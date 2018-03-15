@@ -72,6 +72,30 @@
     <Compile Include="Migrations\201803150732381_Added new properties to User.Designer.cs">
       <DependentUpon>201803150732381_Added new properties to User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803150806246_AllTablesCreated.cs" />
+    <Compile Include="Migrations\201803150806246_AllTablesCreated.Designer.cs">
+      <DependentUpon>201803150806246_AllTablesCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803150809501_BankCardValidationsAdded.cs" />
+    <Compile Include="Migrations\201803150809501_BankCardValidationsAdded.Designer.cs">
+      <DependentUpon>201803150809501_BankCardValidationsAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803150814043_IdToInventoryAdded.cs" />
+    <Compile Include="Migrations\201803150814043_IdToInventoryAdded.Designer.cs">
+      <DependentUpon>201803150814043_IdToInventoryAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803150817513_inventoryFix.cs" />
+    <Compile Include="Migrations\201803150817513_inventoryFix.Designer.cs">
+      <DependentUpon>201803150817513_inventoryFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803150842027_inventoryFix2.cs" />
+    <Compile Include="Migrations\201803150842027_inventoryFix2.Designer.cs">
+      <DependentUpon>201803150842027_inventoryFix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803150844013_syntaxFix.cs" />
+    <Compile Include="Migrations\201803150844013_syntaxFix.Designer.cs">
+      <DependentUpon>201803150844013_syntaxFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,6 +127,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803150732381_Added new properties to User.resx">
       <DependentUpon>201803150732381_Added new properties to User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803150806246_AllTablesCreated.resx">
+      <DependentUpon>201803150806246_AllTablesCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803150809501_BankCardValidationsAdded.resx">
+      <DependentUpon>201803150809501_BankCardValidationsAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803150814043_IdToInventoryAdded.resx">
+      <DependentUpon>201803150814043_IdToInventoryAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803150817513_inventoryFix.resx">
+      <DependentUpon>201803150817513_inventoryFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803150842027_inventoryFix2.resx">
+      <DependentUpon>201803150842027_inventoryFix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803150844013_syntaxFix.resx">
+      <DependentUpon>201803150844013_syntaxFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
