@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
@@ -10,22 +11,20 @@ namespace Models
             this.Orders = new HashSet<Order>();
         }
 
-        [Key]
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(30)]
+        [Index(IsUnique = true)]
         public string Name { get; set; }
 
         [Required]
         [MaxLength(15)]
         public string Category { get; set; }
 
-        [Required]
         public decimal Price { get; set; }
 
-        [Required]
-        public int InventoryId { get; set; }
-
+        [InverseProperty("Product")]
         public virtual Inventory Inventory { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }

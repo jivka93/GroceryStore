@@ -2,13 +2,13 @@ namespace DAL.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DAL.GroceryStoreContext>
+    public sealed class Configuration : DbMigrationsConfiguration<DAL.GroceryStoreContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            //AutomaticMigrationsEnabled = true;
-            //AutomaticMigrationDataLossAllowed = true;
+            //AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(DAL.GroceryStoreContext context)

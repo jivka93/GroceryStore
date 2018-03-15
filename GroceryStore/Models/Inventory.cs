@@ -5,15 +5,12 @@ namespace Models
 {
     public class Inventory
     {
-        //[Key]
-        //public int Id { get; set; }
-
         [Key]
         [Required]
         [Index(IsUnique = true)]
         public int ProductId { get; set; }
 
-        [Required]
+
         [Column("Quantity In Stock")]
         public int QuantityInStock { get; set; }
 
