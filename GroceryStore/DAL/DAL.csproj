@@ -64,6 +64,14 @@
     <Compile Include="Migrations\201803132158322_ProductClassAdded.Designer.cs">
       <DependentUpon>201803132158322_ProductClassAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803141529461_Test.cs" />
+    <Compile Include="Migrations\201803141529461_Test.Designer.cs">
+      <DependentUpon>201803141529461_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803150732381_Added new properties to User.cs" />
+    <Compile Include="Migrations\201803150732381_Added new properties to User.Designer.cs">
+      <DependentUpon>201803150732381_Added new properties to User.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +97,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803132158322_ProductClassAdded.resx">
       <DependentUpon>201803132158322_ProductClassAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803141529461_Test.resx">
+      <DependentUpon>201803141529461_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803150732381_Added new properties to User.resx">
+      <DependentUpon>201803150732381_Added new properties to User.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
