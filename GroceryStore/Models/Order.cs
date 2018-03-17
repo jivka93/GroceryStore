@@ -21,7 +21,6 @@ namespace Models
         [MaxLength(10)]
         public string Status { get; set; }
 
-        [Required]
         public int UserId { get; set; }
 
         public virtual User User { get; set; }
