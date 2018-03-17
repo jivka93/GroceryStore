@@ -1,12 +1,30 @@
-﻿using System;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using DAL.Contracts;
+using DTO;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services
 {
-    class ProductService
+    public class ProductService : BaseService
     {
+        public ProductService(IGroceryStoreContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        {
+
+        }
+
+        public IEnumerable<ProductModel> GetAllAvailableProducts()
+        {
+            return base.DbContext.Products.ProjectTo<ProductModel>()
+                .Where(x => x.Inventory.QuantityInStock > 0);
+        }
+
+        public IEnumerable<ProductModel> GetAllAvailableProductByCategory(string category)
+        {
+            return base.DbContext.Products.ProjectTo<ProductModel>()
+                .Where(x => x.Inventory.QuantityInStock > 0).Where(x => x.Category == category);
+        }
+
     }
 }

@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace DAL.Contracts
 {
-    interface IGroceryStoreContext
+    public interface IGroceryStoreContext
     {
         IDbSet<User> Users { get; set; }
         IDbSet<Address> Addresses { get; set; }
@@ -11,5 +11,6 @@ namespace DAL.Contracts
         IDbSet<Product> Products { get; set; }
         IDbSet<Order> Orders { get; set; }
         IDbSet<Inventory> Inventories { get; set; }
+        int SaveChanges();
     }
 }

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IGroceryStoreContext.cs" />
     <Compile Include="GroceryStoreContext.cs" />
     <Compile Include="Migrations\201803132137581_Initial.cs" />
     <Compile Include="Migrations\201803132137581_Initial.Designer.cs">
