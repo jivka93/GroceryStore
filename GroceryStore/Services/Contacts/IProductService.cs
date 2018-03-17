@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Services.Contacts
 {
-    public interface ProductService
+    public interface IProductService
     {
         IEnumerable<ProductModel> GetAllAvailableProducts();
+
         IEnumerable<ProductModel> GetAllAvailableProductByCategory(string category);
     }
 }

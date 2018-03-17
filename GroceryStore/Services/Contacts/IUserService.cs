@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Services.Contacts
 {
-    interface IUserService
+    public interface IUserService
     {
+        void AddUser(UserModel user);
+        IEnumerable<UserModel> GetAllUsers();
+        UserModel GetSpecificUser(string userName);
     }
 }

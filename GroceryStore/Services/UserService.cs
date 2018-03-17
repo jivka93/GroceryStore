@@ -30,9 +30,9 @@ namespace Services
 
         public UserModel GetSpecificUser(string userName) //This one will be used to visualize when the user select "MyProfile"
         {
-            return base.DbContext.Users.ProjectTo<UserModel>()
-                .Where(x => x.Username == userName).FirstOrDefault();
+            return base.DbContext.Users.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
         }
+
 
     }
 }
