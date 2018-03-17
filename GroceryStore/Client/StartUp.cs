@@ -1,24 +1,30 @@
-﻿using DAL;
+﻿using Autofac;
+using Common;
+using DAL;
 using DAL.Migrations;
 using Models;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection;
 
-namespace Client
+namespace Client //Testing Client
 {
     class StartUp
     {
         static void Main(string[] args)
         {
+            Init();
+
+            var builder = new ContainerBuilder();
+            builder.RegisterAssemblyModules(Assembly.Load("Autofac"));
+            var container = builder.Build();
+
+        }
+        private static void Init()
+        {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<GroceryStoreContext, Configuration>());
 
-            var ctx = new GroceryStoreContext();
-
-            //ctx.Set<User>().Where(x => x.FirstName == "Jivka")
-            //    .FirstOrDefault().Adresses
-            //    .Add(new Address() { AddressText = "Sofia, Studentski Grad 9" });
-
-
+            AutomapperConfiguration.Initialize();
         }
     }
 }

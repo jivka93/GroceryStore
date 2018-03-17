@@ -1,4 +1,8 @@
 ﻿using Autofac;
+using AutoMapper;
+using DAL;
+using DAL.Contracts;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +15,10 @@ namespace AutoFac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //builder.RegisterType<>
+            builder.RegisterType<GroceryStoreContext>().As<IGroceryStoreContext>().InstancePerDependency();
+            builder.RegisterType<UserService>().As<IPostService>().InstancePerDependency();
+
+            builder.Register(x => Mapper.Instance);
         }
     }
 }
