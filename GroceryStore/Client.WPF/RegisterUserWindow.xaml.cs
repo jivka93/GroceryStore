@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Autofac;
+using Common;
+using DAL;
+using DAL.Migrations;
+using Services;
+using Services.Contacts;
+using System.Data.Entity;
+using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Client.WPF
 {
@@ -19,22 +15,33 @@ namespace Client.WPF
     /// </summary>
     public partial class RegisterUserWindow : Window
     {
+        private IComponentContext container;
+
         public RegisterUserWindow()
         {
             InitializeComponent();
+
+
+            // From StartUp:
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<GroceryStoreContext, Configuration>());
+            AutomapperConfiguration.Initialize();
+            var builder = new ContainerBuilder();
+            builder.RegisterAssemblyModules(Assembly.Load("Autofac"));
+            this.container = builder.Build();
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-
             //todo validation
             var userName = this.UsernameTextBox.Text;
             var password = this.PasswordTextBox.Text;
             var phoneNumber = this.PhoneTextBox.Text;
             var firstName = this.FirstnameTextBox.Text;
             var lastName = this.LastnameTextBox.Text;
-            
 
+            var userservice = this.container.Resolve<IUserService>();
+
+            userservice.RegisterUser(userName,password,phoneNumber, firstName, lastName);
         }
     }
 }

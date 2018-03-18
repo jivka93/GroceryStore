@@ -20,6 +20,7 @@ namespace AutoFac
             builder.RegisterType<UserService>().As<IUserService>().InstancePerDependency();
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerDependency();
             builder.Register(x => Mapper.Instance);
+
         }
     }
 }
