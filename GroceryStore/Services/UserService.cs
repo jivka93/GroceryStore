@@ -3,12 +3,13 @@ using AutoMapper.QueryableExtensions;
 using DAL.Contracts;
 using DTO;
 using Models;
+using Services.Contacts;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Services
 {
-    public class UserService : BaseService
+    public class UserService : BaseService, IUserService
     {
 
         public UserService(IGroceryStoreContext dbContext, IMapper mapper) : base(dbContext, mapper)
