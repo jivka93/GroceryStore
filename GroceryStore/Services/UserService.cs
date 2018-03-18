@@ -55,6 +55,7 @@ namespace Services
 
             var userToAdd = Mapper.Map<User>(user);
             DbContext.Users.Add(userToAdd);
+            DbContext.SaveChanges();
         }
 
     }
