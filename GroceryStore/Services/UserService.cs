@@ -33,6 +33,28 @@ namespace Services
             return base.DbContext.Users.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
         }
 
+        public void RegisterUser(string userName, string password,string phoneNumber, string firstName = null, string lastName = null)
+        {
+            //var user = new UserModel()
+            //{
+            //    Username = userName,
+            //    Password = password,
+            //    PhoneNumber = phoneNumber,
+            //    FirstName = firstName,
+            //    LastName = lastName
+            //};
+            var user = new UserModel()
+            {
+                Username = userName,
+                Password = password,
+                PhoneNumber = phoneNumber,
+                FirstName = firstName,
+                LastName = lastName
+            };
+
+            var userToAdd = Mapper.Map<User>(user);
+            DbContext.Users.Add(userToAdd);
+        }
 
     }
 }
