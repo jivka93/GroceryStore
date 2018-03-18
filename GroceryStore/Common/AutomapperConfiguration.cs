@@ -12,6 +12,8 @@ namespace Common
     {
         public static void Initialize()
         {
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+
             var types = AppDomain.CurrentDomain
                 .GetAssemblies()
                 .Where(x => !x.IsDynamic)

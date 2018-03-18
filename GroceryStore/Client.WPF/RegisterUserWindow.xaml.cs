@@ -2,6 +2,7 @@
 using Common;
 using DAL;
 using DAL.Migrations;
+using DTO;
 using Services;
 using Services.Contacts;
 using System.Data.Entity;
@@ -26,7 +27,7 @@ namespace Client.WPF
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<GroceryStoreContext, Configuration>());
             AutomapperConfiguration.Initialize();
             var builder = new ContainerBuilder();
-            builder.RegisterAssemblyModules(Assembly.Load("Autofac"));
+            builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
             this.container = builder.Build();
         }
 
