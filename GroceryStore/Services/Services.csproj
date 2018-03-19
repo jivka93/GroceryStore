@@ -66,14 +66,11 @@
     <Compile Include="AddressService.cs" />
     <Compile Include="BankCardService.cs" />
     <Compile Include="BaseService.cs" />
-<<<<<<< HEAD
     <Compile Include="Contacts\IUserContext.cs" />
-=======
     <Compile Include="Contacts\IAddressService.cs" />
     <Compile Include="Contacts\IBankCardService.cs" />
     <Compile Include="Contacts\IInventoryService.cs" />
     <Compile Include="Contacts\IOrderService.cs" />
->>>>>>> e5f552c050dce56a5fee39335ba0b14cf9672af9
     <Compile Include="Contacts\IUserService.cs" />
     <Compile Include="Contacts\IProductService.cs" />
     <Compile Include="Contacts\OrderService.cs" />

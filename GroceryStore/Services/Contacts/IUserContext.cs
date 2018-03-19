@@ -7,5 +7,7 @@ namespace Services.Contacts
         int? LoggedUserId { get; }
 
         void Login(int userId);
+
+        User CheckLogin(string username, string password);
     }
 }

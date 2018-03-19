@@ -27,7 +27,8 @@ namespace Client.WPF
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow op = new LoginWindow();
+            var userContext = this.container.Resolve<IUserContext>();
+            LoginWindow op = new LoginWindow(userContext);
             op.Show();
         }
 

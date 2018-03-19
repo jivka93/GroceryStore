@@ -12,9 +12,9 @@ namespace Services
     public class UserService : BaseService, IUserService
     {
 
-        public UserService(IGroceryStoreContext dbContext, IMapper mapper) : base(dbContext, mapper)
+        public UserService(IGroceryStoreContext dbContext, IMapper mapper) 
+            : base(dbContext, mapper)
         {
-
         }
 
         public void AddUser(UserModel user)
@@ -48,25 +48,6 @@ namespace Services
             var userToAdd = Mapper.Map<User>(user);
             DbContext.Users.Add(userToAdd);
             DbContext.SaveChanges();
-        }
-
-        public User CheckLogin(string username, string password)
-        {
-            //foreach(User user in base.DbContext.Users)
-            //{
-            //    if(user.Username == username)
-            //    {
-            //        if(user.Password == password)
-            //        {
-            //            return user;
-            //        }
-            //    }
-            //}
-
-            var user = base.DbContext.Users.Where(x => x.Username == username && x.Password == password)
-                .FirstOrDefault();
-       
-            return user;
         }
 
     }
