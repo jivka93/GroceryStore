@@ -16,7 +16,6 @@ namespace DTO
 
         public string Name { get; set; }
 
-        //do we need this ?
         public int UserId { get; set; }
 
         public virtual User User { get; set; }
