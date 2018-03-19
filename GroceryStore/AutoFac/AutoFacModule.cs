@@ -11,11 +11,10 @@ namespace AutoFac
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<UserContext>().As<IUserContext>().InstancePerDependency();
             builder.RegisterType<GroceryStoreContext>().As<IGroceryStoreContext>().InstancePerDependency();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerDependency();
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerDependency();
-
-            builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
 
             builder.Register(x => Mapper.Instance);
 
