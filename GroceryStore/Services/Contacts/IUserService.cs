@@ -11,6 +11,8 @@ namespace Services.Contacts
 
         UserModel GetSpecificUser(string userName);
 
+        UserModel GetSpecificUser(int userId);
+
         void RegisterUser(string userName, string password, string phoneNumber, string firstName = null, string lastName = null);
     }
 }

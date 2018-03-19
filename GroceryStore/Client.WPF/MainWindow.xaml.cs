@@ -72,7 +72,10 @@ namespace Client.WPF
 
         private void MyProfileButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var userContext = this.container.Resolve<IUserContext>();
+            var userservice = this.container.Resolve<IUserService>();
+            MyProfile op = new MyProfile(userContext, userservice);
+            op.Show();
         }
 
         private void ShoppingCartButton_Click(object sender, RoutedEventArgs e)

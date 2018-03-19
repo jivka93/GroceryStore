@@ -34,6 +34,11 @@ namespace Services
             return base.DbContext.Users.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
         }
 
+        public UserModel GetSpecificUser(int userId) //This one will be used when the user select update in "MyProfile"
+        {
+            return base.DbContext.Users.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
+        }
+
         public void RegisterUser(string userName, string password,string phoneNumber, string firstName = null, string lastName = null)
         {
             var user = new UserModel()
