@@ -3,6 +3,7 @@ using Common;
 using DAL;
 using DAL.Migrations;
 using Models;
+using Services;
 using Services.Contacts;
 using System;
 using System.Data.Entity;
@@ -21,9 +22,9 @@ namespace Client //Testing Client
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
             var container = builder.Build();
             
-            var userservice = container.Resolve<IUserService>();
+            var userservice = container.Resolve<IUserService1>();
 
-            string userName = "gggggggggg";
+            string userName = "gggggggggg22";
             string password = "gggggggggg";
             string phoneNumber = "0876488475";
             string firstName = "gggggggggg";
