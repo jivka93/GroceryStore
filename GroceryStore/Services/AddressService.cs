@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.Migrations;
+using Services.Contacts;
 
 namespace Services
 {
-    public class AddressService: BaseService
+    public class AddressService: BaseService, IAddressService
     {
         public AddressService(IGroceryStoreContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
