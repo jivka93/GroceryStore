@@ -32,7 +32,7 @@ namespace Client //Testing Client
 
             //userservice.RegisterUser(userName, password, phoneNumber, firstName, lastName);
 
-            Console.WriteLine(userservice.CheckLogin("gggggggggg", "gggggggggg"));
+           // Console.WriteLine(userservice.CheckLogin("gggggggggg", "gggggggggg"));
 
         }
         private static void Init()

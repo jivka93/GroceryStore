@@ -2,8 +2,6 @@
 using Common;
 using DAL;
 using DAL.Migrations;
-using DTO;
-using Services;
 using Services.Contacts;
 using System.Data.Entity;
 using System.Reflection;
@@ -11,24 +9,14 @@ using System.Windows;
 
 namespace Client.WPF
 {
-    /// <summary>
-    /// Interaction logic for RegisterUserWindow.xaml
-    /// </summary>
     public partial class RegisterUserWindow : Window
     {
-        private IComponentContext container;
+        private readonly IUserService userservice;
 
-        public RegisterUserWindow()
+        public RegisterUserWindow(IUserService userservice)
         {
             InitializeComponent();
-
-
-            // From StartUp:
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<GroceryStoreContext, Configuration>());
-            AutomapperConfiguration.Initialize();
-            var builder = new ContainerBuilder();
-            builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
-            this.container = builder.Build();
+            this.userservice = userservice;
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
@@ -40,9 +28,7 @@ namespace Client.WPF
             var firstName = this.FirstnameTextBox.Text;
             var lastName = this.LastnameTextBox.Text;
 
-            var userservice = this.container.Resolve<IUserService>();
-
-            userservice.RegisterUser(userName,password,phoneNumber, firstName, lastName);
+            this.userservice.RegisterUser(userName,password,phoneNumber, firstName, lastName);
         }
     }
 }
