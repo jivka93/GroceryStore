@@ -28,7 +28,8 @@ namespace Client.WPF
             }
             else
             {
-
+                ErrorTEST op = new ErrorTEST();
+                op.Show();
             }
         }
     }
