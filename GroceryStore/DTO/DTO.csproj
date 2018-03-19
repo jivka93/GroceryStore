@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressModel.cs" />
+    <Compile Include="BankCardModel.cs" />
+    <Compile Include="InventoryModel.cs" />
+    <Compile Include="OrderModel.cs" />
     <Compile Include="ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserModel.cs" />
