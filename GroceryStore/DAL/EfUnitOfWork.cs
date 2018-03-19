@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace DAL.Contracts
 {
-    class EfUnitOfWork
+    public class EfUnitOfWork : IEfUnitOfWork
     {
+        protected readonly IGroceryStoreContext dbContext;
+
+        public EfUnitOfWork(IGroceryStoreContext context)
+        {
+            this.dbContext = context;
+        }
+
+        public void SaveChanges()
+        {
+            this.dbContext.SaveChanges();
+        }
     }
 }

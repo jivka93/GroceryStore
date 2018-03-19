@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DAL.Contracts
 {
-    interface IUnitOfWork
+    public interface IEfUnitOfWork
     {
+        void SaveChanges();
     }
 }

@@ -47,7 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EfUnitOfWork.cs" />
     <Compile Include="Contracts\IGroceryStoreContext.cs" />
+    <Compile Include="Contracts\IEfGenericRepository.cs" />
+    <Compile Include="Contracts\IEfUnitOfWork.cs" />
+    <Compile Include="EfGenericRepository.cs" />
     <Compile Include="GroceryStoreContext.cs" />
     <Compile Include="Migrations\201803132137581_Initial.cs" />
     <Compile Include="Migrations\201803132137581_Initial.Designer.cs">
