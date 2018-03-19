@@ -11,9 +11,9 @@ namespace Client.WPF
 {
     public partial class RegisterUserWindow : Window
     {
-        private readonly IUserService userservice;
+        private readonly IUserService1 userservice;
 
-        public RegisterUserWindow(IUserService userservice)
+        public RegisterUserWindow(IUserService1 userservice)
         {
             InitializeComponent();
             this.userservice = userservice;

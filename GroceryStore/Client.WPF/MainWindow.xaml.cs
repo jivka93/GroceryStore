@@ -37,7 +37,7 @@ namespace Client.WPF
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            var userservice = this.container.Resolve<IUserService>();
+            var userservice = this.container.Resolve<IUserService1>();
             RegisterUserWindow op = new RegisterUserWindow(userservice);
             op.Show();
         }
