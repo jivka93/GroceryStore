@@ -5,8 +5,6 @@ namespace Services.Contacts
 {
     public interface IUserService
     {
-        void AddUser(UserModel user);
-
         IEnumerable<UserModel> GetAllUsers();
 
         UserModel GetSpecificUser(string userName);

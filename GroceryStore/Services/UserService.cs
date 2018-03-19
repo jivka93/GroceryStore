@@ -9,32 +9,28 @@ using System.Linq;
 
 namespace Services
 {
-    public class UserService : BaseService, IUserService
+    public class UserService : IUserService
     {
 
-        public UserService(IGroceryStoreContext dbContext, IMapper mapper) 
-            : base(dbContext, mapper)
+        private readonly IEfGenericRepository<User> usersRepo;
+
+        public UserService(IEfGenericRepository<User> usersRepo, IMapper mapper)
         {
+            this.usersRepo = usersRepo;
         }
 
-        public void AddUser(UserModel user)
-        {
-            var userToAdd = base.Mapper.Map<User>(user);  //map from userModel to user type
-
-            base.DbContext.Users.Add(userToAdd);
-            base.DbContext.SaveChanges();
-        }
         public IEnumerable<UserModel> GetAllUsers()  // We will use this one to check if the inputed username and password match.
         {
-            return base.DbContext.Users.ProjectTo<UserModel>();
+            return this.usersRepo.All.ProjectTo<UserModel>();
         }
 
         public UserModel GetSpecificUser(string userName) //This one will be used to visualize when the user select "MyProfile"
         {
-            return base.DbContext.Users.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
+            return this.usersRepo.All.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
         }
 
-        public void RegisterUser(string userName, string password,string phoneNumber, string firstName = null, string lastName = null)
+
+        public void RegisterUser(string userName, string password, string phoneNumber, string firstName = null, string lastName = null)
         {
             var user = new UserModel()
             {
@@ -44,10 +40,8 @@ namespace Services
                 FirstName = firstName,
                 LastName = lastName
             };
-
             var userToAdd = Mapper.Map<User>(user);
-            DbContext.Users.Add(userToAdd);
-            DbContext.SaveChanges();
+            usersRepo.Add(userToAdd);
         }
 
     }
