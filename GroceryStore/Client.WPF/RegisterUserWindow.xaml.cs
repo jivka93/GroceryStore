@@ -23,7 +23,7 @@ namespace Client.WPF
         {
             //todo validation
             var userName = this.UsernameTextBox.Text;
-            var password = this.PasswordTextBox.Text;
+            var password = this.PasswordTextBox.Password;
             var phoneNumber = this.PhoneTextBox.Text;
             var firstName = this.FirstnameTextBox.Text;
             var lastName = this.LastnameTextBox.Text;

@@ -20,7 +20,7 @@ namespace Client.WPF
         {
             //todo validation
             var userName = this.UsernameTextBox.Text;
-            var password = this.PasswordTextBox.Text;
+            var password = this.PasswordTextBox.Password;
 
             User user = this.userContext.CheckLogin(userName, password);
 
@@ -38,7 +38,7 @@ namespace Client.WPF
                    this.Close();
                 }
                 this.UsernameTextBox.Text = "";
-                this.PasswordTextBox.Text = "";
+                this.PasswordTextBox.Password = "";
 
             }
         }
