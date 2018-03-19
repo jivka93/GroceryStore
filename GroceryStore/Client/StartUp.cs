@@ -5,6 +5,7 @@ using DAL.Migrations;
 using Models;
 using Services;
 using Services.Contacts;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
@@ -29,7 +30,9 @@ namespace Client //Testing Client
             string firstName = "gggggggggg";
             string lastName = "gggggggggg";
 
-            userservice.RegisterUser(userName, password, phoneNumber, firstName, lastName);
+            //userservice.RegisterUser(userName, password, phoneNumber, firstName, lastName);
+
+            Console.WriteLine(userservice.CheckLogin("gggggggggg", "gggggggggg"));
 
         }
         private static void Init()

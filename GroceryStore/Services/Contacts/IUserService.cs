@@ -1,4 +1,5 @@
 ﻿using DTO;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace Services.Contacts
         IEnumerable<UserModel> GetAllUsers();
         UserModel GetSpecificUser(string userName);
         void RegisterUser(string userName, string password, string phoneNumber, string firstName = null, string lastName = null);
+        User CheckLogin(string username, string password);
     }
 }

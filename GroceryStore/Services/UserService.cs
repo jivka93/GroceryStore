@@ -50,5 +50,24 @@ namespace Services
             DbContext.SaveChanges();
         }
 
+        public User CheckLogin(string username, string password)
+        {
+            //foreach(User user in base.DbContext.Users)
+            //{
+            //    if(user.Username == username)
+            //    {
+            //        if(user.Password == password)
+            //        {
+            //            return user;
+            //        }
+            //    }
+            //}
+
+            var user = base.DbContext.Users.Where(x => x.Username == username && x.Password == password)
+                .FirstOrDefault();
+       
+            return user;
+        }
+
     }
 }
