@@ -24,6 +24,12 @@ namespace Services
         public void Login(int userId)
         {
             this.LoggedUserId = userId;
+
+        }
+
+        public void Logout()
+        {
+            this.LoggedUserId = null;
         }
 
         public User CheckLogin(string username, string password)

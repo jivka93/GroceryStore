@@ -18,8 +18,10 @@
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="LoginButton" Click="LoginButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="Login" FontSize="15"/>
-                <Button x:Name="RegisterButton" Click="RegisterButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Register" FontSize="15"/>
+                <Button x:Name="LoginButton" Click="LoginButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="Login" FontSize="15" Visibility="Visible"/>
+                <Button x:Name="MyProfileButton" Click="MyProfileButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="My profile" FontSize="15" Visibility="Hidden"/>
+                <Button x:Name="RegisterButton" Click="RegisterButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Register" FontSize="15" Visibility="Visible"/>
+                <Button x:Name="LogoutButton" Click="LogoutButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Logout" FontSize="15" Visibility="Hidden"/>
                 <TextBlock Grid.Column="2" Text="GroceryStore" FontWeight="Bold" Height="50" FontSize="35" Padding="10 0 0 0"/>
                 <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Margin="14 5 0 5" Grid.Column="3" Content="ShoppingCart" FontSize="15"/>
             </Grid>

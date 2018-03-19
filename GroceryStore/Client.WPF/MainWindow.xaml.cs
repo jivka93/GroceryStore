@@ -36,8 +36,14 @@ namespace Client.WPF
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             var userContext = this.container.Resolve<IUserContext>();
-            LoginWindow op = new LoginWindow(userContext);
+            LoginWindow op = new LoginWindow(userContext, this);
             op.Show();
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            var userContext = this.container.Resolve<IUserContext>();
+            userContext.Logout();
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -45,6 +51,19 @@ namespace Client.WPF
             var userservice = this.container.Resolve<IUserService>();
             RegisterUserWindow op = new RegisterUserWindow(userservice);
             op.Show();
+        }
+
+        public void DisplayLoggedUserView()
+        {
+            this.LoginButton.Visibility = Visibility.Hidden;
+            this.RegisterButton.Visibility = Visibility.Hidden;
+            this.MyProfileButton.Visibility = Visibility.Visible;
+            this.LogoutButton.Visibility = Visibility.Visible;
+        }
+
+        private void MyProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void ShoppingCartButton_Click(object sender, RoutedEventArgs e)
@@ -74,5 +93,7 @@ namespace Client.WPF
             // Filling the comboBox content
             cmbCategories.ItemsSource = categories;
         }
+
+
     }
 }

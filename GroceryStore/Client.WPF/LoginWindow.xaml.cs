@@ -7,11 +7,13 @@ namespace Client.WPF
     public partial class LoginWindow : Window
     {
         private readonly IUserContext userContext;
+        private readonly MainWindow mainWindow;
 
-        public LoginWindow(IUserContext userContext)
+        public LoginWindow(IUserContext userContext, MainWindow mainWindow)
         {
             InitializeComponent();
             this.userContext = userContext;
+            this.mainWindow = mainWindow;
         }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
@@ -25,6 +27,7 @@ namespace Client.WPF
             if (user != null)
             {
                 this.userContext.Login(user.Id);
+                this.mainWindow.DisplayLoggedUserView();
             }
             else
             {
@@ -35,6 +38,7 @@ namespace Client.WPF
                 }
                 this.UsernameTextBox.Text = "";
                 this.PasswordTextBox.Text = "";
+
             }
         }
     }
