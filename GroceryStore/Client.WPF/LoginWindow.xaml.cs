@@ -28,7 +28,13 @@ namespace Client.WPF
             }
             else
             {
-
+                MessageBoxResult result = MessageBox.Show("Invalid username or password! Please try again!", "", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                if (result == MessageBoxResult.Cancel)
+                {
+                   this.Close();
+                }
+                this.UsernameTextBox.Text = "";
+                this.PasswordTextBox.Text = "";
             }
         }
     }
