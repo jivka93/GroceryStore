@@ -28,6 +28,7 @@ namespace Client.WPF
             {
                 this.userContext.Login(user.Id);
                 this.mainWindow.DisplayLoggedUserView();
+                this.Close();
             }
             else
             {

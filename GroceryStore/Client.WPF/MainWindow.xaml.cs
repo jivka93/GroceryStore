@@ -44,6 +44,7 @@ namespace Client.WPF
         {
             var userContext = this.container.Resolve<IUserContext>();
             userContext.Logout();
+            DisplayNoLoggedUserView();
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -59,6 +60,14 @@ namespace Client.WPF
             this.RegisterButton.Visibility = Visibility.Hidden;
             this.MyProfileButton.Visibility = Visibility.Visible;
             this.LogoutButton.Visibility = Visibility.Visible;
+        }
+
+        private void DisplayNoLoggedUserView()
+        {
+            this.LoginButton.Visibility = Visibility.Visible;
+            this.RegisterButton.Visibility = Visibility.Visible;
+            this.MyProfileButton.Visibility = Visibility.Hidden;
+            this.LogoutButton.Visibility = Visibility.Hidden;
         }
 
         private void MyProfileButton_Click(object sender, RoutedEventArgs e)
