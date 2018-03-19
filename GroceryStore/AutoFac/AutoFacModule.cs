@@ -4,11 +4,6 @@ using DAL;
 using DAL.Contracts;
 using Services;
 using Services.Contacts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoFac
 {
@@ -19,6 +14,9 @@ namespace AutoFac
             builder.RegisterType<GroceryStoreContext>().As<IGroceryStoreContext>().InstancePerDependency();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerDependency();
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerDependency();
+
+            builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
+
             builder.Register(x => Mapper.Instance);
 
         }

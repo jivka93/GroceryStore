@@ -72,9 +72,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Autofac\AutoFacModule.cs" />
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegisterUserWindow.xaml.cs">
       <DependentUpon>RegisterUserWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -131,6 +138,10 @@
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{8b3db55b-0f4a-4c69-b2d9-9d05ade25d82}</Project>
       <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{1FC0A8E5-14A7-48A1-A8C3-7DCC3F284C74}</Project>
+      <Name>Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{CB028B6F-CF91-4F35-AAE3-8AB997AD53CB}</Project>

@@ -65,9 +65,11 @@
   <ItemGroup>
     <Compile Include="AddressService.cs" />
     <Compile Include="BaseService.cs" />
+    <Compile Include="Contacts\IUserContext.cs" />
     <Compile Include="Contacts\IUserService.cs" />
     <Compile Include="Contacts\IProductService.cs" />
     <Compile Include="ProductService.cs" />
+    <Compile Include="UserContext.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
