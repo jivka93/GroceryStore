@@ -8,6 +8,8 @@ namespace Services.Contacts
 
         void Login(int userId);
 
+        void Logout();
+
         User CheckLogin(string username, string password);
     }
 }

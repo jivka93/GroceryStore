@@ -29,11 +29,43 @@ namespace Services
             return this.usersRepo.All.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
         }
 
+        public UserModel GetSpecificUser(int userId) //This one will be used when the user select update in "MyProfile"
 
         public void RegisterUser(string userName, string password, string phoneNumber, string firstName = null, string lastName = null)
         {
-            var user = new UserModel()
+            return base.DbContext.Users.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
+        }
+
+        public bool RegisterUser(string userName, string password,string phoneNumber, string firstName = null, string lastName = null)
+        {
+            try
             {
+                var user = new UserModel()
+                {
+                    Username = userName,
+                    Password = password,
+                    PhoneNumber = phoneNumber,
+                    FirstName = firstName,
+                    LastName = lastName
+                };
+
+                var userToAdd = Mapper.Map<User>(user);
+                DbContext.Users.Add(userToAdd);
+                DbContext.SaveChanges();
+
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+        }
+
+        public void UpdatePassword(int id, string password)
+        {
+            // todo - fix not saving changes in database
+            var user = this.DbContext.Users.Where(x => x.Id == id).FirstOrDefault().Password = password;
+            DbContext.SaveChanges();
                 Username = userName,
                 Password = password,
                 PhoneNumber = phoneNumber,
@@ -43,6 +75,5 @@ namespace Services
             var userToAdd = Mapper.Map<User>(user);
             usersRepo.Add(userToAdd);
         }
-
     }
 }

@@ -7,7 +7,9 @@ using System.Collections.Generic;
 namespace DTO  //We create the model that will be exposed to the client through the Service/Logic
 {
     public class UserModel : IMapFrom<User>  //IHaveCustomMappings  for custom mapping
-    {       
+    {
+        public int Id { get; set; }
+
         public string Username { get; set; }
 
         public string Password { get; set; }
