@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AddressModel.cs" />
     <Compile Include="BankCardModel.cs" />
+    <Compile Include="FullUserView.cs" />
     <Compile Include="InventoryModel.cs" />
     <Compile Include="OrderModel.cs" />
     <Compile Include="ProductModel.cs" />
