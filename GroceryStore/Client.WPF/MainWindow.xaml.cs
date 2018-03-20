@@ -80,7 +80,8 @@ namespace Client.WPF
 
         private void ShoppingCartButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ShoppingCartWindow op = new ShoppingCartWindow();
+            op.Show();
         }
 
         private void FillCategories()
