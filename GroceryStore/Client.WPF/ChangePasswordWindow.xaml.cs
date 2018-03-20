@@ -1,5 +1,4 @@
-﻿using Models;
-using Services.Contacts;
+﻿using Services.Contacts;
 using System.Windows;
 
 namespace Client.WPF

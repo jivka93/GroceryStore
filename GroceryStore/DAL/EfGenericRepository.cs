@@ -59,6 +59,7 @@ namespace DAL
         {
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Modified;
+            Context.SaveChanges();
         }
     }
 }

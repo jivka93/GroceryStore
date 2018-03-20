@@ -9,7 +9,7 @@
         WindowStartupLocation="Manual" 
         Left="430" Top="150">
 
-    <StackPanel HorizontalAlignment="Left" Height="340" Margin="20,10,0,0" VerticalAlignment="Top" Width="256" >
+    <StackPanel HorizontalAlignment="Left" Height="409" Margin="20,10,0,0" VerticalAlignment="Top" Width="256" >
 
         <TextBlock Text="Profile information" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 0 0 10"/>
 

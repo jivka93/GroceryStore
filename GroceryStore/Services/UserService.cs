@@ -60,17 +60,10 @@ namespace Services
 
         public void UpdatePassword(int id, string password)
         {
-            // todo - fix not saving changes in database
-            var user = this.usersRepo.All.Where(x => x.Id == id).FirstOrDefault().Password = password;
-            //DbContext.SaveChanges();
-            //    Username = userName,
-            //    Password = password,
-            //    PhoneNumber = phoneNumber,
-            //    FirstName = firstName,
-            //    LastName = lastName
-            //};
-            //var userToAdd = Mapper.Map<User>(user);
-            //usersRepo.Add(userToAdd);
+            var user = this.usersRepo.All.Where(x => x.Id == id).FirstOrDefault();
+            user.Password = password;
+
+            this.usersRepo.Update(user);
         }
     }
 }

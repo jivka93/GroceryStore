@@ -103,8 +103,7 @@ namespace Client.WPF
 
 
             // todo - Filling the comboBox content
-
-            //cmbCategories.ItemsSource = categories;
+            cmbCategories.ItemsSource = categories;
         }
 
 
