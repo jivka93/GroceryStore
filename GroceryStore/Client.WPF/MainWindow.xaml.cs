@@ -102,8 +102,9 @@ namespace Client.WPF
             //var c = (context.Products.SelectMany(x => x.Category).Distinct()).ToList();
 
 
-            // Filling the comboBox content
-            cmbCategories.ItemsSource = categories;
+            // todo - Filling the comboBox content
+
+            //cmbCategories.ItemsSource = categories;
         }
 
 

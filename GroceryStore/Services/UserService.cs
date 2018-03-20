@@ -39,21 +39,36 @@ namespace Services
             return base.DbContext.Users.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
         }
 
-        public void RegisterUser(string userName, string password,string phoneNumber, string firstName = null, string lastName = null)
+        public bool RegisterUser(string userName, string password,string phoneNumber, string firstName = null, string lastName = null)
         {
-            var user = new UserModel()
+            try
             {
-                Username = userName,
-                Password = password,
-                PhoneNumber = phoneNumber,
-                FirstName = firstName,
-                LastName = lastName
-            };
+                var user = new UserModel()
+                {
+                    Username = userName,
+                    Password = password,
+                    PhoneNumber = phoneNumber,
+                    FirstName = firstName,
+                    LastName = lastName
+                };
 
-            var userToAdd = Mapper.Map<User>(user);
-            DbContext.Users.Add(userToAdd);
-            DbContext.SaveChanges();
+                var userToAdd = Mapper.Map<User>(user);
+                DbContext.Users.Add(userToAdd);
+                DbContext.SaveChanges();
+
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
         }
 
+        public void UpdatePassword(int id, string password)
+        {
+            // todo - fix not saving changes in database
+            var user = this.DbContext.Users.Where(x => x.Id == id).FirstOrDefault().Password = password;
+            DbContext.SaveChanges();
+        }
     }
 }

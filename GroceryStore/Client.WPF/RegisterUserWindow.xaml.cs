@@ -28,7 +28,30 @@ namespace Client.WPF
             var firstName = this.FirstnameTextBox.Text;
             var lastName = this.LastnameTextBox.Text;
 
-            this.userservice.RegisterUser(userName,password,phoneNumber, firstName, lastName);
+            bool result = this.userservice.RegisterUser(userName,password,phoneNumber, firstName, lastName);
+
+            if (result)
+            {
+                MessageBoxResult popup = MessageBox
+                    .Show("Registered successfully!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (popup == MessageBoxResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBoxResult popup = MessageBox
+                    .Show("Error!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (popup == MessageBoxResult.OK)
+                {
+                    this.Close();
+                }
+            }
+
+            this.Close();
         }
     }
 }

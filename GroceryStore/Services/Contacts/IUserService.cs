@@ -13,6 +13,8 @@ namespace Services.Contacts
 
         UserModel GetSpecificUser(int userId);
 
-        void RegisterUser(string userName, string password, string phoneNumber, string firstName = null, string lastName = null);
+        void UpdatePassword(int id, string password);
+
+        bool RegisterUser(string userName, string password, string phoneNumber, string firstName = null, string lastName = null);
     }
 }

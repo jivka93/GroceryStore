@@ -18,7 +18,8 @@ namespace Client.WPF
 
         private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ChangePasswordWindow op = new ChangePasswordWindow(this.userservice);
+            op.Show();
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)

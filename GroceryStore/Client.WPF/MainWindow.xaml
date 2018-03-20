@@ -28,25 +28,25 @@
             
             <!--Categories-->
             <Grid Margin="10">
-                <!--<Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>-->
+                </Grid.ColumnDefinitions>
 
                 <!--Drop down-->
                 <ComboBox x:Name="cmbCategories" SelectedIndex="0" FontSize="20" DisplayMemberPath="Category" SelectedValuePath="Id" SelectedValue="{Binding Id}">
-                    <!--<ComboBoxItem x:Name="dropdownAll" FontSize="15">Categories</ComboBoxItem>
+                    <ComboBoxItem x:Name="dropdownAll" FontSize="15">Categories</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownFruitAndVegetables" FontSize="15">Fruit and Vegetables</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownBread" FontSize="15">Bread</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownMeat" FontSize="15">Meat</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownFish" FontSize="15">Fish</ComboBoxItem>
-                    <ComboBoxItem x:Name="dropdownDiary" FontSize="15">Diary products</ComboBoxItem>
+                    <ComboBoxItem x:Name="dropdownDiary" FontSize="15">Diary Products</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownSweets" FontSize="15">Sweets</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownDrinks" FontSize="15">Drinks</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownCoffeeAndTea" FontSize="15">Coffee and Tea</ComboBoxItem>
-                    <ComboBoxItem x:Name="dropdownPackaged" FontSize="15">Packaged food</ComboBoxItem>-->
+                    <ComboBoxItem x:Name="dropdownPackaged" FontSize="15">Packaged Food</ComboBoxItem>
                 </ComboBox>
                 
                 <!--Search bar-->
