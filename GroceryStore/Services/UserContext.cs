@@ -1,18 +1,21 @@
 ﻿using AutoMapper;
-using DAL.Contracts;
+using DAL;
 using Models;
 using Services.Contacts;
 using System.Linq;
 
 namespace Services
 {
-    public class UserContext : BaseService, IUserContext
+    public class UserContext : IUserContext
     {
         private int? loggedUserId;
+        private GroceryStoreContext dbContext;
+        private IMapper mapper;
 
-        public UserContext(IGroceryStoreContext dbContext, IMapper mapper) 
-            : base(dbContext, mapper)
+        public UserContext(GroceryStoreContext dbContext, IMapper mapper) 
         {
+            this.dbContext = dbContext;
+            this.mapper = mapper;
         }
 
         public int? LoggedUserId
@@ -34,7 +37,7 @@ namespace Services
 
         public User CheckLogin(string username, string password)
         {
-            var user = base.DbContext.Users
+            var user = this.dbContext.Users
                 .Where(x => x.Username == username && x.Password == password)
                 .FirstOrDefault();
 

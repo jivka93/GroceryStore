@@ -22,7 +22,7 @@ namespace Client.Autofac
             builder.RegisterType<UserService>().As<IUserService>().InstancePerDependency();
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerDependency();
             builder.Register(x => Mapper.Instance);
-            builder.RegisterType<UserService1>().As<IUserService1>().InstancePerDependency();
+
             builder.RegisterType<EfGenericRepository<User>>().As<IEfGenericRepository<User>>().InstancePerDependency();
 
         }

@@ -14,10 +14,17 @@ namespace Client.WPF.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<GroceryStoreContext>().AsSelf().InstancePerDependency();
+
+            // Services
+            builder.RegisterType<UserContext>().As<IUserContext>().InstancePerDependency();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerDependency();
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerDependency();
+
+            //DTO Models
             builder.RegisterType<UserModel>().AsSelf();
+
             builder.Register(x => Mapper.Instance);
+
             builder.RegisterType<EfGenericRepository<User>>().As<IEfGenericRepository<User>>().InstancePerDependency();
         }
     }

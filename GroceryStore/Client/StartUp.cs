@@ -22,7 +22,7 @@ namespace Client //Testing Client
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
             var container = builder.Build();
             
-            var userservice = container.Resolve<IUserService1>();
+            //var userservice = container.Resolve<IUserService1>();
 
             string userName = "gggggggggg22";
             string password = "gggggggggg";
