@@ -10,6 +10,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Client.WPF
 {
@@ -20,6 +21,7 @@ namespace Client.WPF
         public MainWindow()
         {
             InitializeComponent();
+            
 
             FillCategories();
 
@@ -105,6 +107,21 @@ namespace Client.WPF
 
             // todo - Filling the comboBox content
             cmbCategories.ItemsSource = categories;
+        }
+
+
+        private void SearchBar_Enter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                var productService = this.container.Resolve<IProductService>();
+                var products = productService.SearchByName(searchBar.Text);
+                foreach (var item in products)
+                {
+                    this.Title = item.Price.ToString();
+                }
+
+            }
         }
 
 

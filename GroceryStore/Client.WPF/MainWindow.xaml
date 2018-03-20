@@ -20,6 +20,8 @@
                     </TransformGroup>
                 </StackPanel.RenderTransform>
 
+
+
                 <!--Navigation-->
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
@@ -48,6 +50,13 @@
 
 
 
+                <TextBlock Text="Search Product" FontWeight="Bold" Height="32" FontSize="20" Padding="60 0 0 0" Margin="784,0,0,0" RenderTransformOrigin="2.269,0.531" />
+                <TextBox x:Name="searchBar"  KeyDown="SearchBar_Enter" Grid.Column="2" Height="34" Margin="746,0,10,0" RenderTransformOrigin="0.504,0.571" />
+
+
+
+
+
             </StackPanel>
 
             <Image Source="https://www.aldi.com.au/fileadmin/_processed_/9/f/csm_ALC6158_KVB_Groceries_1896x720_f90648edde.jpg"></Image>
@@ -55,11 +64,10 @@
             <Grid Background="White" Height="468" Margin="20,20,20.333,0" />
 
             <!--Search bar-->
-            <!--
-            <TextBlock Grid.Column="1" Text="Search" FontWeight="Bold" Height="30" FontSize="20" Padding="60 0 0 0" />
-            <TextBox Grid.Column="2" />
-            
-            -->
+
+
+
+
             <!--TOTAL-->
             <!--
             <TextBlock Grid.Column="3" Text="0.00 $" FontWeight="Bold" Height="30" FontSize="20" Padding="60 0 0 0" />-->

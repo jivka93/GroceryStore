@@ -9,8 +9,8 @@ namespace Services.Contacts
 {
     public interface IProductService
     {
-        IEnumerable<ProductModel> GetAllAvailableProducts();
+        IEnumerable<ProductModel> SearchByName(string productName);
 
-        IEnumerable<ProductModel> GetAllAvailableProductByCategory(string category);
+
     }
 }

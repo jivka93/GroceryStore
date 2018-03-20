@@ -2,30 +2,31 @@
 using AutoMapper.QueryableExtensions;
 using DAL.Contracts;
 using DTO;
+using Models;
 using Services.Contacts;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Services
 {
-    public class ProductService : BaseService, IProductService
+    public class ProductService : IProductService
     {
-        public ProductService(IGroceryStoreContext dbContext, IMapper mapper) : base(dbContext, mapper)
-        {
+        private readonly IEfGenericRepository<Product> usersRepo;
 
+        public ProductService(IEfGenericRepository<Product> usersRepo, IMapper mapper)
+        {
+            this.usersRepo = usersRepo;
         }
 
-        public IEnumerable<ProductModel> GetAllAvailableProducts()
+        public IEnumerable<ProductModel> SearchByName(string productName)
         {
-            return base.DbContext.Products.ProjectTo<ProductModel>()
-                .Where(x => x.Inventory.QuantityInStock > 0);
+            return this.usersRepo.All.ProjectTo<ProductModel>().Where(x => x.Name.Contains(productName));
         }
 
-        public IEnumerable<ProductModel> GetAllAvailableProductByCategory(string category)
-        {
-            return base.DbContext.Products.ProjectTo<ProductModel>()
-                .Where(x => x.Inventory.QuantityInStock > 0).Where(x => x.Category == category);
-        }
 
+        public IEnumerable<ProductModel> SearchByCategory(string categoryName)
+        {
+            return this.usersRepo.All.ProjectTo<ProductModel>().Where(x => x.Category ==categoryName);
+        }
     }
 }

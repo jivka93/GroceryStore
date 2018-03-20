@@ -14,7 +14,7 @@ namespace Services
 
         private readonly IEfGenericRepository<User> usersRepo;
 
-        public UserService(IEfGenericRepository<User> usersRepo, IMapper mapper)
+        public UserService(IEfGenericRepository<User> usersRepo, IMapper    mapper)
         {
             this.usersRepo = usersRepo;
         }

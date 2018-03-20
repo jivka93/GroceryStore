@@ -26,6 +26,7 @@ namespace Client.WPF.Autofac
             builder.Register(x => Mapper.Instance);
 
             builder.RegisterType<EfGenericRepository<User>>().As<IEfGenericRepository<User>>().InstancePerDependency();
+            builder.RegisterType<EfGenericRepository<Product>>().As<IEfGenericRepository<Product>>().InstancePerDependency();
         }
     }
 }
