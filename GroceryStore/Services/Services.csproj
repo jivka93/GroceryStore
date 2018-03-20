@@ -75,12 +75,10 @@
     <Compile Include="Contacts\IProductService.cs" />
     <Compile Include="Contacts\OrderService.cs" />
     <Compile Include="InventoryService.cs" />
-    <Compile Include="Contacts\IUserService1.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="UserContext.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserService1.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

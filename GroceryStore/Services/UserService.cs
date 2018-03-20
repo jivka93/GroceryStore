@@ -30,11 +30,10 @@ namespace Services
         }
 
         public UserModel GetSpecificUser(int userId) //This one will be used when the user select update in "MyProfile"
-
-        public void RegisterUser(string userName, string password, string phoneNumber, string firstName = null, string lastName = null)
         {
-            return base.DbContext.Users.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
+            return this.usersRepo.All.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
         }
+
 
         public bool RegisterUser(string userName, string password,string phoneNumber, string firstName = null, string lastName = null)
         {
@@ -50,9 +49,7 @@ namespace Services
                 };
 
                 var userToAdd = Mapper.Map<User>(user);
-                DbContext.Users.Add(userToAdd);
-                DbContext.SaveChanges();
-
+                usersRepo.Add(userToAdd);                
                 return true;
             }
             catch (System.Exception)
@@ -64,16 +61,16 @@ namespace Services
         public void UpdatePassword(int id, string password)
         {
             // todo - fix not saving changes in database
-            var user = this.DbContext.Users.Where(x => x.Id == id).FirstOrDefault().Password = password;
-            DbContext.SaveChanges();
-                Username = userName,
-                Password = password,
-                PhoneNumber = phoneNumber,
-                FirstName = firstName,
-                LastName = lastName
-            };
-            var userToAdd = Mapper.Map<User>(user);
-            usersRepo.Add(userToAdd);
+            var user = this.usersRepo.All.Where(x => x.Id == id).FirstOrDefault().Password = password;
+            //DbContext.SaveChanges();
+            //    Username = userName,
+            //    Password = password,
+            //    PhoneNumber = phoneNumber,
+            //    FirstName = firstName,
+            //    LastName = lastName
+            //};
+            //var userToAdd = Mapper.Map<User>(user);
+            //usersRepo.Add(userToAdd);
         }
     }
 }
