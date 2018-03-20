@@ -18,11 +18,14 @@
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="LoginButton" Click="LoginButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="Login" FontSize="15"/>
-                <Button x:Name="RegisterButton" Click="RegisterButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Register" FontSize="15"/>
+                <Button x:Name="LoginButton" Click="LoginButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="Login" FontSize="15" Visibility="Visible"/>
+                <Button x:Name="MyProfileButton" Click="MyProfileButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="My profile" FontSize="15" Visibility="Hidden"/>
+                <Button x:Name="RegisterButton" Click="RegisterButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Register" FontSize="15" Visibility="Visible"/>
+                <Button x:Name="LogoutButton" Click="LogoutButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Logout" FontSize="15" Visibility="Hidden"/>
                 <TextBlock Grid.Column="2" Text="GroceryStore" FontWeight="Bold" Height="50" FontSize="35" Padding="10 0 0 0"/>
                 <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Margin="14 5 0 5" Grid.Column="3" Content="ShoppingCart" FontSize="15"/>
             </Grid>
+            
             <!--Categories-->
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
@@ -33,18 +36,19 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Drop down-->
-                <ComboBox SelectedIndex="0" FontSize="20">
+                <ComboBox x:Name="cmbCategories" SelectedIndex="0" FontSize="20" DisplayMemberPath="Category" SelectedValuePath="Id" SelectedValue="{Binding Id}">
                     <ComboBoxItem x:Name="dropdownAll" FontSize="15">Categories</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownFruitAndVegetables" FontSize="15">Fruit and Vegetables</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownBread" FontSize="15">Bread</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownMeat" FontSize="15">Meat</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownFish" FontSize="15">Fish</ComboBoxItem>
-                    <ComboBoxItem x:Name="dropdownDiary" FontSize="15">Diary products</ComboBoxItem>
+                    <ComboBoxItem x:Name="dropdownDiary" FontSize="15">Diary Products</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownSweets" FontSize="15">Sweets</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownDrinks" FontSize="15">Drinks</ComboBoxItem>
                     <ComboBoxItem x:Name="dropdownCoffeeAndTea" FontSize="15">Coffee and Tea</ComboBoxItem>
-                    <ComboBoxItem x:Name="dropdownPackaged" FontSize="15">Packaged food</ComboBoxItem>
+                    <ComboBoxItem x:Name="dropdownPackaged" FontSize="15">Packaged Food</ComboBoxItem>
                 </ComboBox>
+                
                 <!--Search bar-->
                 <TextBlock Grid.Column="1" Text="Search" FontWeight="Bold" Height="30" FontSize="20" Padding="60 0 0 0" />
                 <TextBox Grid.Column="2" />

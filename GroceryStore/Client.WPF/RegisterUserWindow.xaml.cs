@@ -23,12 +23,35 @@ namespace Client.WPF
         {
             //todo validation
             var userName = this.UsernameTextBox.Text;
-            var password = this.PasswordTextBox.Text;
+            var password = this.PasswordTextBox.Password;
             var phoneNumber = this.PhoneTextBox.Text;
             var firstName = this.FirstnameTextBox.Text;
             var lastName = this.LastnameTextBox.Text;
 
-            this.userservice.RegisterUser(userName,password,phoneNumber, firstName, lastName);
+            bool result = this.userservice.RegisterUser(userName,password,phoneNumber, firstName, lastName);
+
+            if (result)
+            {
+                MessageBoxResult popup = MessageBox
+                    .Show("Registered successfully!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (popup == MessageBoxResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBoxResult popup = MessageBox
+                    .Show("Error!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                if (popup == MessageBoxResult.OK)
+                {
+                    this.Close();
+                }
+            }
+
+            this.Close();
         }
     }
 }

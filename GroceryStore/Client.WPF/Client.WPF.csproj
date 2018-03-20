@@ -72,16 +72,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Autofac\AutoFacModule.cs" />
-    <Compile Include="ErrorTEST.xaml.cs">
-      <DependentUpon>ErrorTEST.xaml</DependentUpon>
+    <Compile Include="ChangePasswordWindow.xaml.cs">
+      <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyProfile.xaml.cs">
+      <DependentUpon>MyProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegisterUserWindow.xaml.cs">
       <DependentUpon>RegisterUserWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="ErrorTEST.xaml">
+    <Page Include="ChangePasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,6 +104,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MyProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RegisterUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

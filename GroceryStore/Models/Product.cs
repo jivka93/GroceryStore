@@ -19,7 +19,7 @@ namespace Models
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(15)]
+        [MaxLength(30)]
         public string Category { get; set; }
 
         public decimal Price { get; set; }
