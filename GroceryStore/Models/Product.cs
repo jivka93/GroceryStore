@@ -24,6 +24,8 @@ namespace Models
 
         public decimal Price { get; set; }
 
+        public string Picture { get; set; }
+
         [InverseProperty("Product")]
         public virtual Inventory Inventory { get; set; }
 

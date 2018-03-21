@@ -22,11 +22,11 @@ namespace Client.WPF
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             //todo validation
-            var userName = this.UsernameTextBox.Text;
-            var password = this.PasswordTextBox.Password;
-            var phoneNumber = this.PhoneTextBox.Text;
-            var firstName = this.FirstnameTextBox.Text;
-            var lastName = this.LastnameTextBox.Text;
+            var userName = this.UsernameTextBox.Text.Trim();
+            var password = this.PasswordTextBox.Password.Trim();
+            var phoneNumber = this.PhoneTextBox.Text.Trim();
+            var firstName = this.FirstnameTextBox.Text.Trim();
+            var lastName = this.LastnameTextBox.Text.Trim();
 
             bool result = this.userservice.RegisterUser(userName,password,phoneNumber, firstName, lastName);
 

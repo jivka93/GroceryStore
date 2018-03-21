@@ -23,7 +23,6 @@ namespace Services
             return this.usersRepo.All.ProjectTo<ProductModel>().Where(x => x.Name.Contains(productName));
         }
 
-
         public IEnumerable<ProductModel> SearchByCategory(string categoryName)
         {
             return this.usersRepo.All.ProjectTo<ProductModel>().Where(x => x.Category ==categoryName);

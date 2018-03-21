@@ -17,11 +17,13 @@ namespace Client.WPF
     public partial class MainWindow : Window
     {
         private IComponentContext container;
+        private GroceryStoreContext context;
 
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            this.context = new GroceryStoreContext();
 
             FillCategories();
 
@@ -30,8 +32,6 @@ namespace Client.WPF
             AutomapperConfiguration.Initialize();
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
-            // it's here because it doesn't work inside the module
-            builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
             this.container = builder.Build();
         }
 
@@ -78,6 +78,7 @@ namespace Client.WPF
             var userservice = this.container.Resolve<IUserService>();
             MyProfile op = new MyProfile(userContext, userservice);
             op.Show();
+            
         }
 
         private void ShoppingCartButton_Click(object sender, RoutedEventArgs e)
@@ -88,11 +89,8 @@ namespace Client.WPF
 
         private void FillCategories()
         {
-            // Finding all categories from database
-            var categories = new List<string>() { "All" };
-
-            var context = new GroceryStoreContext();
-            List<Product> products = context.Products.ToList();
+            var categories = new List<string>() { "All" };         
+            List<Product> products = this.context.Products.ToList();
 
             foreach (var product in products)
             {
@@ -101,11 +99,6 @@ namespace Client.WPF
                     categories.Add(product.Category);
                 }
             }
-
-            //var c = (context.Products.SelectMany(x => x.Category).Distinct()).ToList();
-
-
-            // todo - Filling the comboBox content
             cmbCategories.ItemsSource = categories;
         }
 
@@ -120,10 +113,17 @@ namespace Client.WPF
                 {
                     this.Title = item.Price.ToString();
                 }
-
             }
         }
 
-
+        private void cmbCategories_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            switch(cmbCategories.SelectedItem)
+            {
+                case "All":
+                    ProductsContent.ItemsSource = this.context.Products.ToList();
+                    break;
+            }
+        }
     }
 }

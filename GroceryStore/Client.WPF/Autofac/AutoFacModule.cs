@@ -16,7 +16,7 @@ namespace Client.WPF.Autofac
             builder.RegisterType<GroceryStoreContext>().AsSelf().InstancePerDependency();
 
             // Services
-            builder.RegisterType<UserContext>().As<IUserContext>().InstancePerDependency();
+            builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerDependency();
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerDependency();
 
