@@ -51,6 +51,7 @@ namespace Client.WPF
                 int id = (int)userId;
                 var userModel = this.userservice.GetSpecificUser(id);
                 this.Data.DataContext = userModel;
+
                 // Filling:
                 this.UsernameText.Text = userModel.Username;
                 this.FirstNameText.Text = userModel.FirstName;

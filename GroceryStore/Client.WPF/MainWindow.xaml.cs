@@ -33,7 +33,7 @@ namespace Client.WPF
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
             // it's here because it doesn't work inside the module
-            //builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
+            builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
             this.container = builder.Build();
         }
 
@@ -80,6 +80,7 @@ namespace Client.WPF
             var userservice = this.container.Resolve<IUserService>();
             MyProfile op = new MyProfile(userContext, userservice);
             op.Show();
+            
         }
 
         private void ShoppingCartButton_Click(object sender, RoutedEventArgs e)
