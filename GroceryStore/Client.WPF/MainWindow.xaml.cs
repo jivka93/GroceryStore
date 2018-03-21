@@ -32,8 +32,6 @@ namespace Client.WPF
             AutomapperConfiguration.Initialize();
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
-            // it's here because it doesn't work inside the module
-            builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
             this.container = builder.Build();
         }
 
