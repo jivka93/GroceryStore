@@ -33,7 +33,7 @@ namespace Client.WPF
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
             // it's here because it doesn't work inside the module
-            builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
+            //builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
             this.container = builder.Build();
         }
 
@@ -90,10 +90,7 @@ namespace Client.WPF
 
         private void FillCategories()
         {
-            // Finding all categories from database
-            var categories = new List<string>() { "All" };
-
-            
+            var categories = new List<string>() { "All" };         
             List<Product> products = this.context.Products.ToList();
 
             foreach (var product in products)
@@ -103,11 +100,6 @@ namespace Client.WPF
                     categories.Add(product.Category);
                 }
             }
-
-            //var c = (context.Products.SelectMany(x => x.Category).Distinct()).ToList();
-
-
-            // todo - Filling the comboBox content
             cmbCategories.ItemsSource = categories;
         }
 
@@ -122,7 +114,6 @@ namespace Client.WPF
                 {
                     this.Title = item.Price.ToString();
                 }
-
             }
         }
 

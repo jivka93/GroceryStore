@@ -12,6 +12,8 @@ namespace DTO
 
         public decimal Price { get; set; }
 
+        public string Picture { get; set; }
+
         public virtual Inventory Inventory { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
