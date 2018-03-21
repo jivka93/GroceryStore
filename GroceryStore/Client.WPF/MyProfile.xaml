@@ -66,9 +66,9 @@
             </ItemsControl>
 
             <!--Buttons-->
-            <Button x:Name="SubmitButton" Click="UpdateButton_Click"  Content="Update Info"   Margin="70 25 70 10"/>
-            <Button x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click"  Content="Change password"   Margin="70 15 70 15"/>
-
+            <Button x:Name="UpdateButton" Click="UpdateButton_Click"  Content="Update Info"   Margin="70 25 70 10" Visibility="Visible" />
+            <Button x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click"  Content="Change password"   Margin="70 15 70 15" Visibility="Visible" />
+            <Button x:Name="SaveChangesButton" Click="SaveChangesButton_Click"  Content="Save changes"   Margin="70 25 70 10" Visibility="Collapsed" />
         </StackPanel>
     </ScrollViewer>
 </Window>

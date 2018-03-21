@@ -65,5 +65,28 @@ namespace Services
 
             this.usersRepo.Update(user);
         }
+
+        public void UpdateProfileInfo(int id, string firstName = null, string lastName = null, string phone = null)
+        {
+            var user = this.usersRepo.All.Where(x => x.Id == id).FirstOrDefault();
+
+            if (firstName != null && firstName != string.Empty)
+            {
+                user.FirstName = firstName;
+            }
+
+            if (lastName != null && lastName != string.Empty)
+            {
+                user.LastName = lastName;
+            }
+
+            if (phone != null && phone != string.Empty)
+            {
+                user.PhoneNumber = phone;
+            }
+
+            this.usersRepo.Update(user);
+        }
+
     }
 }
