@@ -8,11 +8,16 @@ namespace Client.WPF
         private readonly IUserContext userContext;
         private readonly IUserService userservice;
 
+
         public MyProfile(IUserContext userContext, IUserService userservice)
         {
             InitializeComponent();
+
             this.userContext = userContext;
             this.userservice = userservice;
+
+            
+
             FillUserInfo();
         }
 
@@ -40,6 +45,9 @@ namespace Client.WPF
                 this.FirstNameText.Text = userModel.FirstName;
                 this.LastNameText.Text = userModel.LastName;
                 this.PhoneText.Text = userModel.PhoneNumber;
+
+                this.AddressesContent.ItemsSource = userModel.Adresses;
+                this.BankCardsContent.ItemsSource = userModel.BankCards;
             }
         }
     }

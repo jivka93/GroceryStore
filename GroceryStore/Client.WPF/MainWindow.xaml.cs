@@ -17,11 +17,13 @@ namespace Client.WPF
     public partial class MainWindow : Window
     {
         private IComponentContext container;
+        private GroceryStoreContext context;
 
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            this.context = new GroceryStoreContext();
 
             FillCategories();
 
@@ -91,8 +93,8 @@ namespace Client.WPF
             // Finding all categories from database
             var categories = new List<string>() { "All" };
 
-            var context = new GroceryStoreContext();
-            List<Product> products = context.Products.ToList();
+            
+            List<Product> products = this.context.Products.ToList();
 
             foreach (var product in products)
             {
@@ -124,6 +126,14 @@ namespace Client.WPF
             }
         }
 
-
+        private void cmbCategories_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            switch(cmbCategories.SelectedItem)
+            {
+                case "All":
+                    ProductsContent.ItemsSource = this.context.Products.ToList();
+                    break;
+            }
+        }
     }
 }

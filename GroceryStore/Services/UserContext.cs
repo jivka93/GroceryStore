@@ -2,6 +2,7 @@
 using DAL;
 using Models;
 using Services.Contacts;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Services
@@ -43,5 +44,6 @@ namespace Services
 
             return user;
         }
+
     }
 }

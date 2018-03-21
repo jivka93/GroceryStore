@@ -9,29 +9,66 @@
         WindowStartupLocation="Manual" 
         Left="430" Top="150">
 
-    <StackPanel HorizontalAlignment="Left" Height="409" Margin="20,10,0,0" VerticalAlignment="Top" Width="256" >
+    <ScrollViewer>
+        <StackPanel HorizontalAlignment="Left" Height="436" Margin="20,10,0,0" VerticalAlignment="Top" Width="256" >
 
-        <TextBlock Text="Profile information" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 0 0 10"/>
+            <!--Main Profile Info-->
+            <TextBlock Text="Profile information" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 0 0 10"/>
 
-        <TextBlock Text="Username: " Margin="20 15 0 0"/>
-        <TextBlock Name="UsernameText" Text="ignatovajivka123" FontWeight="Bold" Margin="20 0 0 0"/>
+            <TextBlock Text="Username: " FontWeight="Bold" Margin="20 15 20 0"/>
+            <TextBlock Name="UsernameText" Text="ignatovajivka123" Margin="20 0 20 5" />
 
-        <TextBlock Text="First name: "  Margin="20 15 0 0"/>
-        <TextBlock Name="FirstNameText" Text="Jivka" FontWeight="Bold" Margin="20 0 0 10"/>
+            <TextBlock Text="First name: " FontWeight="Bold" Margin="20 15 20 0"/>
+            <TextBlock Name="FirstNameText" Text="Jivka" Margin="20 0 20 5" Visibility="Visible"/>
+            <TextBox Name="NewFirstNameText" Margin="20 0 20 0" Visibility="Collapsed"/>
+            
+            <TextBlock Text="Last name: " FontWeight="Bold" Margin="20 15 20 0"/>
+            <TextBlock Name="LastNameText" Text="Ignatova" Margin="20 0 20 5" Visibility="Visible"/>
+            <TextBox Name="NewLastNameText" Margin="20 0 20 0" Visibility="Collapsed"/>
+            
+            <TextBlock Text="Phone number: " FontWeight="Bold" Margin="20 15 20 0"/>
+            <TextBlock Name="PhoneText" Text="0888777666" Margin="20 0 20 5" Visibility="Visible"/>
+            <TextBox Name="NewPhoneText" Margin="20 0 20 0" Visibility="Collapsed"/>
+            
+            <!--Addresses-->
+            <Label FontWeight="Bold" Margin="20 15 20 0">Addresses:</Label>
+            <ItemsControl Name="AddressesContent">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding AddressText}" Grid.Row="0" Margin="20 0 20 5" Visibility="Visible"/>
+                            <TextBox Grid.Row="1" Visibility="Collapsed" Margin="20 0 20 5"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
 
-        <TextBlock Text="Last name: "  Margin="20 15 0 0"/>
-        <TextBlock Name="LastNameText" Text="Ignatova" FontWeight="Bold" Margin="20 0 0 10"/>
 
-        <TextBlock Text="Phone number: "  Margin="20 15 0 0"/>
-        <TextBlock Name="PhoneText" Text="0888777666" FontWeight="Bold" Margin="20 0 0 10"/>
+            <!--Bank cards-->
+            <Label FontWeight="Bold" Margin="20 15 20 0">Bank Cards:</Label>
+            <ItemsControl Name="BankCardsContent" >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="20 5 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Number}" Grid.Column="0" Margin="20 0 20 5" />
+                            <TextBlock Text="{Binding ExpirationDate}" Grid.Column="1" Margin="20 0 20 5" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
 
-        <Button x:Name="SubmitButton" Click="UpdateButton_Click"  Content="Update Info"   Margin="70 20 70 10"/>
+            <!--Buttons-->
+            <Button x:Name="SubmitButton" Click="UpdateButton_Click"  Content="Update Info"   Margin="70 25 70 10"/>
+            <Button x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click"  Content="Change password"   Margin="70 15 70 15"/>
 
-        <!--<TextBlock Text="Password: "  Margin="0 15 0 0"/>
-        <TextBlock Text="Jivka" FontWeight="Bold" Margin="10 0 0 10"/>-->
-
-        <Button x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click"  Content="Change password"   Margin="70 15 70 15"/>
-
-    </StackPanel>
-
+        </StackPanel>
+    </ScrollViewer>
 </Window>
