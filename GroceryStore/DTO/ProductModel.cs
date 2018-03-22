@@ -14,8 +14,8 @@ namespace DTO
 
         public string Picture { get; set; }
 
-        public virtual Inventory Inventory { get; set; }
+        public Inventory Inventory { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public ICollection<OrderModel> Orders { get; set; }
     }
 }

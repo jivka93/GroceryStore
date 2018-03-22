@@ -1,4 +1,7 @@
-﻿using Services.Contacts;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Services.Contacts;
+using System.IO;
 using System.Windows;
 
 namespace Client.WPF
@@ -16,7 +19,7 @@ namespace Client.WPF
             this.userContext = userContext;
             this.userservice = userservice;
 
-            
+
 
             FillUserInfo();
         }
@@ -117,6 +120,24 @@ namespace Client.WPF
             }
         }
 
+        private void GeneratePdf_Click(object sender, RoutedEventArgs e)
+        {
+            Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+            PdfWriter writter = PdfWriter.GetInstance(doc, new FileStream("C:/Users/Tung/Desktop/Test.pdf", FileMode.Create));
 
+            var user = userservice.GetSpecificUser((int)userContext.LoggedUserId);
+
+            doc.Open();
+            //
+            
+            foreach (var item in user.Adresses)
+            {
+                Paragraph paragraph = new Paragraph(item.AddressText);
+                doc.Add(paragraph);
+            }
+
+            doc.Close();
+
+        }
     }
 }

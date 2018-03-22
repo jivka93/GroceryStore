@@ -7,81 +7,81 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1094" Width="1034.667">
     <ScrollViewer>
-    <Border Padding="15">
+        <Border Padding="15">
 
-        <StackPanel Background="LightGray">
+            <StackPanel Background="LightGray">
 
-            <StackPanel Background="Crimson" Height="149" Margin="0,0,0.333,0" RenderTransformOrigin="0.5,0.5">
-                <StackPanel.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform AngleX="1.66"/>
-                        <RotateTransform/>
-                        <TranslateTransform X="1.971"/>
-                    </TransformGroup>
-                </StackPanel.RenderTransform>
+                <StackPanel Background="Crimson" Height="149" Margin="0,0,0.333,0" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="1.66"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="1.971"/>
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
 
-                <!--Navigation-->
-                <Grid Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="4*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="LoginButton" Click="LoginButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="Login" FontSize="20" Visibility="Visible"/>
-                    <Button x:Name="MyProfileButton" Click="MyProfileButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="My profile" FontSize="20" Visibility="Hidden"/>
-                    <Button x:Name="RegisterButton" Click="RegisterButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Register" FontSize="20" Visibility="Visible"/>
-                    <Button x:Name="LogoutButton" Click="LogoutButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Logout" FontSize="20" Visibility="Hidden"/>
+                    <!--Navigation-->
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="LoginButton" Click="LoginButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="Login" FontSize="20" Visibility="Visible"/>
+                        <Button x:Name="MyProfileButton" Click="MyProfileButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="My profile" FontSize="20" Visibility="Hidden"/>
+                        <Button x:Name="RegisterButton" Click="RegisterButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Register" FontSize="20" Visibility="Visible"/>
+                        <Button x:Name="LogoutButton" Click="LogoutButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Logout" FontSize="20" Visibility="Hidden"/>
                         <TextBlock Grid.Column="2" Text="GroceryStore" FontWeight="Bold" Height="50" FontSize="35" Padding="10 0 0 0" TextAlignment="Center" Margin="67.333,0,164.333,0" Foreground="White"/>
-                    <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Margin="519.333,5,0.333,5" Grid.Column="2" Content="ShoppingCart" FontSize="20" Grid.ColumnSpan="2"/>
-                </Grid>
+                        <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Margin="519.333,5,0.333,5" Grid.Column="2" Content="ShoppingCart" FontSize="20" Grid.ColumnSpan="2"/>
+                    </Grid>
 
-                <!--Categories-->
-                <Canvas>
-                    <StackPanel>
-                        <TextBlock  Text="Categories" FontWeight="Bold" FontSize="20" Padding="10 0 0 5" Foreground="White"/>
-                        <ComboBox Name="cmbCategories" Width="273" FontSize="15" Margin="10 0 0 0" Height="31" SelectionChanged="cmbCategories_SelectionChanged">
-                        </ComboBox>
-                    </StackPanel>
-                </Canvas>
+                    <!--Categories-->
+                    <Canvas>
+                        <StackPanel>
+                            <TextBlock  Text="Categories" FontWeight="Bold" FontSize="20" Padding="10 0 0 5" Foreground="White"/>
+                            <ComboBox Name="cmbCategories" Width="273" FontSize="15" Margin="10 0 0 0" Height="31" SelectionChanged="cmbCategories_SelectionChanged">
+                            </ComboBox>
+                        </StackPanel>
+                    </Canvas>
 
                     <TextBlock Text="Search Product" FontWeight="Bold" Height="32" FontSize="20" Margin="784,0,0,0" RenderTransformOrigin="2.269,0.531" Foreground="White" />
-                <TextBox x:Name="searchBar"  KeyDown="SearchBar_Enter" Grid.Column="2" Height="34" Margin="746,0,10,0" RenderTransformOrigin="0.504,0.571" />
+                    <TextBox x:Name="searchBar"  KeyDown="SearchBar_Enter" Grid.Column="2" Height="34" Margin="746,0,10,0" RenderTransformOrigin="0.504,0.571" />
 
-            </StackPanel>
-           
-            <Image Source="https://www.aldi.com.au/fileadmin/_processed_/9/f/csm_ALC6158_KVB_Groceries_1896x720_f90648edde.jpg"></Image>
+                </StackPanel>
 
-            <Grid Background="White" Height="468" Margin="20,20,20.333,0" >
-                
-                <!--Products-->
-                <ItemsControl Name="ProductsContent">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="0,0,0,5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Image Source="{Binding Picture}" Grid.Row="0" />
-                                <TextBlock Text="{Binding Name}" Grid.Row="1" TextAlignment="Center"/>
-                                <TextBlock Text="{Binding Price}" Grid.Column="2" TextAlignment="Center"/>                                
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-                
-            </Grid>
+                <Image Source="https://www.aldi.com.au/fileadmin/_processed_/9/f/csm_ALC6158_KVB_Groceries_1896x720_f90648edde.jpg"></Image>
 
-            <!--Search bar-->
+                <Grid Background="White" Height="468" Margin="20,20,20.333,0" >
 
-            <!--TOTAL-->
-            <!--
+                    <!--Products-->
+                    <ItemsControl Name="ProductsContent">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,0,0,5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="{Binding Picture}" Grid.Row="0" />
+                                    <TextBlock Text="{Binding Name}" Grid.Row="1" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding Price}" Grid.Column="2" TextAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </Grid>
+
+                <!--Search bar-->
+
+                <!--TOTAL-->
+                <!--
             <TextBlock Grid.Column="3" Text="0.00 $" FontWeight="Bold" Height="30" FontSize="20" Padding="60 0 0 0" />-->
 
-        </StackPanel>
-    </Border>
+            </StackPanel>
+        </Border>
     </ScrollViewer>
 </Window>
