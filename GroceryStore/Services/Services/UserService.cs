@@ -65,7 +65,8 @@ namespace Services
         public void UpdatePassword(int id, string password)
         {
             var user = this.usersRepo.All.Where(x => x.Id == id).FirstOrDefault();
-            user.Password = password;
+            var newPassword = hashing.GetSHA1HashData(password);
+            user.Password = newPassword;
 
             this.usersRepo.Update(user);
         }
