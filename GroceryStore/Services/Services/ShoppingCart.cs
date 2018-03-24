@@ -20,7 +20,7 @@ namespace Services.Services
             get
             {
                 decimal total = 0m;
-                foreach (var p in this.Products)
+                foreach (var p in this.products)
                 {
                     total += p.Price;
                 }
@@ -30,7 +30,12 @@ namespace Services.Services
 
         public void AddProduct(ProductModel product)
         {
-            this.Products.Add(product);
+            this.products.Add(product);
+        }
+
+        public void Logout()
+        {
+            this.Products = new List<ProductModel>();
         }
 
     }

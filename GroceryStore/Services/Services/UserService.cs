@@ -37,7 +37,14 @@ namespace Services
         }
 
 
-        public bool RegisterUser(string userName, string password,string phoneNumber, string firstName = null, string lastName = null)
+        public bool RegisterUser
+            (string userName, string password,string phoneNumber, 
+            string firstName = null, 
+            string lastName = null, 
+            string address = null, 
+            string bankCardNumber = null, 
+            string expDate = null, 
+            string cardName = null)
         {
             try
             {
@@ -49,11 +56,12 @@ namespace Services
                     Password = hashedPassword,
                     PhoneNumber = phoneNumber,
                     FirstName = firstName,
-                    LastName = lastName
+                    LastName = lastName,
+                    // todo adresses and bank cards
                 };
 
                 var userToAdd = Mapper.Map<User>(user);
-                usersRepo.Add(userToAdd);                
+                usersRepo.Add(userToAdd);              
                 return true;
             }
             catch (System.Exception)

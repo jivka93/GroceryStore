@@ -1,11 +1,7 @@
 ﻿using Autofac;
-using AutoMapper.QueryableExtensions;
 using Common;
 using DAL;
 using DAL.Migrations;
-using DTO;
-using Models;
-using Services;
 using Services.Contacts;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -49,6 +45,10 @@ namespace Client.WPF
         {
             var userContext = this.container.Resolve<IUserContext>();
             userContext.Logout();
+            var shoppingCart = this.container.Resolve<IShoppingCart>();
+            shoppingCart.Logout();
+            this.Total.Text = $"{shoppingCart.Total:F2} $";
+
             DisplayNoLoggedUserView();
         }
 
@@ -66,6 +66,8 @@ namespace Client.WPF
             this.MyProfileButton.Visibility = Visibility.Visible;
             this.LogoutButton.Visibility = Visibility.Visible;
             this.AmountBlock.Visibility = Visibility.Visible;
+            var shoppingCart = this.container.Resolve<IShoppingCart>();
+            this.AmountBlock.DataContext = shoppingCart;
         }
 
         private void DisplayNoLoggedUserView()
@@ -140,12 +142,25 @@ namespace Client.WPF
 
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
-            var productName = ((Button)sender).Tag.ToString();
-            var productService = container.Resolve<IProductService>();
-            var product = productService.SearchByName(productName).FirstOrDefault();
-            var shoppingCart = container.Resolve<IShoppingCart>();
+            var loggedUser = this.container.Resolve<IUserContext>();
 
-            shoppingCart.AddProduct(product);
+            if (loggedUser.LoggedUserId == null)
+            {
+                MessageBoxResult result = MessageBox
+                    .Show("Please LOGIN first!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                var productName = ((Button)sender).Tag.ToString();
+                var productService = container.Resolve<IProductService>();
+                var product = productService.SearchByName(productName).FirstOrDefault();
+                var shoppingCart = container.Resolve<IShoppingCart>();
+
+                shoppingCart.AddProduct(product);
+
+                this.Total.Text = $"{shoppingCart.Total:F2} $";
+            }
+
         }
 
     }

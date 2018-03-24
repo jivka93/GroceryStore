@@ -27,8 +27,18 @@ namespace Client.WPF
             var phoneNumber = this.PhoneTextBox.Text.Trim();
             var firstName = this.FirstnameTextBox.Text.Trim();
             var lastName = this.LastnameTextBox.Text.Trim();
+            var address = this.AddressTextBox.Text.Trim();
+            var cardNumber = this.CardNumberTextBox.Text.Trim();
+            var expDate = this.ExpDateTextBox.Text.Trim();
+            var cardName = this.CardNameTextBox.Text.Trim();
 
-            bool result = this.userservice.RegisterUser(userName,password,phoneNumber, firstName, lastName);
+            bool result = this.userservice.RegisterUser(userName,password,phoneNumber, 
+                firstName, 
+                lastName,
+                address,
+                cardNumber,
+                expDate,
+                cardName);
 
             if (result)
             {
@@ -43,7 +53,7 @@ namespace Client.WPF
             else
             {
                 MessageBoxResult popup = MessageBox
-                    .Show("Error!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    .Show("Invalid information!", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 if (popup == MessageBoxResult.OK)
                 {

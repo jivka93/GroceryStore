@@ -15,6 +15,12 @@ namespace Services.Contacts
 
         void UpdateProfileInfo(int id, string firstName = null, string lastName = null, string phone = null);
 
-        bool RegisterUser(string userName, string password, string phoneNumber, string firstName = null, string lastName = null);
+        bool RegisterUser(string userName, string password, string phoneNumber,
+            string firstName = null,
+            string lastName = null,
+            string address = null,
+            string bankCardNumber = null,
+            string expDate = null,
+            string cardName = null);
     }
 }

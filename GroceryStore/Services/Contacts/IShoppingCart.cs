@@ -10,5 +10,7 @@ namespace Services.Contacts
         decimal Total { get; }
 
         void AddProduct(ProductModel product);
+
+        void Logout();
     }
 }

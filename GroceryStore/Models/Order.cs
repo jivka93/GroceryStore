@@ -17,6 +17,8 @@ namespace Models
         [Required]
         public DateTime Date { get; set; }
 
+        public decimal Total { get; set; }
+
         [Required]
         [MaxLength(10)]
         public string Status { get; set; }

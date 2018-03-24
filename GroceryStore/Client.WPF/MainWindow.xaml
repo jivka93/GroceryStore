@@ -60,8 +60,9 @@
                         </Button>
                     </Grid>
 
+                    <!--Total-->
                     <Grid Name="AmountBlock" Visibility="Hidden">
-                        <TextBlock Text="0.00" TextAlignment="Right" Padding="0 0 40 5" FontSize="22" FontWeight="Bold" Foreground="Yellow"/>
+                        <TextBlock Name="Total" Text="" TextAlignment="Right" Padding="0 0 40 5" FontSize="22" FontWeight="Bold" Foreground="Yellow"/>
                     </Grid>
 
                     <!--Categories-->
@@ -80,28 +81,6 @@
                 </StackPanel>
 
                 <Image Source="https://serving.photos.photobox.com/80767000b7ef3c80748c0f2da58531e94a0232aff34cad2de9870851e4c52826d3fdaf90.jpg"></Image>
-
-
-                <!--Products-->
-                <!--<StackPanel Orientation="Horizontal">
-                    <StackPanel.Effect>
-                        <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
-                    </StackPanel.Effect>
-                    <ItemsControl Name="ProductsContent">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Width="200" Height="200" Background="White" Margin="10 10 10 10 ">
-                                    <StackPanel>
-                                        <Image Source="{Binding Picture}" Height="150" Width="150"/>
-                                        <TextBlock Text="{Binding Name}" TextAlignment="Center" FontWeight="Bold" FontSize="16" />
-                                        <TextBlock Text="{Binding Price}" TextAlignment="Center" FontWeight="Bold" FontSize="12"/>
-                                        <Button Content="Buy"/>
-                                    </StackPanel>
-                                </Grid>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </StackPanel>-->
 
                 <!--Products-->
                 <StackPanel Background="White" Margin="80 20 80 20">

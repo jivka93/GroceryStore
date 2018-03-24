@@ -7,34 +7,46 @@
         mc:Ignorable="d"
         Title="RegisterUserWindow"
         WindowStartupLocation="Manual" 
-        Left="430" Top="150" Height="508.111" Width="284.017"
+        Left="430" Top="150" Height="619.645" Width="345.76"
         FontSize="15" FontWeight="Bold" Foreground="#555555"
         >
 
-    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="280" Height="481" Margin="0,0,-2.667,-2.333">
+    <StackPanel VerticalAlignment="Top" Height="586" Margin="23,0,26.333,0">
 
-        <TextBlock Text="Username * " Margin="20 10 20 0"/>
+        <TextBlock Text="Username * " Margin="20 30 20 0"/>
         <TextBox x:Name="UsernameTextBox" Margin="20 0 20 0" FontWeight="Medium" />
 
         <TextBlock Text="Password *"  Margin="20 10 20 0"/>
-        <PasswordBox x:Name="PasswordTextBox" PasswordChar="*" Margin="20 0 20 0" />
+        <PasswordBox x:Name="PasswordTextBox" PasswordChar="*" Margin="20 0 20 0" FontWeight="Medium" />
 
         <TextBlock Text="First name"  Margin="20 10 20 0"/>
-        <TextBox  x:Name="FirstnameTextBox" Margin="20 0 20 0" />
+        <TextBox  x:Name="FirstnameTextBox" Margin="20 0 20 0" FontWeight="Medium" />
 
         <TextBlock Text="Last name"  Margin="20 10 20 0"/>
-        <TextBox  x:Name="LastnameTextBox" Margin="20 0 20 0" />
+        <TextBox  x:Name="LastnameTextBox" Margin="20 0 20 0" FontWeight="Medium"  />
 
         <TextBlock Text="Phone number *"  Margin="20 10 20 0"/>
-        <TextBox  x:Name="PhoneTextBox" Margin="20 0 20 0" />
+        <TextBox  x:Name="PhoneTextBox" Margin="20 0 20 0" FontWeight="Medium" />
 
         <TextBlock Text="Address"  Margin="20 10 20 0"/>
-        <TextBox  x:Name="AddressTextBox" Margin="20 0 20 0" />
+        <TextBox  x:Name="AddressTextBox" Margin="20 0 20 25" FontWeight="Medium" />
 
-        <TextBlock Text="Bank card"  Margin="20 10 20 0"/>
-        <TextBox  x:Name="BankCardTextBox" Margin="20 0 20 0" />
+        <!--Bank Card-->
+        <TextBlock Text="Bank card"  HorizontalAlignment="Center"/>
+        <TextBlock Text="Number"  Margin="20 0 20 0" FontWeight="Medium" />
+        <TextBox  x:Name="CardNumberTextBox" Margin="20 0 20 0" />
 
-        <Button x:Name="SubmitButton" Click="SubmitButton_Click"  Content="Submit"   Margin="50 30 50 0"/>
+        <TextBlock Text="Expiration date [dd-mm-yyyy]"  Margin="20 5 20 0" FontWeight="Medium" />
+        <TextBox  x:Name="ExpDateTextBox" Margin="20 0 20 0" />
+
+        <TextBlock Text="Holder name"  Margin="20 5 20 0" FontWeight="Medium" />
+        <TextBox  x:Name="CardNameTextBox" Margin="20 0 20 30" />
+
+        <Button x:Name="SubmitButton" Click="SubmitButton_Click"  Content="Submit" HorizontalAlignment="Center" Width="100">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+            </Button.Effect>
+        </Button>
 
     </StackPanel>
 

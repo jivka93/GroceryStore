@@ -30,6 +30,7 @@ namespace Client.WPF
         {
 
             //todo validation
+
             var userName = this.UsernameTextBox.Text;
             var password = this.PasswordTextBox.Password;
 
