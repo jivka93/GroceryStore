@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DAL.Contracts;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace Services.Contacts
 {
-    public class OrderService: BaseService, IOrderService
+    public class OrderService: IOrderService
     {
-        public OrderService(IGroceryStoreContext dbContext, IMapper mapper):
-            base(dbContext, mapper)
+        public OrderService(IEfGenericRepository<Order> orderRepo, IMapper mapper)            
         {
 
         }
