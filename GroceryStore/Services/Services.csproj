@@ -63,6 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contacts\IHashingPassword.cs" />
+    <Compile Include="HashingPassword.cs" />
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\BankCardService.cs" />
     <Compile Include="Contacts\IUserContext.cs" />

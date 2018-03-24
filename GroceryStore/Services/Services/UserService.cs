@@ -13,10 +13,12 @@ namespace Services
     {
 
         private readonly IEfGenericRepository<User> usersRepo;
+        private readonly IHashingPassword hashing;
 
-        public UserService(IEfGenericRepository<User> usersRepo, IMapper mapper)
+        public UserService(IEfGenericRepository<User> usersRepo, IMapper mapper, IHashingPassword hashing)
         {
             this.usersRepo = usersRepo;
+            this.hashing = hashing;
         }
 
         public IEnumerable<UserModel> GetAllUsers()  // We will use this one to check if the inputed username and password match.
@@ -39,10 +41,12 @@ namespace Services
         {
             try
             {
+                var hashedPassword = hashing.GetSHA1HashData(password);
+
                 var user = new UserModel()
                 {
                     Username = userName,
-                    Password = password,
+                    Password = hashedPassword,
                     PhoneNumber = phoneNumber,
                     FirstName = firstName,
                     LastName = lastName
