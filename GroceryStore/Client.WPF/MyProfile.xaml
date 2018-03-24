@@ -20,15 +20,15 @@
 
             <TextBlock Text="First name: " FontWeight="Bold" Margin="20 15 20 0"/>
             <TextBlock Name="FirstNameText" Text="Jivka" Margin="20 0 20 5" Visibility="Visible"/>
-            <TextBox Name="NewFirstNameText" Text="{Binding FirstName}" Margin="20 0 20 0" Visibility="Collapsed"/>
+            <TextBox Name="NewFirstNameText" Text="{Binding FirstName}" Margin="20 0 20 5" Visibility="Collapsed"/>
 
             <TextBlock Text="Last name: " FontWeight="Bold" Margin="20 15 20 0"/>
             <TextBlock Name="LastNameText" Text="Ignatova" Margin="20 0 20 5" Visibility="Visible"/>
-            <TextBox Name="NewLastNameText" Text="{Binding LastName}" Margin="20 0 20 0" Visibility="Collapsed"/>
+            <TextBox Name="NewLastNameText" Text="{Binding LastName}" Margin="20 0 20 5" Visibility="Collapsed"/>
 
             <TextBlock Text="Phone number: " FontWeight="Bold" Margin="20 15 20 0"/>
             <TextBlock Name="PhoneText" Text="0888777666" Margin="20 0 20 5" Visibility="Visible"/>
-            <TextBox Name="NewPhoneText" Text="{Binding PhoneNumber}" Margin="20 0 20 0" Visibility="Collapsed"/>
+            <TextBox Name="NewPhoneText" Text="{Binding PhoneNumber}" Margin="20 0 20 5" Visibility="Collapsed"/>
 
             <!--Addresses-->
             <TextBlock FontWeight="Bold" Margin="20 15 20 0">Addresses: </TextBlock>

@@ -112,6 +112,8 @@ namespace Client.WPF
                 this.UpdateButton.Visibility = Visibility.Visible;
                 this.ChangePasswordButton.Visibility = Visibility.Visible;
 
+                FillUserInfo();
+
                 MessageBoxResult result = MessageBox
                     .Show("Info updated successfully!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }

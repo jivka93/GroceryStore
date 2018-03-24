@@ -118,12 +118,18 @@ namespace Client.WPF
 
         private void cmbCategories_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            switch(cmbCategories.SelectedItem)
+            if (cmbCategories.SelectedItem.ToString() == "All")
             {
-                case "All":
-                    ProductsContent.ItemsSource = this.context.Products.ToList();
-                    break;
+                ProductsContent.ItemsSource = this.context.Products.ToList();
+            }
+            else
+            {
+                var category = this.cmbCategories.SelectedItem.ToString();
+                ProductsContent.ItemsSource = this.context.Products.Where(p => p.Category == category).ToList();
             }
         }
+
+
+
     }
 }
