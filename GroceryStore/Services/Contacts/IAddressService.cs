@@ -9,6 +9,6 @@ namespace Services.Contacts
 {
     public interface IAddressService
     {
-        void UpdateAddress(AddressModel address);
+       
     }
 }

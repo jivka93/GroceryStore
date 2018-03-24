@@ -17,12 +17,12 @@ namespace DTO  //We create the model that will be exposed to the client through 
         public string PhoneNumber { get; set; }
 
         public string FirstName { get; set; }
-
+        
         public string LastName { get; set; }
 
 
-        public ICollection<Address> Adresses { get; set; }
-        public ICollection<BankCard> BankCards { get; set; }
-        public ICollection<Order> Orders { get; set; }  
+        public ICollection<AddressModel> Adresses { get; set; }
+        public ICollection<BankCardModel> BankCards { get; set; }
+        public ICollection<OrderModel> Orders { get; set; }  
     }
 }

@@ -18,8 +18,8 @@ namespace DTO
 
         public int UserId { get; set; }
 
-        public virtual User User { get; set; }
+        public User User { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public ICollection<ProductModel> Products { get; set; }
     }
 }

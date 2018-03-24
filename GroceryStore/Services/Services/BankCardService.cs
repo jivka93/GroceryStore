@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DAL.Contracts;
+using Models;
 using Services.Contacts;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,9 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class InventoryService: BaseService, IInventoryService
+    public class BankCardService: IBankCardService
     {
-        public InventoryService(IGroceryStoreContext dbContext, IMapper mapper):
-            base(dbContext, mapper)
+        public BankCardService(IEfGenericRepository<BankCard> bankCardRepo, IMapper mapper)
         {
 
         }
