@@ -5,26 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="RegisterUserWindow" Height="400" Width="300"
+        Title="RegisterUserWindow"
         WindowStartupLocation="Manual" 
-        Left="430" Top="150">
-       
-    <StackPanel HorizontalAlignment="Left" Height="350" Margin="10,10,0,0" VerticalAlignment="Top" Width="280">
-        
-        <TextBlock Text="Username * " Margin="0 10 0 0"/>
-        <TextBox x:Name="UsernameTextBox"/>
+        Left="430" Top="150" Height="508.111" Width="284.017"
+        FontSize="15" FontWeight="Bold" Foreground="#555555"
+        >
 
-        <TextBlock Text="Password *"  Margin="0 10 0 0"/>
-        <PasswordBox x:Name="PasswordTextBox" PasswordChar="*"/>
+    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="280" Height="481" Margin="0,0,-2.667,-2.333">
 
-        <TextBlock Text="First name"  Margin="0 10 0 0"/>
-        <TextBox  x:Name="FirstnameTextBox"/>
+        <TextBlock Text="Username * " Margin="20 10 20 0"/>
+        <TextBox x:Name="UsernameTextBox" Margin="20 0 20 0" FontWeight="Medium" />
 
-        <TextBlock Text="Last name"  Margin="0 10 0 0"/>
-        <TextBox  x:Name="LastnameTextBox"/>
+        <TextBlock Text="Password *"  Margin="20 10 20 0"/>
+        <PasswordBox x:Name="PasswordTextBox" PasswordChar="*" Margin="20 0 20 0" />
 
-        <TextBlock Text="Phone number *"  Margin="0 10 0 0"/>
-        <TextBox  x:Name="PhoneTextBox"/>
+        <TextBlock Text="First name"  Margin="20 10 20 0"/>
+        <TextBox  x:Name="FirstnameTextBox" Margin="20 0 20 0" />
+
+        <TextBlock Text="Last name"  Margin="20 10 20 0"/>
+        <TextBox  x:Name="LastnameTextBox" Margin="20 0 20 0" />
+
+        <TextBlock Text="Phone number *"  Margin="20 10 20 0"/>
+        <TextBox  x:Name="PhoneTextBox" Margin="20 0 20 0" />
+
+        <TextBlock Text="Address"  Margin="20 10 20 0"/>
+        <TextBox  x:Name="AddressTextBox" Margin="20 0 20 0" />
+
+        <TextBlock Text="Bank card"  Margin="20 10 20 0"/>
+        <TextBox  x:Name="BankCardTextBox" Margin="20 0 20 0" />
 
         <Button x:Name="SubmitButton" Click="SubmitButton_Click"  Content="Submit"   Margin="50 30 50 0"/>
 

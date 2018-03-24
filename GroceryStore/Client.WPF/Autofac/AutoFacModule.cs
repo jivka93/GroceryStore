@@ -6,6 +6,7 @@ using DTO;
 using Models;
 using Services;
 using Services.Contacts;
+using Services.Services;
 
 namespace Client.WPF.Autofac
 {
@@ -17,6 +18,8 @@ namespace Client.WPF.Autofac
 
             // Services
             builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
+            builder.RegisterType<ShoppingCart>().As<IShoppingCart>().SingleInstance();
+
             builder.RegisterType<UserService>().As<IUserService>().InstancePerDependency();
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerDependency();
 

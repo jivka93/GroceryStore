@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1034.667">
-    
-    <ScrollViewer Background="Crimson">
+        Title="MainWindow" Width="1034.667"
+        Background="#1E9E1E"  >
+
+    <ScrollViewer >
         <Border>
 
-            <StackPanel  Background="Crimson"  >
+            <StackPanel  >
 
-                <StackPanel Background="Crimson" Height="149" Margin="0,0,0.333,0" RenderTransformOrigin="0.5,0.5">
+                <StackPanel Height="173" Margin="0,0,0.333,0" RenderTransformOrigin="0.5,0.5">
 
                     <StackPanel.RenderTransform>
                         <TransformGroup>
@@ -24,19 +25,43 @@
                     </StackPanel.RenderTransform>
 
                     <!--Navigation-->
-                    <Grid Margin="10">
+                    <Grid Margin="10 10 10 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="4*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="LoginButton" Click="LoginButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="Login" FontSize="20" Visibility="Visible"/>
-                        <Button x:Name="MyProfileButton" Click="MyProfileButton_Click" Margin="0 5 14 5" Grid.Column="0" Content="My profile" FontSize="20" Visibility="Hidden"/>
-                        <Button x:Name="RegisterButton" Click="RegisterButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Register" FontSize="20" Visibility="Visible"/>
-                        <Button x:Name="LogoutButton" Click="LogoutButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Logout" FontSize="20" Visibility="Hidden"/>
+                        <Button x:Name="LoginButton" Click="LoginButton_Click" Margin="0 5 14 5" Background="#0B610B" FontWeight="Bold" Foreground="LightGray" Grid.Column="0" Content="Login" FontSize="20" BorderBrush="#0B610B" Visibility="Visible">
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                            </Button.Effect>
+                        </Button>
+                        <Button x:Name="MyProfileButton" Click="MyProfileButton_Click" Margin="0 5 14 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray"  Grid.Column="0" Content="My profile" FontSize="20" BorderBrush="#0B610B" Visibility="Hidden">
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                            </Button.Effect>
+                        </Button>
+                        <Button x:Name="RegisterButton" Click="RegisterButton_Click" Margin="0 5 14 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="1" Content="Register" FontSize="20" BorderBrush="#0B610B" Visibility="Visible">
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                            </Button.Effect>
+                        </Button>
+                        <Button x:Name="LogoutButton" Click="LogoutButton_Click" Margin="0 5 14 5"  Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="1" Content="Logout" FontSize="20" BorderBrush="#0B610B" Visibility="Hidden">
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                            </Button.Effect>
+                        </Button>
                         <TextBlock Grid.Column="2" Text="GroceryStore" FontWeight="Bold" Height="50" FontSize="35" Padding="10 0 0 0" TextAlignment="Center" Margin="67.333,0,164.333,0" Foreground="White"/>
-                        <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Margin="519.333,5,0.333,5" Grid.Column="2" Content="ShoppingCart" FontSize="20" Grid.ColumnSpan="2"/>
+                        <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Margin="519.333,5,0.333,5"  Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="2" Content="ShoppingCart" FontSize="20" Grid.ColumnSpan="2" BorderBrush="#0B610B">
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                            </Button.Effect>
+                        </Button>
+                    </Grid>
+
+                    <Grid Name="AmountBlock" Visibility="Hidden">
+                        <TextBlock Text="0.00" TextAlignment="Right" Padding="0 0 40 5" FontSize="22" FontWeight="Bold" Foreground="Yellow"/>
                     </Grid>
 
                     <!--Categories-->
@@ -55,66 +80,63 @@
                 </StackPanel>
 
                 <Image Source="https://serving.photos.photobox.com/80767000b7ef3c80748c0f2da58531e94a0232aff34cad2de9870851e4c52826d3fdaf90.jpg"></Image>
+
+
+                <!--Products-->
+                <!--<StackPanel Orientation="Horizontal">
+                    <StackPanel.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                    </StackPanel.Effect>
+                    <ItemsControl Name="ProductsContent">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Width="200" Height="200" Background="White" Margin="10 10 10 10 ">
+                                    <StackPanel>
+                                        <Image Source="{Binding Picture}" Height="150" Width="150"/>
+                                        <TextBlock Text="{Binding Name}" TextAlignment="Center" FontWeight="Bold" FontSize="16" />
+                                        <TextBlock Text="{Binding Price}" TextAlignment="Center" FontWeight="Bold" FontSize="12"/>
+                                        <Button Content="Buy"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>-->
+
+                <!--Products-->
+                <StackPanel Background="White" Margin="80 20 80 20">
+                    <StackPanel.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                    </StackPanel.Effect>
                     
-                    <Grid Background="White" Margin="20 20 20 20" >
-                        <Grid.Effect>
-                            <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
-                        </Grid.Effect>
-
-                        <!--Products-->
-                        <!--<ItemsControl Name="ProductsContent">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Margin="10 5 10 5">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <StackPanel Grid.Column="4">
-                                            <Image Source="{Binding Picture}" Height="150" Width="150"/>
-                                            <TextBlock Text="{Binding Name}" TextAlignment="Center" FontWeight="Bold" FontSize="20" />
-                                            <TextBlock Text="{Binding Price}" TextAlignment="Center" FontWeight="Bold" FontSize="17"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>-->
-
-                        <ItemsControl Name="ProductsContent">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Margin="10 5 10 5" Height="200" Width="200">
-                                        <StackPanel>
-                                            <Image Source="{Binding Picture}" Height="150" Width="150"/>
-                                            <TextBlock Text="{Binding Name}" TextAlignment="Center" FontWeight="Bold" FontSize="16" />
-                                            <TextBlock Text="{Binding Price}" TextAlignment="Center" FontWeight="Bold" FontSize="12"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-
-
-                        <!--Pages Navigation--><!--
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button x:Name="NextButton" Click="NextButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Previous" FontSize="20" Visibility="Visible"/>
-                            <Button x:Name="PreviousButton" Click="PreviousButton_Click" Margin="0 5 14 5" Grid.Column="2" Content="Next" FontSize="20" Visibility="Visible"/>
-                        </Grid>-->
-
-                    </Grid>
+                    <ItemsControl Name="ProductsContent">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10 5 0 10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding Picture}" Grid.Column="0" Height="150" Width="150" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="1" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" />
+                                    <TextBlock Text="{Binding Price}" Grid.Column="2" TextAlignment="Right" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Green" FontWeight="DemiBold" />
+                                    <TextBlock Text=" $ " Grid.Column="3" TextAlignment="Left" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Left"  Foreground="Green" FontWeight="DemiBold"  />
+                                    <Button Tag="{Binding Name}" Click="BuyButton_Click" Content="Buy" Grid.Column="4" Height="35" Width="110" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Green" Foreground="White" Padding="0 0 0 5">
+                                        <Button.Effect>
+                                            <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="2"/>
+                                        </Button.Effect>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                     
+                </StackPanel>
+
                 <!--Search bar-->
-
                 <!--TOTAL-->
                 <!--
             <TextBlock Grid.Column="3" Text="0.00 $" FontWeight="Bold" Height="30" FontSize="20" Padding="60 0 0 0" />-->

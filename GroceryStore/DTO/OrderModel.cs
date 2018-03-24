@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class OrderModel: IMapFrom<Order>
+    public class OrderModel : IMapFrom<Order>
     {
         public int Id { get; set; }
 
         public DateTime Date { get; set; }
+
+        public decimal Total { get; set; }
 
         public string Status { get; set; }
 

@@ -12,6 +12,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Client.WPF
@@ -64,6 +65,7 @@ namespace Client.WPF
             this.RegisterButton.Visibility = Visibility.Hidden;
             this.MyProfileButton.Visibility = Visibility.Visible;
             this.LogoutButton.Visibility = Visibility.Visible;
+            this.AmountBlock.Visibility = Visibility.Visible;
         }
 
         private void DisplayNoLoggedUserView()
@@ -72,6 +74,7 @@ namespace Client.WPF
             this.RegisterButton.Visibility = Visibility.Visible;
             this.MyProfileButton.Visibility = Visibility.Hidden;
             this.LogoutButton.Visibility = Visibility.Hidden;
+            this.AmountBlock.Visibility = Visibility.Hidden;
         }
 
         private void MyProfileButton_Click(object sender, RoutedEventArgs e)
@@ -92,7 +95,6 @@ namespace Client.WPF
         private void FillCategories()
         {
             var categories = new List<string>() { "All" };         
-            //List<Product> products = this.context.Products.ToList();
 
             var productService = this.container.Resolve<IProductService>();
             var products = productService.GetAll();
@@ -136,14 +138,15 @@ namespace Client.WPF
             }
         }
 
-        //private void NextButton_Click(object sender, RoutedEventArgs e)
-        //{
+        private void BuyButton_Click(object sender, RoutedEventArgs e)
+        {
+            var productName = ((Button)sender).Tag.ToString();
+            var productService = container.Resolve<IProductService>();
+            var product = productService.SearchByName(productName).FirstOrDefault();
+            var shoppingCart = container.Resolve<IShoppingCart>();
 
-        //}
+            shoppingCart.AddProduct(product);
+        }
 
-        //private void PreviousButton_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
     }
 }
