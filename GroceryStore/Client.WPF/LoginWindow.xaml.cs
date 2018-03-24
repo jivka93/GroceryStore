@@ -1,6 +1,7 @@
 ﻿using Models;
 using Services.Contacts;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Client.WPF
 {
@@ -16,8 +17,18 @@ namespace Client.WPF
             this.mainWindow = mainWindow;
         }
 
+
+        //private void SignIn_Enter(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.Enter)
+        //    {
+        //        SignInButton_Click()
+        //    }
+        //}
+
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
+
             //todo validation
             var userName = this.UsernameTextBox.Text;
             var password = this.PasswordTextBox.Password;
