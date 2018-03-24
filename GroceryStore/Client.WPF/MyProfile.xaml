@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="MyProfileWindow" Height="500" Width="300"
+        Title="MyProfileWindow" Height="700" Width="300"
         WindowStartupLocation="Manual" 
         Left="430" Top="150">
 
     <ScrollViewer>
-        <StackPanel Name="Data" HorizontalAlignment="Left" Height="436" Margin="20,10,0,0" VerticalAlignment="Top" Width="256" >
+        <StackPanel Name="Data" HorizontalAlignment="Left" Height="572" VerticalAlignment="Top" Width="256" >
 
             <!--Main Profile Info-->
             <TextBlock Text="Profile information" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 0 0 10"/>
@@ -69,6 +69,7 @@
             <Button x:Name="UpdateButton" Click="UpdateButton_Click"  Content="Update Info"   Margin="70 25 70 10" Visibility="Visible" />
             <Button x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click"  Content="Change password"   Margin="70 15 70 15" Visibility="Visible" />
             <Button x:Name="SaveChangesButton" Click="SaveChangesButton_Click"  Content="Save changes"   Margin="70 25 70 10" Visibility="Collapsed" />
+            <Button x:Name="GeneratePdf" Content="PdfGeneratorTest" Click="GeneratePdf_Click"/>
         </StackPanel>
     </ScrollViewer>
 </Window>

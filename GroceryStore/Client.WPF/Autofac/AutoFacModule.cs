@@ -20,6 +20,8 @@ namespace Client.WPF.Autofac
             builder.RegisterType<UserService>().As<IUserService>().InstancePerDependency();
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerDependency();
 
+            builder.RegisterType<HashingPassword>().As<IHashingPassword>().SingleInstance();
+
             //DTO Models
             builder.RegisterType<UserModel>().AsSelf();
 

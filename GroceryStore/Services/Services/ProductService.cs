@@ -21,7 +21,7 @@ namespace Services
         public IEnumerable<ProductModel> GetAll()
         {
             return this.productsRepo.All.ProjectTo<ProductModel>();
-        }
+        }       
 
         public IEnumerable<ProductModel> SearchByName(string productName)
         {
@@ -30,8 +30,7 @@ namespace Services
 
         public IEnumerable<ProductModel> SearchByCategory(string categoryName)
         {
-            return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Category ==categoryName);
+            return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Category == categoryName);
         }
-
     }
 }

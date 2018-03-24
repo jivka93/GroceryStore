@@ -6,6 +6,8 @@ namespace DTO
 {
     public class ProductModel : IMapFrom<Product>
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public string Category { get; set; }
@@ -14,8 +16,8 @@ namespace DTO
 
         public string Picture { get; set; }
 
-        public virtual Inventory Inventory { get; set; }
+        public InventoryModel Inventory { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        //public ICollection<OrderModel> Orders { get; set; }
     }
 }

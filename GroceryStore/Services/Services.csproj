@@ -63,9 +63,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressService.cs" />
-    <Compile Include="BankCardService.cs" />
-    <Compile Include="BaseService.cs" />
+    <Compile Include="Contacts\IHashingPassword.cs" />
+    <Compile Include="HashingPassword.cs" />
+    <Compile Include="Services\AddressService.cs" />
+    <Compile Include="Services\BankCardService.cs" />
     <Compile Include="Contacts\IUserContext.cs" />
     <Compile Include="Contacts\IAddressService.cs" />
     <Compile Include="Contacts\IBankCardService.cs" />
@@ -73,11 +74,11 @@
     <Compile Include="Contacts\IOrderService.cs" />
     <Compile Include="Contacts\IUserService.cs" />
     <Compile Include="Contacts\IProductService.cs" />
-    <Compile Include="Contacts\OrderService.cs" />
-    <Compile Include="InventoryService.cs" />
-    <Compile Include="ProductService.cs" />
-    <Compile Include="UserContext.cs" />
-    <Compile Include="UserService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\InventoryService.cs" />
+    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\UserContext.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

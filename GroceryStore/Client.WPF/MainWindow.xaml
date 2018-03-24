@@ -48,6 +48,7 @@
                         </StackPanel>
                     </Canvas>
 
+                    <!--Search Bar-->
                     <TextBlock Text="Search Product" FontWeight="Bold" Height="32" FontSize="20" Margin="784,0,0,0" RenderTransformOrigin="2.269,0.531" Foreground="White" />
                     <TextBox x:Name="searchBar"  KeyDown="SearchBar_Enter" Grid.Column="2" Height="34" Margin="746,0,10,0" RenderTransformOrigin="0.504,0.571" />
 

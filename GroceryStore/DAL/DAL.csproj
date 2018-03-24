@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201803150844013_syntaxFix.Designer.cs">
       <DependentUpon>201803150844013_syntaxFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803241237000_RemovingPasswordLimit.cs" />
+    <Compile Include="Migrations\201803241237000_RemovingPasswordLimit.Designer.cs">
+      <DependentUpon>201803241237000_RemovingPasswordLimit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -150,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803150844013_syntaxFix.resx">
       <DependentUpon>201803150844013_syntaxFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803241237000_RemovingPasswordLimit.resx">
+      <DependentUpon>201803241237000_RemovingPasswordLimit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
