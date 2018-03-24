@@ -54,43 +54,17 @@
                 </StackPanel>
 
                 <Image Source="https://serving.photos.photobox.com/80767000b7ef3c80748c0f2da58531e94a0232aff34cad2de9870851e4c52826d3fdaf90.jpg"></Image>
-
-                <ScrollViewer Background="Crimson">
-                    <Grid Background="White" Margin="20,20,20.333,0" >
+                    
+                    <Grid Background="White" Margin="20 20 20 20" >
                         <Grid.Effect>
                             <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                         </Grid.Effect>
 
-                        <!--Products--><!--
-                        <ItemsControl Name="ProductsContent">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Margin="5 5 5 25" >
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Grid Height="100" Width="100">
-                                            <Image Source="{Binding Picture}" Grid.Row="0" />
-                                        </Grid>
-                                        <Grid>
-                                            <TextBlock Text="{Binding Name}" Grid.Row="1" TextAlignment="Center"/>
-                                        </Grid>
-                                        <Grid>
-                                            <TextBlock Text="{Binding Price}" Grid.Row="2" TextAlignment="Center" />
-                                        </Grid>
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>-->
-                        
-
                         <!--Products-->
-                        <ItemsControl Name="ProductsContent">
+                        <!--<ItemsControl Name="ProductsContent">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
+                                    <Grid Margin="10 5 10 5">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
                                             <ColumnDefinition/>
@@ -99,44 +73,45 @@
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
 
-                                        <StackPanel Grid.Column="0">
-                                            <Image Source="{Binding Picture}" />
-                                            <TextBlock Text="{Binding Name}" TextAlignment="Center"/>
-                                            <TextBlock Text="{Binding Price}" TextAlignment="Center" />
-                                        </StackPanel>
-
-                                        <StackPanel Grid.Column="1">
-                                            <Image Source="{Binding Picture}" />
-                                            <TextBlock Text="{Binding Name}" TextAlignment="Center"/>
-                                            <TextBlock Text="{Binding Price}" TextAlignment="Center" />
-                                        </StackPanel>
-
-                                        <StackPanel Grid.Column="2">
-                                            <Image Source="{Binding Picture}" />
-                                            <TextBlock Text="{Binding Name}" TextAlignment="Center"/>
-                                            <TextBlock Text="{Binding Price}" TextAlignment="Center" />
-                                        </StackPanel>
-
-                                        <StackPanel Grid.Column="3">
-                                            <Image Source="{Binding Picture}" />
-                                            <TextBlock Text="{Binding Name}" TextAlignment="Center"/>
-                                            <TextBlock Text="{Binding Price}" TextAlignment="Center" />
-                                        </StackPanel>
-
                                         <StackPanel Grid.Column="4">
-                                            <Image Source="{Binding Picture}" />
-                                            <TextBlock Text="{Binding Name}" TextAlignment="Center"/>
-                                            <TextBlock Text="{Binding Price}" TextAlignment="Center" />
+                                            <Image Source="{Binding Picture}" Height="150" Width="150"/>
+                                            <TextBlock Text="{Binding Name}" TextAlignment="Center" FontWeight="Bold" FontSize="20" />
+                                            <TextBlock Text="{Binding Price}" TextAlignment="Center" FontWeight="Bold" FontSize="17"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>-->
+
+                        <ItemsControl Name="ProductsContent">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="10 5 10 5" Height="200" Width="200">
+                                        <StackPanel>
+                                            <Image Source="{Binding Picture}" Height="150" Width="150"/>
+                                            <TextBlock Text="{Binding Name}" TextAlignment="Center" FontWeight="Bold" FontSize="16" />
+                                            <TextBlock Text="{Binding Price}" TextAlignment="Center" FontWeight="Bold" FontSize="12"/>
                                         </StackPanel>
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                        
 
+
+                        <!--Pages Navigation--><!--
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="NextButton" Click="NextButton_Click" Margin="0 5 14 5" Grid.Column="1" Content="Previous" FontSize="20" Visibility="Visible"/>
+                            <Button x:Name="PreviousButton" Click="PreviousButton_Click" Margin="0 5 14 5" Grid.Column="2" Content="Next" FontSize="20" Visibility="Visible"/>
+                        </Grid>-->
 
                     </Grid>
-                </ScrollViewer>
+                    
                 <!--Search bar-->
 
                 <!--TOTAL-->

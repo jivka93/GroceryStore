@@ -11,21 +11,27 @@ namespace Services
 {
     public class ProductService : IProductService
     {
-        private readonly IEfGenericRepository<Product> usersRepo;
+        private readonly IEfGenericRepository<Product> productsRepo;
 
-        public ProductService(IEfGenericRepository<Product> usersRepo, IMapper mapper)
+        public ProductService(IEfGenericRepository<Product> productsRepo, IMapper mapper)
         {
-            this.usersRepo = usersRepo;
+            this.productsRepo = productsRepo;
+        }
+
+        public IEnumerable<ProductModel> GetAll()
+        {
+            return this.productsRepo.All.ProjectTo<ProductModel>();
         }
 
         public IEnumerable<ProductModel> SearchByName(string productName)
         {
-            return this.usersRepo.All.ProjectTo<ProductModel>().Where(x => x.Name.Contains(productName));
+            return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Name.Contains(productName));
         }
 
         public IEnumerable<ProductModel> SearchByCategory(string categoryName)
         {
-            return this.usersRepo.All.ProjectTo<ProductModel>().Where(x => x.Category ==categoryName);
+            return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Category ==categoryName);
         }
+
     }
 }

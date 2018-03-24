@@ -1,7 +1,9 @@
 ﻿using Autofac;
+using AutoMapper.QueryableExtensions;
 using Common;
 using DAL;
 using DAL.Migrations;
+using DTO;
 using Models;
 using Services;
 using Services.Contacts;
@@ -25,14 +27,14 @@ namespace Client.WPF
 
             this.context = new GroceryStoreContext();
 
-            FillCategories();
-
             // From StartUp:
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<GroceryStoreContext, Configuration>());
             AutomapperConfiguration.Initialize();
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
             this.container = builder.Build();
+
+            FillCategories();
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -90,7 +92,10 @@ namespace Client.WPF
         private void FillCategories()
         {
             var categories = new List<string>() { "All" };         
-            List<Product> products = this.context.Products.ToList();
+            //List<Product> products = this.context.Products.ToList();
+
+            var productService = this.container.Resolve<IProductService>();
+            var products = productService.GetAll();
 
             foreach (var product in products)
             {
@@ -118,18 +123,27 @@ namespace Client.WPF
 
         private void cmbCategories_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            var productService = this.container.Resolve<IProductService>();
+
             if (cmbCategories.SelectedItem.ToString() == "All")
             {
-                ProductsContent.ItemsSource = this.context.Products.ToList();
+                ProductsContent.ItemsSource = productService.GetAll().ToList();
             }
             else
             {
                 var category = this.cmbCategories.SelectedItem.ToString();
-                ProductsContent.ItemsSource = this.context.Products.Where(p => p.Category == category).ToList();
+                ProductsContent.ItemsSource = productService.SearchByCategory(category).ToList();
             }
         }
 
+        //private void NextButton_Click(object sender, RoutedEventArgs e)
+        //{
 
+        //}
 
+        //private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //}
     }
 }
