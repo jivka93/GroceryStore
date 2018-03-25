@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="MainWindow"
         WindowState="Maximized"
+        WindowStyle="ThreeDBorderWindow"        
         Background="#1E9E1E">
 
     <ScrollViewer>
@@ -23,6 +23,7 @@
                             <ColumnDefinition Width="4*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        
                         <Button x:Name="LoginButton" Click="LoginButton_Click" Width="120" HorizontalAlignment="Left" Margin="10 5 0 5" Background="#0B610B" FontWeight="Bold" Foreground="LightGray" Grid.Column="0" Content="Login" FontSize="20" BorderBrush="#0B610B" Visibility="Visible">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
@@ -43,7 +44,9 @@
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
                         </Button>
-                        <TextBlock Grid.Column="2" Text="Grocery Store" FontWeight="Bold" Height="50" FontSize="40" Padding="10 0 0 0" TextAlignment="Center" Margin="67.333,0,164.333,0" Foreground="White"/>
+                        
+                        <!--Grocery Store-->
+                        <TextBlock Grid.Column="2" Text="Grocery Store" FontWeight="Bold" Height="50" FontSize="35" Padding="10 0 0 0" TextAlignment="Center" Foreground="White"/>
                         <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Width="160" HorizontalAlignment="Right" Margin="0 5 10 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="2" Content="ShoppingCart" FontSize="20" Grid.ColumnSpan="2" BorderBrush="#0B610B">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
@@ -60,21 +63,21 @@
                     <Canvas>
                         <StackPanel>
                             <TextBlock  Text="Categories" FontWeight="Bold" FontSize="20" Padding="20 0 0 5" Foreground="White"/>
-                            <ComboBox SelectedIndex="0" Name="cmbCategories" Width="290" FontSize="20" Margin="10 0 0 0" Foreground="DarkGreen" FontWeight="DemiBold" Height="34" SelectionChanged="cmbCategories_SelectionChanged">
+                            <ComboBox SelectedIndex="0" Name="cmbCategories" Width="290" FontSize="20" Margin="10 0 0 10" Foreground="DarkGreen" FontWeight="DemiBold" Height="34" SelectionChanged="cmbCategories_SelectionChanged">
                             </ComboBox>
                         </StackPanel>
                     </Canvas>
 
                     <!--Search Bar-->
                     <TextBlock Text="Search Product" FontWeight="Bold" Height="32" FontSize="20" HorizontalAlignment="Right" Margin="0 0 20 0" Foreground="White" />
-                    <TextBox x:Name="searchBar" KeyDown="SearchBar_Enter" Grid.Column="2" Height="34" Width="320" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5 0 2 5" FontSize="20" Foreground="DarkGreen" FontWeight="DemiBold" Padding="5 0 5 0" />
+                    <TextBox x:Name="searchBar" KeyDown="SearchBar_Enter" Grid.Column="2" Height="34" Width="320" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5 0 10 10" FontSize="20" Foreground="DarkGreen" FontWeight="DemiBold" Padding="5 0 5 0" />
 
                 </StackPanel>
 
                 <Image Source="https://serving.photos.photobox.com/80767000b7ef3c80748c0f2da58531e94a0232aff34cad2de9870851e4c52826d3fdaf90.jpg"></Image>
 
                 <!--Products-->
-                <StackPanel Background="White" Margin="80 20 80 20">
+                <StackPanel Background="White" Margin="100 20 100 20">
                     <StackPanel.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                     </StackPanel.Effect>

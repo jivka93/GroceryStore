@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="226.381" Width="300"
-        WindowStartupLocation="Manual" 
+        Height="226.381" Width="300"
+        WindowStartupLocation="CenterOwner" 
         Left="390" Top="300"
-        FontSize="15" FontWeight="Bold" Foreground="#555555">
+        FontSize="15" FontWeight="Bold" Foreground="#555555"
+        Background="DarkGreen">
     
     <StackPanel HorizontalAlignment="Left" Height="178" Margin="10,10,0,0" VerticalAlignment="Top" Width="280">
         
         
-        <TextBlock Text="Username:" Margin="20 10 20 0"/>
+        <TextBlock Text="Username:" Margin="20 10 20 0" Foreground="LightGray"/>
         <TextBox x:Name="UsernameTextBox" Margin="20 2 20 0"/>
 
-        <TextBlock Text="Password:" Margin="20 10 20 0"/>
+        <TextBlock Text="Password:" Margin="20 10 20 0" Foreground="LightGray"/>
         <PasswordBox x:Name="PasswordTextBox" PasswordChar="*"  Margin="20 2 20 0"/>
 
         <Button x:Name="SignInButton" Click="SignInButton_Click"  Content="Sign in"   Margin="90 30 90 0">

@@ -5,45 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="RegisterUserWindow"
-        WindowStartupLocation="Manual" 
-        Left="430" Top="150" Height="619.645" Width="345.76"
-        FontSize="15" FontWeight="Bold" Foreground="#555555"
-        >
+        WindowStartupLocation="CenterScreen" 
+        Left="430" Top="150" Height="620" Width="350"
+        FontSize="15" FontWeight="Bold" 
+        Background="DarkGreen"
+        Foreground="LightGray">
+    <!--Foreground="#555555"-->
 
-    <StackPanel VerticalAlignment="Top" Height="586" Margin="23,0,26.333,0">
+    <StackPanel Background="Transparent" VerticalAlignment="Top" Height="590" Margin="20,0,20,0">
 
         <TextBlock Text="Username * " Margin="20 30 20 0"/>
-        <TextBox x:Name="UsernameTextBox" Margin="20 0 20 0" FontWeight="Medium" />
+        <TextBox x:Name="UsernameTextBox" Margin="20 0 20 0" Foreground="#555555" FontWeight="Medium" />
 
         <TextBlock Text="Password *"  Margin="20 10 20 0"/>
-        <PasswordBox x:Name="PasswordTextBox" PasswordChar="*" Margin="20 0 20 0" FontWeight="Medium" />
+        <PasswordBox x:Name="PasswordTextBox" PasswordChar="*" Margin="20 0 20 0" Foreground="#555555" FontWeight="Medium" />
 
         <TextBlock Text="First name"  Margin="20 10 20 0"/>
-        <TextBox  x:Name="FirstnameTextBox" Margin="20 0 20 0" FontWeight="Medium" />
+        <TextBox  x:Name="FirstnameTextBox" Margin="20 0 20 0" Foreground="#555555" FontWeight="Medium" />
 
         <TextBlock Text="Last name"  Margin="20 10 20 0"/>
-        <TextBox  x:Name="LastnameTextBox" Margin="20 0 20 0" FontWeight="Medium"  />
+        <TextBox  x:Name="LastnameTextBox" Margin="20 0 20 0" Foreground="#555555" FontWeight="Medium"  />
 
         <TextBlock Text="Phone number *"  Margin="20 10 20 0"/>
-        <TextBox  x:Name="PhoneTextBox" Margin="20 0 20 0" FontWeight="Medium" />
+        <TextBox  x:Name="PhoneTextBox" Margin="20 0 20 0" Foreground="#555555" FontWeight="Medium" />
 
         <TextBlock Text="Address"  Margin="20 10 20 0"/>
-        <TextBox  x:Name="AddressTextBox" Margin="20 0 20 25" FontWeight="Medium" />
+        <TextBox  x:Name="AddressTextBox" Margin="20 0 20 25" Foreground="#555555" FontWeight="Medium" />
 
         <!--Bank Card-->
         <TextBlock Text="Bank card"  HorizontalAlignment="Center"/>
         <TextBlock Text="Number"  Margin="20 0 20 0" FontWeight="Medium" />
-        <TextBox  x:Name="CardNumberTextBox" Margin="20 0 20 0" />
+        <TextBox  x:Name="CardNumberTextBox" Foreground="#555555" Margin="20 0 20 0" />
 
         <TextBlock Text="Expiration date [mm-yyyy]"  Margin="20 5 20 0" FontWeight="Medium" />
-        <TextBox  x:Name="ExpDateTextBox" Margin="20 0 20 0" />
+        <TextBox  x:Name="ExpDateTextBox" Foreground="#555555" Margin="20 0 20 0" />
 
         <TextBlock Text="Holder name"  Margin="20 5 20 0" FontWeight="Medium" />
-        <TextBox  x:Name="CardNameTextBox" Margin="20 0 20 30" />
+        <TextBox  x:Name="CardNameTextBox" Foreground="#555555" Margin="20 0 20 30" />
 
         <!--Submit-->
-        <Button x:Name="SubmitButton" Click="SubmitButton_Click"  Content="Submit" HorizontalAlignment="Center" Width="100">
+        <Button x:Name="SubmitButton" Click="SubmitButton_Click" Foreground="#555555" Content="Submit" HorizontalAlignment="Center" Width="100">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
             </Button.Effect>

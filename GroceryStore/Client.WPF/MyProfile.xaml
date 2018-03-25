@@ -6,14 +6,16 @@
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
         Title="MyProfileWindow" Width="300"
-        WindowStartupLocation="Manual"        
-        Left="430" Top="150"
-        Foreground="DarkGreen">
-
-    <StackPanel Name="Data" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Margin="0,0,-6.667,0">
+        WindowStartupLocation="CenterScreen"        
+        Foreground="LightGray"
+        FontWeight="Bold"
+        FontSize="13"
+        Background="DarkGreen">
+    <ScrollViewer>
+    <StackPanel Name="Data">
 
         <!--Main Profile Info-->
-        <TextBlock Text="Profile information" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 10 0 10" Background="Green" Foreground="White"/>
+        <TextBlock Text="Profile information" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 10 0 10" Foreground="White"/>
 
         <!--Username-->
         <Grid>
@@ -22,7 +24,7 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="Username: " FontWeight="Bold" Margin="20 0 0 0" Padding="0 5 0 0"/>
-            <TextBlock Grid.Column="1" Name="UsernameText" Text="ignatovajivka123" Margin="10 0 20 0" Padding="0 5 0 0"/>
+            <TextBlock Grid.Column="1" Name="UsernameText" Text="ignatovajivka123" Margin="10 0 20 0" FontWeight="DemiBold" Padding="0 5 0 0"/>
         </Grid>
 
         <!--First name-->
@@ -32,8 +34,8 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="First name: " FontWeight="Bold"  Margin="20 10 0 0" Padding="0 5 0 0"/>
-            <TextBlock Grid.Column="1" Name="FirstNameText" Text="Jivka" Margin="10 10 0 0" Padding="0 5 0 0" Visibility="Visible"/>
-            <TextBox Grid.Column="1" Name="NewFirstNameText" Text="{Binding FirstName}"  Margin="10 10 0 0" Padding="0 5 0 0" Visibility="Collapsed"/>
+                <TextBlock Grid.Column="1" Name="FirstNameText" Text="Jivka" Margin="10 10 20 0" FontWeight="DemiBold" Padding="0 5 0 0" Visibility="Visible"/>
+                <TextBox Grid.Column="1" Name="NewFirstNameText" Text="{Binding FirstName}" FontWeight="DemiBold" Margin="10 10 20 0" Padding="0 5 0 0" Visibility="Collapsed"/>
         </Grid>
 
         <!--Last name-->
@@ -42,9 +44,9 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="Last name: " FontWeight="Bold"  Margin="20 10 0 0" Padding="0 5 0 0"/>
-            <TextBlock Grid.Column="1" Name="LastNameText" Text="Ignatova"  Margin="10 10 0 0" Padding="0 5 0 0" Visibility="Visible"/>
-            <TextBox Grid.Column="1" Name="NewLastNameText" Text="{Binding LastName}"  Margin="10 10 0 0" Padding="0 5 0 0" Visibility="Collapsed"/>
+            <TextBlock Grid.Column="0" Text="Last name: " FontWeight="Bold" Margin="20 10 0 0" Padding="0 5 0 0"/>
+                <TextBlock Grid.Column="1" Name="LastNameText" Text="Ignatova" FontWeight="DemiBold" Margin="10 10 20 0" Padding="0 5 0 0" Visibility="Visible"/>
+                <TextBox Grid.Column="1" Name="NewLastNameText" Text="{Binding LastName}" FontWeight="DemiBold" Margin="10 10 20 0" Padding="0 5 0 0" Visibility="Collapsed"/>
         </Grid>
 
         <!--Phone number-->
@@ -54,22 +56,33 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="Phone number: " FontWeight="Bold"  Margin="20 10 0 0" Padding="0 5 0 0"/>
-            <TextBlock Grid.Column="1" Name="PhoneText" Text="0888777666" Margin="10 10 0 0" Padding="0 5 0 0" Visibility="Visible"/>
-            <TextBox Grid.Column="1" Name="NewPhoneText" Text="{Binding PhoneNumber}"  Margin="10 10 0 0" Padding="0 5 0 0" Visibility="Collapsed"/>
+                <TextBlock Grid.Column="1" Name="PhoneText" Text="0888777666" FontWeight="DemiBold" Margin="10 10 20 0" Padding="0 5 0 0" Visibility="Visible"/>
+                <TextBox Grid.Column="1" Name="NewPhoneText" Text="{Binding PhoneNumber}" FontWeight="DemiBold" Margin="10 10 20 0" Padding="0 5 0 0" Visibility="Collapsed"/>
         </Grid>
 
         <!--Addresses-->
-        <TextBlock FontWeight="Bold" Margin="20 25 20 0">Addresses:</TextBlock>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" FontWeight="Bold" Margin="20 25 20 0">Addresses:</TextBlock>
+            <Button Name="UpdateAddressesBtn" Grid.Column="1" Content="Update" Width="80" Height="20" VerticalAlignment="Bottom">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+                </Button.Effect>
+            </Button>
+        </Grid>
 
         <ItemsControl Name="AddressesContent">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="0,0,0,5">
+                    <Grid Margin="0,10,0,5">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="{Binding AddressText}" Grid.Row="0" Margin="20 0 20 5" Visibility="Visible"/>
+                        <TextBlock Text="{Binding AddressText}" Grid.Row="0" Margin="20 0 20 5" FontWeight="Light" Visibility="Visible"/>
                         <TextBox Grid.Row="1" Visibility="Collapsed" Margin="20 0 20 5"/>
                     </Grid>
                 </DataTemplate>
@@ -78,27 +91,56 @@
 
 
         <!--Bank cards-->
-        <TextBlock FontWeight="Bold" Margin="20 15 20 0">Bank Cards:</TextBlock>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" FontWeight="Bold" Margin="20 15 20 0">Bank Cards:</TextBlock>
+            <Button Name="UpdateCardsBtn" Grid.Column="1" Content="Update" Width="80" Height="20" VerticalAlignment="Bottom">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+                </Button.Effect>
+            </Button>
+        </Grid>
 
         <ItemsControl Name="BankCardsContent" >
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="20 5 0 0">
+                    <Grid Margin="20 10 0 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Number}" Grid.Column="0" Margin="20 0 5 5" />
-                        <TextBlock Text="{Binding ExpDateAsString}" Grid.Column="1" Margin="0 0 20 5" />
+                        <TextBlock Text="{Binding Number}" Grid.Column="0" FontWeight="Light" Margin="20 0 5 5" />
+                        <TextBlock Text="{Binding ExpDateAsString}" Grid.Column="1" FontWeight="Light" Margin="0 0 20 5" />
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
         <!--Buttons-->
-        <Button x:Name="UpdateButton" Click="UpdateButton_Click"  Content="Update Info"   Margin="70 25 70 0" Visibility="Visible" />
-        <Button x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click"  Content="Change password"   Margin="70 15 70 15" Visibility="Visible" />
-        <Button x:Name="SaveChangesButton" Click="SaveChangesButton_Click"  Content="Save changes"   Margin="70 25 70 10" Visibility="Collapsed" />
-        <Button x:Name="GeneratePdf" Content="PdfGeneratorTest" Click="GeneratePdf_Click"/>
+        <Button x:Name="UpdateButton" Click="UpdateButton_Click" Content="Update Info" Width="130" Margin="0 30 0 20" Visibility="Visible">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click" Content="Change password" Width="130" Margin="0 0 0 20" Visibility="Visible">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="SaveChangesButton" Click="SaveChangesButton_Click"  Content="Save changes" Width="130" Margin="0 0 0 20" Visibility="Collapsed">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="GeneratePdf" Content="PdfGeneratorTest" Click="GeneratePdf_Click" Width="130" Margin="0 0 0 30">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+            </Button.Effect>
+        </Button>
+        
     </StackPanel>
+    </ScrollViewer>
 </Window>
