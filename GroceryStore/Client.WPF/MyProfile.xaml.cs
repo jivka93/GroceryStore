@@ -130,14 +130,13 @@ namespace Client.WPF
                 hi = folderDialog.SelectedPath.Replace("\\", "/") + "/Test.pdf";
                 MessageBox.Show(hi);
 
+                //Doc Setup
                 Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
                 PdfWriter writter = PdfWriter.GetInstance(doc, new FileStream(hi, FileMode.Create));
-
                 var user = userservice.GetSpecificUser((int)userContext.LoggedUserId);
-
                 doc.Open();
-                //
 
+                //Editting Doc
                 foreach (var item in user.Adresses)
                 {
                     Paragraph paragraph = new Paragraph(item.AddressText);
