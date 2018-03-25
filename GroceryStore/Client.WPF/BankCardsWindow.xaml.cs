@@ -14,6 +14,8 @@ namespace Client.WPF
 
             this.userContext = userContext;
             this.userservice = userservice;
+
+            FillInfo();
         }
 
         public void FillInfo()
@@ -32,7 +34,7 @@ namespace Client.WPF
 
                 // Filling:
                 this.BankCardsContent.ItemsSource = userModel.BankCards;
-                this.BankCardsContent.DataContext = userModel.Adresses;
+                this.BankCardsContent.DataContext = userModel.BankCards;
             }
         }
 

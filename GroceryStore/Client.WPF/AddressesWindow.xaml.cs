@@ -15,6 +15,8 @@ namespace Client.WPF
 
             this.userContext = userContext;
             this.userservice = userservice;
+
+            FillInfo();
         }
 
         public void FillInfo()
