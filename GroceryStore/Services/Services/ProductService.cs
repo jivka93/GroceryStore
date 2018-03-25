@@ -25,7 +25,7 @@ namespace Services
 
         public IEnumerable<ProductModel> SearchByName(string productName)
         {
-            return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Name.Contains(productName));
+            return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Name.ToUpper().Contains(productName.ToUpper()));
         }
 
         public IEnumerable<ProductModel> SearchById(int productId)
