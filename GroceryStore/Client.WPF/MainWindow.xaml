@@ -5,24 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1034.667"
-        Background="#1E9E1E"  >
+        Title="MainWindow"
+        WindowState="Maximized"
+        Background="#1E9E1E">
 
-    <ScrollViewer >
+    <ScrollViewer>
         <Border>
+            <StackPanel>
 
-            <StackPanel  >
-
-                <StackPanel Height="173" Margin="0,0,0.333,0" RenderTransformOrigin="0.5,0.5">
-
-                    <StackPanel.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform AngleX="1.66"/>
-                            <RotateTransform/>
-                            <TranslateTransform X="1.971"/>
-                        </TransformGroup>
-                    </StackPanel.RenderTransform>
+                <StackPanel>
 
                     <!--Navigation-->
                     <Grid Margin="10 10 10 0">
@@ -32,28 +23,28 @@
                             <ColumnDefinition Width="4*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="LoginButton" Click="LoginButton_Click" Margin="0 5 14 5" Background="#0B610B" FontWeight="Bold" Foreground="LightGray" Grid.Column="0" Content="Login" FontSize="20" BorderBrush="#0B610B" Visibility="Visible">
+                        <Button x:Name="LoginButton" Click="LoginButton_Click" Width="120" HorizontalAlignment="Left" Margin="10 5 0 5" Background="#0B610B" FontWeight="Bold" Foreground="LightGray" Grid.Column="0" Content="Login" FontSize="20" BorderBrush="#0B610B" Visibility="Visible">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
                         </Button>
-                        <Button x:Name="MyProfileButton" Click="MyProfileButton_Click" Margin="0 5 14 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray"  Grid.Column="0" Content="My profile" FontSize="20" BorderBrush="#0B610B" Visibility="Hidden">
+                        <Button x:Name="MyProfileButton" Click="MyProfileButton_Click" Width="120" HorizontalAlignment="Left" Margin="10 5 0 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray"  Grid.Column="0" Content="My profile" FontSize="20" BorderBrush="#0B610B" Visibility="Hidden">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
                         </Button>
-                        <Button x:Name="RegisterButton" Click="RegisterButton_Click" Margin="0 5 14 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="1" Content="Register" FontSize="20" BorderBrush="#0B610B" Visibility="Visible">
+                        <Button x:Name="RegisterButton" Click="RegisterButton_Click" Width="120" HorizontalAlignment="Left" Margin="0 5 0 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="1" Content="Register" FontSize="20" BorderBrush="#0B610B" Visibility="Visible">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
                         </Button>
-                        <Button x:Name="LogoutButton" Click="LogoutButton_Click" Margin="0 5 14 5"  Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="1" Content="Logout" FontSize="20" BorderBrush="#0B610B" Visibility="Hidden">
+                        <Button x:Name="LogoutButton" Click="LogoutButton_Click" Width="120" HorizontalAlignment="Left" Margin="0 5 0 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="1" Content="Logout" FontSize="20" BorderBrush="#0B610B" Visibility="Hidden">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
                         </Button>
-                        <TextBlock Grid.Column="2" Text="GroceryStore" FontWeight="Bold" Height="50" FontSize="35" Padding="10 0 0 0" TextAlignment="Center" Margin="67.333,0,164.333,0" Foreground="White"/>
-                        <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Margin="519.333,5,0.333,5"  Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="2" Content="ShoppingCart" FontSize="20" Grid.ColumnSpan="2" BorderBrush="#0B610B">
+                        <TextBlock Grid.Column="2" Text="Grocery Store" FontWeight="Bold" Height="50" FontSize="40" Padding="10 0 0 0" TextAlignment="Center" Margin="67.333,0,164.333,0" Foreground="White"/>
+                        <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Width="160" HorizontalAlignment="Right" Margin="0 5 10 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="2" Content="ShoppingCart" FontSize="20" Grid.ColumnSpan="2" BorderBrush="#0B610B">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
@@ -68,15 +59,15 @@
                     <!--Categories-->
                     <Canvas>
                         <StackPanel>
-                            <TextBlock  Text="Categories" FontWeight="Bold" FontSize="20" Padding="10 0 0 5" Foreground="White"/>
-                            <ComboBox SelectedIndex="0" Name="cmbCategories" Width="273" FontSize="15" Margin="10 0 0 0" Height="31" SelectionChanged="cmbCategories_SelectionChanged">
+                            <TextBlock  Text="Categories" FontWeight="Bold" FontSize="20" Padding="20 0 0 5" Foreground="White"/>
+                            <ComboBox SelectedIndex="0" Name="cmbCategories" Width="290" FontSize="20" Margin="10 0 0 0" Foreground="DarkGreen" FontWeight="DemiBold" Height="34" SelectionChanged="cmbCategories_SelectionChanged">
                             </ComboBox>
                         </StackPanel>
                     </Canvas>
 
                     <!--Search Bar-->
-                    <TextBlock Text="Search Product" FontWeight="Bold" Height="32" FontSize="20" Margin="784,0,0,0" RenderTransformOrigin="2.269,0.531" Foreground="White" />
-                    <TextBox x:Name="searchBar"  KeyDown="SearchBar_Enter" Grid.Column="2" Height="34" Margin="746,0,10,0" RenderTransformOrigin="0.504,0.571" />
+                    <TextBlock Text="Search Product" FontWeight="Bold" Height="32" FontSize="20" HorizontalAlignment="Right" Margin="0 0 20 0" Foreground="White" />
+                    <TextBox x:Name="searchBar" KeyDown="SearchBar_Enter" Grid.Column="2" Height="34" Width="320" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5 0 2 5" FontSize="20" Foreground="DarkGreen" FontWeight="DemiBold" Padding="5 0 5 0" />
 
                 </StackPanel>
 
@@ -87,7 +78,7 @@
                     <StackPanel.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                     </StackPanel.Effect>
-                    
+
                     <ItemsControl Name="ProductsContent">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -112,7 +103,7 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    
+
                 </StackPanel>
 
                 <!--Search bar-->
@@ -121,7 +112,6 @@
             <TextBlock Grid.Column="3" Text="0.00 $" FontWeight="Bold" Height="30" FontSize="20" Padding="60 0 0 0" />-->
 
             </StackPanel>
-
         </Border>
     </ScrollViewer>
 </Window>
