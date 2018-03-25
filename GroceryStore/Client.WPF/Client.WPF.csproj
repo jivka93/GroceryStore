@@ -75,9 +75,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddressesWindow.xaml.cs">
+      <DependentUpon>AddressesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Autofac\AutoFacModule.cs" />
     <Compile Include="BankCardDetailsWindow.xaml.cs">
       <DependentUpon>BankCardDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BankCardsWindow.xaml.cs">
+      <DependentUpon>BankCardsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChangePasswordWindow.xaml.cs">
       <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
@@ -94,7 +100,15 @@
     <Compile Include="ShoppingCartWindow.xaml.cs">
       <DependentUpon>ShoppingCartWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddressesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BankCardDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BankCardsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

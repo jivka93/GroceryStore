@@ -27,10 +27,8 @@ namespace DTO
                 else
                 {
                     var date = (DateTime)this.ExpirationDate;
-                    //return $"{date.Month}/{date.Year}";
                     return date.ToString("MM/yy");
                 }
-
             }
         }
     }

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="BankCardDetailsWindow" Height="300" Width="300">
+        WindowStartupLocation="CenterScreen" 
+        Height="300" Width="300">
     <Grid>
         <Button Name="ChooseButton" Content="Choose from profile" HorizontalAlignment="Left" Margin="90,59,0,0" VerticalAlignment="Top" Width="120" Click="ChooseButton_Click"/>
         <Label FontSize="14" FontWeight="Bold" Content="BankCard Details:" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>

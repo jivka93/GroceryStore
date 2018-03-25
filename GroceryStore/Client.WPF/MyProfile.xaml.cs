@@ -12,7 +12,6 @@ namespace Client.WPF
         private readonly IUserContext userContext;
         private readonly IUserService userservice;
 
-
         public MyProfile(IUserContext userContext, IUserService userservice)
         {
             InitializeComponent();
@@ -61,7 +60,7 @@ namespace Client.WPF
                 this.PhoneText.Text = userModel.PhoneNumber;
 
                 this.AddressesContent.ItemsSource = userModel.Adresses;
-                this.AddressesContent.DataContext = userModel.Adresses;
+                //this.AddressesContent.DataContext = userModel.Adresses;
                 this.BankCardsContent.ItemsSource = userModel.BankCards;
             }
         }
@@ -147,6 +146,23 @@ namespace Client.WPF
             }
 
             
+
+        }
+
+        private void UpdateAddressesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddressesWindow op = new AddressesWindow(this.userContext, this.userservice);
+            op.Show();
+        }
+
+        private void UpdateCardsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BankCardsWindow op = new BankCardsWindow(this.userContext, this.userservice);
+            op.Show();
+        }
+
+        private void OrdersButton_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
