@@ -28,6 +28,11 @@ namespace Services
             return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Name.Contains(productName));
         }
 
+        public IEnumerable<ProductModel> SearchById(int productId)
+        {
+            return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Id == productId);
+        }
+
         public IEnumerable<ProductModel> SearchByCategory(string categoryName)
         {
             return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Category == categoryName);

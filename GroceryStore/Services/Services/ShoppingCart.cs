@@ -33,7 +33,12 @@ namespace Services.Services
             this.products.Add(product);
         }
 
-        public void Logout()
+        public void RemoveProduct(ProductModel product)
+        {
+            this.products.Remove(product);
+        }
+
+        public void Clear()
         {
             this.Products = new List<ProductModel>();
         }

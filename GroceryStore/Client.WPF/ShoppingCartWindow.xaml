@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="ShoppingCartWindow" Width="450">
+        Title="ShoppingCartWindow" Width="500">
 
     <ScrollViewer >
         <StackPanel>
@@ -27,7 +27,7 @@
                                 <TextBlock Text="{Binding Name}" Grid.Column="1" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" />
                                 <TextBlock Text="{Binding Price}" Grid.Column="2" TextAlignment="Right" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Green" FontWeight="DemiBold" />
                                 <TextBlock Text=" $ " Grid.Column="3" TextAlignment="Left" VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Left"  Foreground="Green" FontWeight="DemiBold"  />
-                                <Button Tag="{Binding Name}" Click="Button_Click" Content="Remove" Grid.Column="4" Height="35" Width="80" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Green" Foreground="White" Padding="0 0 0 5">
+                                <Button Name="RemoveButton" Tag="{Binding Id}" Click="RemoveButton_Click" Content="Remove" Grid.Column="4" Height="35" Width="80" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Green" Foreground="White" Padding="0 0 0 5">
                                     <Button.Effect>
                                         <DropShadowEffect BlurRadius="9" Direction="50" RenderingBias="Quality" ShadowDepth="2"/>
                                     </Button.Effect>

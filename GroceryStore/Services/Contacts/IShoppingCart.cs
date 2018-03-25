@@ -11,6 +11,8 @@ namespace Services.Contacts
 
         void AddProduct(ProductModel product);
 
-        void Logout();
+        void RemoveProduct(ProductModel product);
+
+        void Clear();
     }
 }

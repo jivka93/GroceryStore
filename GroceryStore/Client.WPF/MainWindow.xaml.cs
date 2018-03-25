@@ -46,7 +46,7 @@ namespace Client.WPF
             var userContext = this.container.Resolve<IUserContext>();
             userContext.Logout();
             var shoppingCart = this.container.Resolve<IShoppingCart>();
-            shoppingCart.Logout();
+            shoppingCart.Clear();
             this.Total.Text = $"{shoppingCart.Total:F2} $";
 
             DisplayNoLoggedUserView();
@@ -84,16 +84,17 @@ namespace Client.WPF
             var userContext = this.container.Resolve<IUserContext>();
             var userservice = this.container.Resolve<IUserService>();
             MyProfile op = new MyProfile(userContext, userservice);
-            op.Show();
-            
+            op.Show();           
         }
 
         private void ShoppingCartButton_Click(object sender, RoutedEventArgs e)
         {
             var loggedUser = this.container.Resolve<IUserContext>();
             var shoppingCart = this.container.Resolve<IShoppingCart>();
+            var productService = this.container.Resolve<IProductService>();
+            var total = this.Total;
 
-            ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser);
+            ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser, productService, total );
             op.Show();
         }
 
@@ -161,9 +162,15 @@ namespace Client.WPF
 
                 shoppingCart.AddProduct(product);
 
-                this.Total.Text = $"{shoppingCart.Total:F2} $";
+                RefreshTotal();
             }
 
+        }
+
+        private void RefreshTotal()
+        {
+            var shoppingCart = container.Resolve<IShoppingCart>();
+            this.Total.Text = $"{shoppingCart.Total:F2} $";
         }
 
     }

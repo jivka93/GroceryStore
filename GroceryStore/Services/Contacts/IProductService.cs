@@ -9,6 +9,8 @@ namespace Services.Contacts
 
         IEnumerable<ProductModel> SearchByName(string productName);
 
+        IEnumerable<ProductModel> SearchById(int productId);
+
         IEnumerable<ProductModel> SearchByCategory(string categoryName);
     }
 }

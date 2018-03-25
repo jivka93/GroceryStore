@@ -1,5 +1,7 @@
 ﻿using Services.Contacts;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Client.WPF
 {
@@ -7,13 +9,17 @@ namespace Client.WPF
     {
         private IShoppingCart shoppingCart;
         private IUserContext loggedUser;
+        private IProductService productService;
+        private TextBlock total;
 
-        public ShoppingCartWindow(IShoppingCart shoppingCart, IUserContext loggedUser)
+        public ShoppingCartWindow(IShoppingCart shoppingCart, IUserContext loggedUser, IProductService productService, TextBlock total)
         {
             InitializeComponent();
 
             this.shoppingCart = shoppingCart;
             this.loggedUser = loggedUser;
+            this.productService = productService;
+            this.total = total;
 
             FillInfo();
         }
@@ -23,22 +29,6 @@ namespace Client.WPF
             this.ProductsContent.ItemsSource = this.shoppingCart.Products;
         }
 
-        //private void ContinueButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Close();
-        //}
-
-        //private void DiscardButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Close();
-        //}
-
-        //private void FinishOrderbutton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    BankCardDetailsWindow op = new BankCardDetailsWindow();
-        //    op.Show();
-        //}
-
         private void FinishBtn_Click(object sender, RoutedEventArgs e)
         {
             this.DeliveryDetails.Visibility = Visibility.Visible;
@@ -46,12 +36,14 @@ namespace Client.WPF
 
         private void ContinueBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void DiscardBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.shoppingCart.Clear();
+            this.Close();
+            this.total.Text = $"{shoppingCart.Total:F2} $";
         }
 
         private void PayButton_Click(object sender, RoutedEventArgs e)
@@ -59,9 +51,14 @@ namespace Client.WPF
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
+            var productId = int.Parse(((Button)sender).Tag.ToString());
+            var product = this.productService.SearchById(productId).FirstOrDefault();
 
+            shoppingCart.RemoveProduct(product);
+
+            FillInfo();
         }
     }
 }
