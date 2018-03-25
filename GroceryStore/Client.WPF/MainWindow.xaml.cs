@@ -90,7 +90,10 @@ namespace Client.WPF
 
         private void ShoppingCartButton_Click(object sender, RoutedEventArgs e)
         {
-            ShoppingCartWindow op = new ShoppingCartWindow();
+            var loggedUser = this.container.Resolve<IUserContext>();
+            var shoppingCart = this.container.Resolve<IShoppingCart>();
+
+            ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser);
             op.Show();
         }
 

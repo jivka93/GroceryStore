@@ -1,28 +1,67 @@
-﻿using System.Windows;
+﻿using Services.Contacts;
+using System.Windows;
 
 namespace Client.WPF
 {
     public partial class ShoppingCartWindow : Window
     {
-        public ShoppingCartWindow()
+        private IShoppingCart shoppingCart;
+        private IUserContext loggedUser;
+
+        public ShoppingCartWindow(IShoppingCart shoppingCart, IUserContext loggedUser)
         {
             InitializeComponent();
+
+            this.shoppingCart = shoppingCart;
+            this.loggedUser = loggedUser;
+
+            FillInfo();
         }
 
-        private void Continuebutton_Click(object sender, RoutedEventArgs e)
+        private void FillInfo()
         {
-            this.Close();
+            this.ProductsContent.ItemsSource = this.shoppingCart.Products;
         }
 
-        private void DiscardButton_Click(object sender, RoutedEventArgs e)
+        //private void ContinueButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Close();
+        //}
+
+        //private void DiscardButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Close();
+        //}
+
+        //private void FinishOrderbutton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    BankCardDetailsWindow op = new BankCardDetailsWindow();
+        //    op.Show();
+        //}
+
+        private void FinishBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.DeliveryDetails.Visibility = Visibility.Visible;
         }
 
-        private void FinishOrderbutton_Click(object sender, RoutedEventArgs e)
+        private void ContinueBtn_Click(object sender, RoutedEventArgs e)
         {
-            BankCardDetailsWindow op = new BankCardDetailsWindow();
-            op.Show();
+
+        }
+
+        private void DiscardBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PayButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

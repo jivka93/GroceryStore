@@ -42,6 +42,7 @@
         <TextBlock Text="Holder name"  Margin="20 5 20 0" FontWeight="Medium" />
         <TextBox  x:Name="CardNameTextBox" Margin="20 0 20 30" />
 
+        <!--Submit-->
         <Button x:Name="SubmitButton" Click="SubmitButton_Click"  Content="Submit" HorizontalAlignment="Center" Width="100">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>

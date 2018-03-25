@@ -5,25 +5,159 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="ShoppingCartWindow" Height="600" Width="400">
-    <Grid>
-        <Label Content="Order id: 88888    for user: First Name Last Name" HorizontalAlignment="Left" Margin="56,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-1.731" Width="268"/>
-        <Button Name="FinishOrderbutton" Content="Finish order" HorizontalAlignment="Left" Margin="21,528,0,0" VerticalAlignment="Top" Width="110" Height="31" Click="FinishOrderbutton_Click"/>
-        <Button Name="Discardbutton" Content="Discard" HorizontalAlignment="Left" Margin="274,528,0,0" VerticalAlignment="Top" Width="108" Height="31" Click="DiscardButton_Click"/>
-        <ListView BorderThickness="0" HorizontalAlignment="Left" Height="379" Margin="0,41,0,0" VerticalAlignment="Top" Width="392">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <TextBox IsReadOnly="True" Cursor="Arrow" BorderThickness="0" HorizontalAlignment="Left" Height="23" Margin="10,463,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Width="46"/>
-        <TextBox BorderThickness="1" HorizontalAlignment="Left" Height="23" Margin="72,463,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="167" RenderTransformOrigin="1.804,0.435"/>
-        <Button Content="Use fom profile" HorizontalAlignment="Left" Margin="253,463,0,0" VerticalAlignment="Top" Width="129" Height="23"/>
-        <TextBox IsReadOnly="True" Cursor="Arrow" BorderThickness="0" HorizontalAlignment="Left" Height="23" Margin="10,500,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top" Width="57"/>
-        <Button Content="Choose from profile" HorizontalAlignment="Left" Margin="253,500,0,0" VerticalAlignment="Top" Width="129" Height="23"/>
-        <TextBox BorderThickness="1" HorizontalAlignment="Left" Height="23" Margin="72,500,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="167" RenderTransformOrigin="1.804,0.435"/>
-        <TextBox IsReadOnly="True" Cursor="Arrow" BorderThickness="0" HorizontalAlignment="Left" Height="23" Margin="10,425,0,0" TextWrapping="Wrap" TextAlignment="Center" Text="Total: 100" VerticalAlignment="Top" Width="372"/>
-        <Button Name="Continuebutton" Content="Continue shopping" HorizontalAlignment="Left" Margin="147,528,0,0" VerticalAlignment="Top" Width="112" Height="31" Click="Continuebutton_Click"/>
-    </Grid>
+        Title="ShoppingCartWindow" Width="450">
+
+    <ScrollViewer >
+        <StackPanel>
+
+            <!--Products-->
+            <StackPanel Background="White" Margin="7 20 7 20">
+                <ItemsControl Name="ProductsContent">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="10 5 0 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Picture}" Grid.Column="0" Height="85" Width="85" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                <TextBlock Text="{Binding Name}" Grid.Column="1" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" />
+                                <TextBlock Text="{Binding Price}" Grid.Column="2" TextAlignment="Right" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Green" FontWeight="DemiBold" />
+                                <TextBlock Text=" $ " Grid.Column="3" TextAlignment="Left" VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Left"  Foreground="Green" FontWeight="DemiBold"  />
+                                <Button Tag="{Binding Name}" Click="Button_Click" Content="Remove" Grid.Column="4" Height="35" Width="80" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Green" Foreground="White" Padding="0 0 0 5">
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="9" Direction="50" RenderingBias="Quality" ShadowDepth="2"/>
+                                    </Button.Effect>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <!--Total-->
+            <Grid Name="AmountBlock">
+                <TextBlock Name="Total"/>
+            </Grid>
+
+            <!--Navigation Buttons-->
+            <Grid Height="25" Margin="10 10 10 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!--Finish Order-->
+                <Button Name="FinishBtn" Click="FinishBtn_Click" Grid.Column="0" Width="100" Content="Finish order" FontWeight="Bold" Foreground="Gray" >
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                    </Button.Effect>
+                </Button>
+
+                <!--Continue-->
+                <Button Name="ContinueBtn" Click="ContinueBtn_Click" Grid.Column="1" Width="110" Content="Continue buying" FontWeight="Bold" Foreground="Gray" >
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                    </Button.Effect>
+                </Button>
+
+                <!--Discard-->
+                <Button Name="DiscardBtn" Click="DiscardBtn_Click" Grid.Column="2" Width="100" Content="Discard" FontWeight="Bold" Foreground="Gray" >
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+
+            <!--Delivery details-->
+            <StackPanel Name="DeliveryDetails" Visibility="Hidden">
+                <TextBlock Text="Delivery details:"  HorizontalAlignment="Center" Margin="0 30 0 0" FontSize="15" FontWeight="Bold" Foreground="#555555"/>
+
+                <!--Receiver-->
+                <Grid Height="25" Margin="10 10 10 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Receiver: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
+                    <TextBox  Grid.Column="1" Margin="10 0 10 0"/>
+                    <Button Grid.Column="2" Content="From profile" FontWeight="Bold" Foreground="Gray" >
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+
+                <!--Delivery Address-->
+                <Grid Height="25" Margin="10 10 10 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Delivery Address: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
+                    <TextBox  Grid.Column="1" Margin="10 0 10 0"/>
+                    <Button Grid.Column="2" Content="From profile" FontWeight="Bold" Foreground="Gray" >
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+
+                <!--Bank Card-->
+                <Grid Height="25" Margin="10 30 10 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Bank card details:" Grid.Column="1"  HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="#555555"/>
+                    <Button Grid.Column="2" Content="From profile" FontWeight="Bold" Foreground="Gray" >
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+
+                <Grid Height="25" Margin="10 20 10 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Card Number: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
+                    <TextBox  Grid.Column="1" Margin="10 0 10 0"/>
+                </Grid>
+                <Grid Height="25" Margin="10 10 10 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Expiration date: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
+                    <TextBox  Grid.Column="1" Margin="10 0 10 0"/>
+                </Grid>
+                <Grid Height="25" Margin="10 10 10 15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Holder: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
+                    <TextBox  Grid.Column="1" Margin="10 0 10 0"/>
+                </Grid>
+
+                <Button Name="PayButton" Click="PayButton_Click" Content="Pay" FontWeight="Bold" Foreground="Gray" Width="95" Height="25">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                    </Button.Effect>
+                </Button>
+                
+            </StackPanel>
+            
+        </StackPanel>
+    </ScrollViewer>
+    
 </Window>
