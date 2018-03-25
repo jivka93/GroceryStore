@@ -1,4 +1,5 @@
 ﻿using DTO;
+using System;
 using System.Collections.Generic;
 
 namespace Services.Contacts
@@ -20,7 +21,7 @@ namespace Services.Contacts
             string lastName = null,
             string address = null,
             string bankCardNumber = null,
-            string expDate = null,
+            DateTime? expDate = null,
             string cardName = null);
     }
 }

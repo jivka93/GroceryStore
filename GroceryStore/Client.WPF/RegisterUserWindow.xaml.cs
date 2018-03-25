@@ -3,7 +3,9 @@ using Common;
 using DAL;
 using DAL.Migrations;
 using Services.Contacts;
+using System;
 using System.Data.Entity;
+using System.Globalization;
 using System.Reflection;
 using System.Windows;
 
@@ -29,7 +31,7 @@ namespace Client.WPF
             var lastName = this.LastnameTextBox.Text.Trim();
             var address = this.AddressTextBox.Text.Trim();
             var cardNumber = this.CardNumberTextBox.Text.Trim();
-            var expDate = this.ExpDateTextBox.Text.Trim();
+            DateTime? expDate = DateTime.ParseExact(this.ExpDateTextBox.Text.Trim(),"MM-yyyy", CultureInfo.InvariantCulture);
             var cardName = this.CardNameTextBox.Text.Trim();
 
             bool result = this.userservice.RegisterUser(userName,password,phoneNumber, 

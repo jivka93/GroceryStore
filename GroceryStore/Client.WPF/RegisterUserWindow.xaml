@@ -36,7 +36,7 @@
         <TextBlock Text="Number"  Margin="20 0 20 0" FontWeight="Medium" />
         <TextBox  x:Name="CardNumberTextBox" Margin="20 0 20 0" />
 
-        <TextBlock Text="Expiration date [dd-mm-yyyy]"  Margin="20 5 20 0" FontWeight="Medium" />
+        <TextBlock Text="Expiration date [mm-yyyy]"  Margin="20 5 20 0" FontWeight="Medium" />
         <TextBox  x:Name="ExpDateTextBox" Margin="20 0 20 0" />
 
         <TextBlock Text="Holder name"  Margin="20 5 20 0" FontWeight="Medium" />
