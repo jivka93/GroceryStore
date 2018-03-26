@@ -30,7 +30,7 @@ namespace Client.WPF
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
             this.container = builder.Build();
-
+            this.container.Resolve<IOrderService>();
             FillCategories();
         }
 
@@ -101,9 +101,11 @@ namespace Client.WPF
             {
                 var shoppingCart = this.container.Resolve<IShoppingCart>();
                 var productService = this.container.Resolve<IProductService>();
+                var user = this.container.Resolve<IUserService>();
+                var order = this.container.Resolve<IOrderService>();
                 var total = this.Total;
 
-                ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser, productService, total);
+                ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser,user,  productService, total, order);
                 op.Show();
             }
         }

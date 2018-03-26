@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
         Title="UserAddressesWindow" Height="300" Width="400">
-    <Grid Name ="Addresses" Margin="8,10,2,0" Height="35" VerticalAlignment="Top">
+    <Grid Margin="8,10,2,0" Height="35" VerticalAlignment="Top">
         
         <Grid>
         <Grid.ColumnDefinitions>

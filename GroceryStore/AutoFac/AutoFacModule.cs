@@ -15,6 +15,7 @@ namespace AutoFac
             builder.RegisterType<GroceryStoreContext>().As<IGroceryStoreContext>().InstancePerLifetimeScope();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerLifetimeScope();
+            builder.RegisterType<OrderService>().As<IOrderService>().InstancePerLifetimeScope();
 
             builder.Register(x => Mapper.Instance);
 

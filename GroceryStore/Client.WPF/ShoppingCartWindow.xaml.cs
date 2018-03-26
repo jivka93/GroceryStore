@@ -1,4 +1,8 @@
-﻿using Services.Contacts;
+﻿using DTO;
+using Services.Contacts;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,9 +15,11 @@ namespace Client.WPF
         private IUserContext loggedUser;
         private IProductService productService;
         private TextBlock total;
+        private IOrderService orederServise;
         private IUserService user;
+        private IList<TextBox> cardDetails;
 
-        public ShoppingCartWindow(IShoppingCart shoppingCart, IUserContext loggedUser, IUserService user, IProductService productService, TextBlock total)
+        public ShoppingCartWindow(IShoppingCart shoppingCart, IUserContext loggedUser, IUserService user, IProductService productService, TextBlock total, IOrderService orederServise)
         {
             InitializeComponent();
 
@@ -22,7 +28,8 @@ namespace Client.WPF
             this.user = user;
             this.productService = productService;
             this.total = total;
-
+            this.orederServise = orederServise;
+            this.cardDetails = new List<TextBox>();
             FillInfo();
         }
 
@@ -34,6 +41,9 @@ namespace Client.WPF
         private void FinishBtn_Click(object sender, RoutedEventArgs e)
         {
             this.DeliveryDetails.Visibility = Visibility.Visible;
+            this.cardDetails.Add(this.NumberForm);
+            this.cardDetails.Add(this.ExpDateForm);
+            this.cardDetails.Add(this.HolderForm);
         }
 
         private void ContinueBtn_Click(object sender, RoutedEventArgs e)
@@ -50,6 +60,11 @@ namespace Client.WPF
 
         private void PayButton_Click(object sender, RoutedEventArgs e)
         {
+            int userId = this.loggedUser.LoggedUserId.Value;
+            decimal total = this.shoppingCart.Total;
+            DateTime date = DateTime.Now;
+            var products = this.shoppingCart.Products;
+            string status = "Approved";
 
         }
 
@@ -76,6 +91,10 @@ namespace Client.WPF
             op.Show();
         }
 
-
+        private void FromProfileBtnBankCard_Click(object sender, RoutedEventArgs e)
+        {
+            BankCardSelectionWindow op = new BankCardSelectionWindow(this.loggedUser, this.user, this.cardDetails);
+            op.Show();
+        }
     }
 }
