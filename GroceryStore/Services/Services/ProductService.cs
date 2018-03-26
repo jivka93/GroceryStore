@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Bytes2you.Validation;
 using DAL.Contracts;
 using DTO;
 using Models;
@@ -15,6 +16,7 @@ namespace Services
 
         public ProductService(IEfGenericRepository<Product> productsRepo, IMapper mapper)
         {
+            Guard.WhenArgument(productsRepo, "productRepo").IsNull().Throw();
             this.productsRepo = productsRepo;
         }
 
@@ -25,6 +27,7 @@ namespace Services
 
         public IEnumerable<ProductModel> SearchByName(string productName)
         {
+            Guard.WhenArgument(productName, "productName").IsNullOrEmpty().Throw();
             return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Name.ToUpper().Contains(productName.ToUpper()));
         }
 
@@ -35,6 +38,7 @@ namespace Services
 
         public IEnumerable<ProductModel> SearchByCategory(string categoryName)
         {
+            Guard.WhenArgument(categoryName, "categoryName").IsNullOrEmpty().Throw();
             return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Category == categoryName);
         }
     }
