@@ -105,11 +105,11 @@ namespace Services
             }
         }
 
-        public void UpdatePassword(int id, string password)
+        public void UpdatePassword(int userId, string password)
         {
             Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
 
-            var user = this.usersRepo.All.Where(x => x.Id == id).FirstOrDefault();
+            var user = this.usersRepo.All.Where(x => x.Id == userId).FirstOrDefault();
             var newPassword = hashing.GetSHA1HashData(password);
             user.Password = newPassword;
 

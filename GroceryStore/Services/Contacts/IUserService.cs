@@ -12,7 +12,7 @@ namespace Services.Contacts
 
         UserModel GetSpecificUser(int userId);
 
-        void UpdatePassword(int id, string password);
+        void UpdatePassword(int userId, string password);
 
         void UpdateProfileInfo(int id, string firstName = null, string lastName = null, string phone = null);
 

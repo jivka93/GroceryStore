@@ -1,5 +1,4 @@
-﻿using Models;
-using Services.Contacts;
+﻿using Services.Contacts;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -67,7 +66,19 @@ namespace Client.WPF
 
         private void SaveNewBtn_Click(object sender, RoutedEventArgs e)
         {
+            string newAddress = this.NewAddress.Text.Trim();
 
+            if (newAddress == null || newAddress == string.Empty)
+            {
+                MessageBoxResult message = MessageBox
+                    .Show("Invalid address", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                this.addressService.AddNewAddress(newAddress, (int)this.userContext.LoggedUserId);
+                MessageBoxResult message = MessageBox
+                    .Show("Address is saved successfully", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
     }
