@@ -1,6 +1,4 @@
-﻿using DTO;
-
-namespace Services.Contacts
+﻿namespace Services.Contacts
 {
     public interface IAddressService
     {

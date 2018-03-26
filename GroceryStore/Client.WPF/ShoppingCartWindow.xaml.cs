@@ -27,6 +27,7 @@ namespace Client.WPF
         private void FillInfo()
         {
             this.ProductsContent.ItemsSource = this.shoppingCart.Products;
+            this.Total.Text = $"{this.shoppingCart.Total:F2} $";
         }
 
         private void FinishBtn_Click(object sender, RoutedEventArgs e)

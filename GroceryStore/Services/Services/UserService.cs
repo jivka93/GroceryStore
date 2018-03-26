@@ -46,7 +46,6 @@ namespace Services
             return this.usersRepo.All.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
         }
 
-
         public bool RegisterUser
             (string userName, string password, string phoneNumber, 
             string firstName = null, 
