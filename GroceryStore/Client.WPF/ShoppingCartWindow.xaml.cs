@@ -58,6 +58,7 @@ namespace Client.WPF
             var product = this.productService.SearchById(productId).FirstOrDefault();
 
             shoppingCart.RemoveProduct(product);
+            this.total.Text = $"{shoppingCart.Total:F2} $";
 
             FillInfo();
         }
