@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DAL.Contracts;
+using DTO;
 using Models;
 using Services.Contacts;
 using System;
@@ -13,6 +14,11 @@ namespace Services
     public class BankCardService: IBankCardService
     {
         public BankCardService(IEfGenericRepository<BankCard> bankCardRepo, IMapper mapper)
+        {
+
+        }
+
+        public void GetUserBankCards(UserModel user)
         {
 
         }

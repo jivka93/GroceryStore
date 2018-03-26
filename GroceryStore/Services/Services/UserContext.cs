@@ -44,8 +44,8 @@ namespace Services
 
         public User CheckLogin(string username, string password)
         {
-            Guard.WhenArgument(username, "userName").IsNotNullOrEmpty().Throw();
-            Guard.WhenArgument(password, "password").IsNotNullOrEmpty().Throw();
+            Guard.WhenArgument(username, "userName").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
             var hashedPassword = hashing.GetSHA1HashData(password);
 
             var user = this.usersRepo.All
