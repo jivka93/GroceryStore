@@ -91,13 +91,21 @@ namespace Client.WPF
         {
 
             var loggedUser = this.container.Resolve<IUserContext>();
-            var shoppingCart = this.container.Resolve<IShoppingCart>();
-            var productService = this.container.Resolve<IProductService>();
-            var user = this.container.Resolve<IUserService>();
-            var total = this.Total;
 
-            ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser,user, productService, total );
-            op.Show();
+            if (loggedUser.LoggedUserId == null)
+            {
+                MessageBoxResult result = MessageBox
+                    .Show("Please LOGIN first!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                var shoppingCart = this.container.Resolve<IShoppingCart>();
+                var productService = this.container.Resolve<IProductService>();
+                var total = this.Total;
+
+                ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser, productService, total);
+                op.Show();
+            }
         }
 
         private void FillCategories()
@@ -117,17 +125,13 @@ namespace Client.WPF
             cmbCategories.ItemsSource = categories;
         }
 
-
         private void SearchBar_Enter(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 var productService = this.container.Resolve<IProductService>();
-                var products = productService.SearchByName(searchBar.Text);
-                foreach (var item in products)
-                {
-                    this.Title = item.Price.ToString();
-                }
+                var products = productService.SearchByName(searchBar.Text).ToList();
+                ProductsContent.ItemsSource = products;
             }
         }
 
