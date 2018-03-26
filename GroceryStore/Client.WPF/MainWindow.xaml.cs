@@ -129,11 +129,8 @@ namespace Client.WPF
             if (e.Key == Key.Enter)
             {
                 var productService = this.container.Resolve<IProductService>();
-                var products = productService.SearchByName(searchBar.Text);
-                foreach (var item in products)
-                {
-                    this.Title = item.Price.ToString();
-                }
+                var products = productService.SearchByName(searchBar.Text).ToList();
+                ProductsContent.ItemsSource = products;
             }
         }
 
