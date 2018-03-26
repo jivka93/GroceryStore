@@ -24,7 +24,8 @@ namespace Services.Contacts
 
         public void Add(OrderModel order)
         {
-            this.orderRepo.Add(mapper.Map<Order>(order));
+            var mapped = mapper.Map<Order>(order);
+            this.orderRepo.Add(mapped);
         }
 
         public ICollection<OrderModel> GetAllById(int id)
