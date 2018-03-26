@@ -82,9 +82,6 @@
     <Compile Include="BankCardDetailsWindow.xaml.cs">
       <DependentUpon>BankCardDetailsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BankCardSelectionWindow.xaml.cs">
-      <DependentUpon>BankCardSelectionWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="BankCardsWindow.xaml.cs">
       <DependentUpon>BankCardsWindow.xaml</DependentUpon>
     </Compile>
@@ -103,18 +100,11 @@
     <Compile Include="ShoppingCartWindow.xaml.cs">
       <DependentUpon>ShoppingCartWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserAddressesWindow.xaml.cs">
-      <DependentUpon>UserAddressesWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="AddressesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BankCardDetailsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="BankCardSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -33,6 +33,7 @@ namespace Client.WPF
                 }
 
                 // Filling:
+
                 this.BankCardsContent.ItemsSource = userModel.BankCards;
                 this.BankCardsContent.DataContext = userModel.BankCards;
             }

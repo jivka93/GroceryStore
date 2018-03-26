@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using Bytes2you.Validation;
+using DTO;
 using Services.Contacts;
 using System.Collections.Generic;
 
@@ -30,11 +31,13 @@ namespace Services.Services
 
         public void AddProduct(ProductModel product)
         {
+            Guard.WhenArgument(product, "product").IsNull().Throw();
             this.products.Add(product);
         }
 
         public void RemoveProduct(ProductModel product)
         {
+            Guard.WhenArgument(product, "product").IsNull().Throw();
             this.products.Remove(product);
         }
 

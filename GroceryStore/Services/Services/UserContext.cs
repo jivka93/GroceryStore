@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Bytes2you.Validation;
 using DAL;
 using DAL.Contracts;
 using Models;
@@ -17,6 +18,8 @@ namespace Services
 
         public UserContext(IEfGenericRepository<User> usersRepo, IMapper mapper, IHashingPassword hashing) 
         {
+            Guard.WhenArgument(usersRepo, "userRepo").IsNull().Throw();
+            Guard.WhenArgument(hashing, "hashing").IsNull().Throw();
             this.usersRepo = usersRepo;
             this.mapper = mapper;
             this.hashing = hashing;
@@ -41,6 +44,8 @@ namespace Services
 
         public User CheckLogin(string username, string password)
         {
+            Guard.WhenArgument(username, "userName").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
             var hashedPassword = hashing.GetSHA1HashData(password);
 
             var user = this.usersRepo.All

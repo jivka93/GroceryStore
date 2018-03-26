@@ -83,7 +83,8 @@ namespace Client.WPF
         {
             var userContext = this.container.Resolve<IUserContext>();
             var userservice = this.container.Resolve<IUserService>();
-            MyProfile op = new MyProfile(userContext, userservice);
+            var addressService = this.container.Resolve<IAddressService>();
+            MyProfile op = new MyProfile(userContext, userservice, addressService);
             op.Show();           
         }
 
@@ -101,11 +102,9 @@ namespace Client.WPF
             {
                 var shoppingCart = this.container.Resolve<IShoppingCart>();
                 var productService = this.container.Resolve<IProductService>();
-                var user = this.container.Resolve<IUserService>();
-                var order = this.container.Resolve<IOrderService>();
                 var total = this.Total;
 
-                ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser,user,  productService, total, order);
+                ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser, productService, total);
                 op.Show();
             }
         }
