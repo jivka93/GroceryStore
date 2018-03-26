@@ -1,4 +1,7 @@
-﻿using Services.Contacts;
+﻿using DTO;
+using Services.Contacts;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,10 +13,12 @@ namespace Client.WPF
         private IShoppingCart shoppingCart;
         private IUserContext loggedUser;
         private IProductService productService;
+        private IOrderService order;
         private TextBlock total;
+        private List<TextBox> cardInfo;
         private IUserService user;
 
-        public ShoppingCartWindow(IShoppingCart shoppingCart, IUserContext loggedUser, IUserService user, IProductService productService, TextBlock total)
+        public ShoppingCartWindow(IShoppingCart shoppingCart, IUserContext loggedUser, IUserService user, IProductService productService, IOrderService order, TextBlock total)
         {
             InitializeComponent();
 
@@ -21,8 +26,9 @@ namespace Client.WPF
             this.loggedUser = loggedUser;
             this.user = user;
             this.productService = productService;
+            this.order = order;
             this.total = total;
-
+            this.cardInfo = new List<TextBox>();
             FillInfo();
         }
 
@@ -50,7 +56,21 @@ namespace Client.WPF
 
         private void PayButton_Click(object sender, RoutedEventArgs e)
         {
-
+            DateTime dateadded = DateTime.Now;
+            decimal total = this.shoppingCart.Total;
+            string status = "Approved";
+            int userid = this.loggedUser.LoggedUserId.Value;
+            var products = this.shoppingCart.Products;
+            var orderToBeAdded = new OrderModel
+            {
+                Date = dateadded,
+                Total = total,
+                Status = status,
+                UserId = userid,
+                Products = products,
+            };
+            order.Add(orderToBeAdded);
+            this.Close();
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -76,6 +96,13 @@ namespace Client.WPF
             op.Show();
         }
 
-
+        private void FromProfileCard_Click(object sender, RoutedEventArgs e)
+        {
+            cardInfo.Add(this.NumberForm);
+            cardInfo.Add(this.ExpDateForm);
+            cardInfo.Add(this.HolderForm);
+            BankCardSelectionWindow op = new BankCardSelectionWindow(this.loggedUser, this.user, this.cardInfo);
+            op.Show();
+        }
     }
 }

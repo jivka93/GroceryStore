@@ -102,9 +102,11 @@ namespace Client.WPF
             {
                 var shoppingCart = this.container.Resolve<IShoppingCart>();
                 var productService = this.container.Resolve<IProductService>();
+                var user = this.container.Resolve<IUserService>();
+                var order = this.container.Resolve<IOrderService>();
                 var total = this.Total;
 
-                ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser, productService, total);
+                ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser, user, productService, order, total);
                 op.Show();
             }
         }

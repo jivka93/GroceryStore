@@ -1,0 +1,49 @@
+﻿<Window x:Class="Client.WPF.BankCardSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client.WPF"
+        mc:Ignorable="d"
+        Title="BankCardSelectionWindow" Height="500" Width="300">
+    <Grid Margin="0,0,0,236">
+        <Grid Margin="0,0,0,118">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Name="FirstNumber" Grid.Row="0" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,0,0,5" />
+            <TextBlock Name="FirstExpDate" Grid.Row="1" Text="asd" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,0,0,10" />
+            <TextBlock Name="FirstName" Grid.Row="2" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,0,0,10" />
+            <Button  Grid.Row="3" Width="100" Content="Select" Click="FirstBtn_Click" FontWeight="Bold" Foreground="Gray" Grid.ColumnSpan="2"/>
+        </Grid>
+
+        <Grid Margin="0,115,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Name="SecondNumber" Grid.Row="0" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,4,0,5" />
+            <TextBlock Name="SecondExpDate" Grid.Row="1" Text="asd" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,0,0,10" />
+            <TextBlock Name="SecondName" Grid.Row="1" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,25,0,14" Grid.RowSpan="2" />
+            <Button  Grid.Row="3" Width="100" Content="Select" Click="SecondBtn_Click" FontWeight="Bold" Foreground="Gray" Grid.ColumnSpan="2"/>
+        </Grid>
+
+        <Grid Margin="0,228,0,-108">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Name="ThirdNumber" Grid.Row="0" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,4,0,5" />
+            <TextBlock Name="ThirdExpDate" Grid.Row="1" Text="asd" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,0,0,10" />
+            <TextBlock Name="ThirdName" Grid.Row="1" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,25,0,14" Grid.RowSpan="2" />
+            <Button  Grid.Row="3" Width="100" Content="Select" Click="ThirdBtn_Click" FontWeight="Bold" Foreground="Gray" Grid.ColumnSpan="2"/>
+        </Grid>
+    </Grid>
+</Window>
