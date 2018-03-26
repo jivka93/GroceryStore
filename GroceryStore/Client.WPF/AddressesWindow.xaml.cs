@@ -1,6 +1,7 @@
 ﻿using Models;
 using Services.Contacts;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Client.WPF
 {
@@ -8,13 +9,15 @@ namespace Client.WPF
     {
         private readonly IUserContext userContext;
         private readonly IUserService userservice;
+        private readonly IAddressService addressService;
 
-        public AddressesWindow(IUserContext userContext, IUserService userservice)
+        public AddressesWindow(IUserContext userContext, IUserService userservice, IAddressService addressService)
         {
             InitializeComponent();
 
             this.userContext = userContext;
             this.userservice = userservice;
+            this.addressService = addressService;
 
             FillInfo();
         }
@@ -39,9 +42,28 @@ namespace Client.WPF
             }
         }
 
-        private void UpdateBtn_Click(object sender, RoutedEventArgs e)
-        {
+        //private void UpdateBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    int addressId = int.Parse(((Button)sender).Tag.ToString());
+        //}
 
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int addressId = int.Parse(((Button)sender).Tag.ToString());
+            var result = this.addressService.DeleteAddressById(addressId);
+
+            if (result)
+            {
+                MessageBoxResult message = MessageBox
+                    .Show("Address deleted successfully", "", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                FillInfo();
+            }
+            else
+            {
+                MessageBoxResult message = MessageBox
+                    .Show("Deleting failed!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void SaveNewBtn_Click(object sender, RoutedEventArgs e)

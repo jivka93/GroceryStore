@@ -44,6 +44,7 @@ namespace DAL
         {
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Deleted;
+            Context.SaveChanges();
         }
 
         public T GetById(object id)
