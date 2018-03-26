@@ -35,6 +35,7 @@ namespace Client.WPF
         private void FillInfo()
         {
             this.ProductsContent.ItemsSource = this.shoppingCart.Products;
+            this.Total.Text = $"{this.shoppingCart.Total:F2} $";
         }
 
         private void FinishBtn_Click(object sender, RoutedEventArgs e)
@@ -79,6 +80,7 @@ namespace Client.WPF
             var product = this.productService.SearchById(productId).FirstOrDefault();
 
             shoppingCart.RemoveProduct(product);
+            this.total.Text = $"{shoppingCart.Total:F2} $";
 
             FillInfo();
         }

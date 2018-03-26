@@ -1,10 +1,8 @@
-﻿using DTO;
-
-namespace Services.Contacts
+﻿namespace Services.Contacts
 {
     public interface IAddressService
     {
-        AddressModel FindAddressById(int addressId);
+        void AddNewAddress(string addressText, int userId);
 
         bool DeleteAddressById(int addressId);
     }

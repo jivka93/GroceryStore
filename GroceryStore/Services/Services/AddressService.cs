@@ -10,18 +10,26 @@ namespace Services
     {
         private readonly IEfGenericRepository<Address> addressRepo;
         private readonly IMapper mapper;
+        private readonly IUserService userService;
 
-        public AddressService(IEfGenericRepository<Address> addressRepo, IMapper mapper)
+        public AddressService(IEfGenericRepository<Address> addressRepo, IMapper mapper, IUserService userService)
         {
             this.addressRepo = addressRepo;
             this.mapper = mapper;
+            this.userService = userService;
         }
 
-        public AddressModel FindAddressById(int addressId)
+        public void AddNewAddress(string addressText, int userId)
         {
-            var address = this.addressRepo.GetById(addressId);
-            var addressDTO = mapper.Map<AddressModel>(address);
-            return addressDTO;
+            var user = this.userService.GetSpecificUser(userId);
+
+            AddressModel addressDTO = new AddressModel()
+            {
+                AddressText = addressText,
+                UserId = userId
+            };
+
+            this.addressRepo.Add(this.mapper.Map<Address>(addressDTO));
         }
 
         public bool DeleteAddressById(int addressId)
@@ -37,5 +45,7 @@ namespace Services
                 return false;
             }
         }
+
+
     }
 }

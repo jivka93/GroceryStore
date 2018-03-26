@@ -1,12 +1,6 @@
-﻿using Autofac;
-using Common;
-using DAL;
-using DAL.Migrations;
-using Services.Contacts;
+﻿using Services.Contacts;
 using System;
-using System.Data.Entity;
 using System.Globalization;
-using System.Reflection;
 using System.Windows;
 
 namespace Client.WPF

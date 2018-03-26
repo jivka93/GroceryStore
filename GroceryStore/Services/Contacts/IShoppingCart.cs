@@ -5,7 +5,7 @@ namespace Services.Contacts
 {
     public interface IShoppingCart
     {
-        ICollection<ProductModel> Products { get; set; }
+        IList<ProductModel> Products { get; set; }
 
         decimal Total { get; }
 
