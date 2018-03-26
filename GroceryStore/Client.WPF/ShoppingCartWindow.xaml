@@ -85,8 +85,8 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Receiver: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
-                    <TextBox  Grid.Column="1" Margin="10 0 10 0"/>
-                    <Button Grid.Column="2" Content="From profile" FontWeight="Bold" Foreground="Gray" >
+                    <TextBox Name="RecieverName" Grid.Column="1" Margin="10 0 10 0"/>
+                    <Button Grid.Column="2" Content="From profile" Click ="FromProfileBtnReceiver_Click" FontWeight="Bold" Foreground="Gray" >
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                         </Button.Effect>
@@ -101,8 +101,8 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Delivery Address: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
-                    <TextBox  Grid.Column="1" Margin="10 0 10 0"/>
-                    <Button Grid.Column="2" Content="From profile" FontWeight="Bold" Foreground="Gray" >
+                    <TextBox Name="AddressForm" Grid.Column="1" Margin="10 0 10 0"/>
+                    <Button Grid.Column="2" Content="From profile" Click="FromProfileBtnAddress_Click" FontWeight="Bold" Foreground="Gray" >
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                         </Button.Effect>

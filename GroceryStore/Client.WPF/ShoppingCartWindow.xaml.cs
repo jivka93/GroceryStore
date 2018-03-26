@@ -11,13 +11,15 @@ namespace Client.WPF
         private IUserContext loggedUser;
         private IProductService productService;
         private TextBlock total;
+        private IUserService user;
 
-        public ShoppingCartWindow(IShoppingCart shoppingCart, IUserContext loggedUser, IProductService productService, TextBlock total)
+        public ShoppingCartWindow(IShoppingCart shoppingCart, IUserContext loggedUser, IUserService user, IProductService productService, TextBlock total)
         {
             InitializeComponent();
 
             this.shoppingCart = shoppingCart;
             this.loggedUser = loggedUser;
+            this.user = user;
             this.productService = productService;
             this.total = total;
 
@@ -60,5 +62,20 @@ namespace Client.WPF
 
             FillInfo();
         }
+
+        private void FromProfileBtnReceiver_Click(object sender, RoutedEventArgs e)
+        {
+            var userNameToDisplay = this.user.GetSpecificUser(this.loggedUser.LoggedUserId.Value).FirstName + " " + this.user.GetSpecificUser(this.loggedUser.LoggedUserId.Value).LastName;
+            this.RecieverName.Text = userNameToDisplay;
+        }
+
+        private void FromProfileBtnAddress_Click(object sender, RoutedEventArgs e)
+        {
+            TextBox addressForm = this.AddressForm;
+            UserAddressesWindow op = new UserAddressesWindow(this.user, this.loggedUser, addressForm);
+            op.Show();
+        }
+
+
     }
 }
