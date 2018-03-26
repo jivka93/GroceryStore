@@ -35,17 +35,16 @@ namespace Client.WPF
                 {
                     this.AddNew.Visibility = Visibility.Collapsed;
                 }
+                else
+                {
+                    this.AddNew.Visibility = Visibility.Visible;
+                }
 
                 // Filling:
                 this.AddressesContent.ItemsSource = userModel.Adresses;
                 this.AddressesContent.DataContext = userModel.Adresses;
             }
         }
-
-        //private void UpdateBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    int addressId = int.Parse(((Button)sender).Tag.ToString());
-        //}
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
