@@ -61,8 +61,7 @@ namespace Client.WPF
                 this.LastNameText.Text = userModel.LastName;
                 this.PhoneText.Text = userModel.PhoneNumber;
 
-                //this.AddressesContent.ItemsSource = userModel.Adresses;
-                this.AddressesContent.DataContext = userModel.Adresses;
+                this.AddressesContent.ItemsSource = userModel.Adresses;
                 this.BankCardsContent.ItemsSource = userModel.BankCards;
             }
         }
