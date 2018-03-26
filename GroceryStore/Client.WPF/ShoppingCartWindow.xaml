@@ -118,7 +118,7 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Bank card details:" Grid.Column="1"  HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="#555555"/>
-                    <Button Grid.Column="2" Content="From profile" Click="FromProfileBtnBankCard_Click" FontWeight="Bold" Foreground="Gray" >
+                    <Button Grid.Column="2" Content="From profile" FontWeight="Bold" Foreground="Gray" >
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                         </Button.Effect>
@@ -131,7 +131,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Card Number: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
-                    <TextBox Name="NumberForm" Grid.Column="1" Margin="10 0 10 0"/>
+                    <TextBox  Grid.Column="1" Margin="10 0 10 0"/>
                 </Grid>
                 <Grid Height="25" Margin="10 10 10 0">
                     <Grid.ColumnDefinitions>
@@ -139,7 +139,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Expiration date: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
-                    <TextBox Name="ExpDateForm" Grid.Column="1" Margin="10 0 10 0"/>
+                    <TextBox  Grid.Column="1" Margin="10 0 10 0"/>
                 </Grid>
                 <Grid Height="25" Margin="10 10 10 15">
                     <Grid.ColumnDefinitions>
@@ -147,7 +147,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Holder: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
-                    <TextBox Name="HolderForm" Grid.Column="1" Margin="10 0 10 0"/>
+                    <TextBox  Grid.Column="1" Margin="10 0 10 0"/>
                 </Grid>
 
                 <Button Name="PayButton" Click="PayButton_Click" Content="Pay" FontWeight="Bold" Foreground="Gray" Width="95" Height="25">

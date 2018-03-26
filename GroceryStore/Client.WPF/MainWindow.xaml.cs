@@ -30,7 +30,7 @@ namespace Client.WPF
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
             this.container = builder.Build();
-            this.container.Resolve<IOrderService>();
+
             FillCategories();
         }
 
