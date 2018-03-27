@@ -13,13 +13,13 @@ namespace Services
 {
     public class BankCardService: IBankCardService
     {
-        private readonly IEfGenericRepository<BankCard> bankCardRepo;
+        private readonly IEfUnitOfWork unitOfWork;
         private readonly IMapper mapper;
         private readonly IUserService userService;
 
-        public BankCardService(IEfGenericRepository<BankCard> bankCardRepo, IMapper mapper, IUserService userService)
+        public BankCardService(IEfUnitOfWork unitOfWork, IMapper mapper, IUserService userService)
         {
-            this.bankCardRepo = bankCardRepo;
+            this.unitOfWork = unitOfWork;
             this.mapper = mapper;
             this.userService = userService;
         }
@@ -36,15 +36,17 @@ namespace Services
                 UserId = userId
             };
 
-            this.bankCardRepo.Add(this.mapper.Map<BankCard>(bankCardDTO));
+            unitOfWork.BankCards.Add(this.mapper.Map<BankCard>(bankCardDTO));
+            unitOfWork.SaveChanges();
         }
 
         public bool DeleteCardById(int cardId)
         {
             try
             {
-                var card = this.bankCardRepo.GetById(cardId);
-                this.bankCardRepo.Delete(card);
+                var card = unitOfWork.BankCards.GetById(cardId);
+                unitOfWork.BankCards.Delete(card);
+                unitOfWork.SaveChanges();
                 return true;
             }
             catch (System.Exception)

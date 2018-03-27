@@ -8,13 +8,13 @@ namespace Services
 {
     public class AddressService: IAddressService
     {
-        private readonly IEfGenericRepository<Address> addressRepo;
+        private readonly IEfUnitOfWork unitOfWork;
         private readonly IMapper mapper;
         private readonly IUserService userService;
 
-        public AddressService(IEfGenericRepository<Address> addressRepo, IMapper mapper, IUserService userService)
+        public AddressService(IEfUnitOfWork unitOfWork, IMapper mapper, IUserService userService)
         {
-            this.addressRepo = addressRepo;
+            this.unitOfWork = unitOfWork;
             this.mapper = mapper;
             this.userService = userService;
         }
@@ -29,15 +29,18 @@ namespace Services
                 UserId = userId
             };
 
-            this.addressRepo.Add(this.mapper.Map<Address>(addressDTO));
+            unitOfWork.Addresses.Add(this.mapper.Map<Address>(addressDTO));
+            unitOfWork.SaveChanges();
+
         }
 
         public bool DeleteAddressById(int addressId)
         {
             try
             {
-                var address = this.addressRepo.GetById(addressId);
-                this.addressRepo.Delete(address);
+                var address = this.unitOfWork.Addresses.GetById(addressId);
+                unitOfWork.Addresses.Delete(address);
+                unitOfWork.SaveChanges();
                 return true;
             }
             catch (System.Exception)
