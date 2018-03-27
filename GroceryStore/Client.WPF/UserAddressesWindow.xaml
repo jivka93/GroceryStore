@@ -18,7 +18,7 @@
         <!--Title-->
         <TextBlock Text="Your addresses" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 0 0 25" Foreground="White"/>
 
-        <Grid Name="Address1" Margin="0 0 0 30" Visibility="Visible">
+        <Grid Name="Address1" Margin="0 0 0 30" Visibility="Collapsed">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
@@ -31,7 +31,7 @@
             </Button>
         </Grid>
 
-        <Grid Name="Address2" Margin="0 0 0 30" Visibility="Visible">
+        <Grid Name="Address2" Margin="0 0 0 30" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="1*"/>
@@ -44,7 +44,7 @@
             </Button>
         </Grid>
 
-        <Grid Name="Address3" Margin="0 0 0 10" Visibility="Visible">
+        <Grid Name="Address3" Margin="0 0 0 10" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="1*"/>

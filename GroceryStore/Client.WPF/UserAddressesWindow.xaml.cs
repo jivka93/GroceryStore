@@ -39,14 +39,17 @@ namespace Client.WPF
             if (addresses.Count > 0)
             {
                 this.FirstAddress.Text = addresses[0].AddressText;
+                this.Address1.Visibility = Visibility.Visible;
             }
             if (addresses.Count > 1)
             {
                 this.SecondAddress.Text = addresses[1].AddressText;
+                this.Address2.Visibility = Visibility.Visible;
             }
             if (addresses.Count > 2)
             {
                 this.ThirdAddress.Text = addresses[2].AddressText;
+                this.Address3.Visibility = Visibility.Visible;
             }
         }
 
