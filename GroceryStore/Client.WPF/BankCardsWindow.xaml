@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
-        Width="350"
+        Width="450"
         Foreground="LightGray"
         FontWeight="Bold"
         SizeToContent="Height"
@@ -22,17 +22,15 @@
         <ItemsControl Name="BankCardsContent" >
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="20 10 0 0">
+                    <Grid Margin="20 10 20 30">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding Number}" Grid.Column="0" FontWeight="Light" Margin="20 0 5 5" Visibility="Visible"/>
                         <TextBlock Text="{Binding ExpDateAsString}" Grid.Column="1" FontWeight="Light" Margin="0 0 20 5" Visibility="Visible" />
-                        <TextBox Text="{Binding Number}" Grid.Column="0" FontWeight="Light" Margin="20 0 5 5" Visibility="Collapsed" />
-                        <TextBox Text="{Binding ExpDateAsString}" Grid.Column="1" FontWeight="Light" Margin="0 0 20 5" Visibility="Collapsed" />
-                        <Button Name="UpdateBtn" Click="UpdateBtn_Click" Grid.Column="2" Content="Update" FontSize="13"  Width="80" Height="20" VerticalAlignment="Bottom">
+                        <Button Name="RemoveBtn" Tag="{Binding Id}" Click="RemoveBtn_Click" Grid.Column="2" Content="Delete" FontSize="13"  Width="80" Height="20" VerticalAlignment="Bottom">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                             </Button.Effect>
@@ -46,13 +44,13 @@
             <!--Add New-->
             <TextBlock Text="Add new card"  HorizontalAlignment="Center"/>
             <TextBlock Text="Number"  Margin="20 0 20 0" FontWeight="Medium" />
-            <TextBox  x:Name="CardNumberTextBox" Foreground="#555555" Margin="20 0 20 0" />
+            <TextBox  x:Name="NewCardNumber" Foreground="#555555" Margin="20 0 20 0" />
 
             <TextBlock Text="Expiration date [mm-yyyy]"  Margin="20 5 20 0" FontWeight="Medium" />
-            <TextBox  x:Name="ExpDateTextBox" Foreground="#555555" Margin="20 0 20 0" />
+            <TextBox  x:Name="NewCardExpDate" Foreground="#555555" Margin="20 0 20 0" />
 
             <TextBlock Text="Holder name"  Margin="20 5 20 0" FontWeight="Medium" />
-            <TextBox  x:Name="CardNameTextBox" Foreground="#555555" Margin="20 0 20 30" />
+            <TextBox  x:Name="NewCardName" Foreground="#555555" Margin="20 0 20 30" />
 
             <!--Save-->
             <Button x:Name="SaveButton" Click="SaveButton_Click" Foreground="#555555" Content="Save" HorizontalAlignment="Center" Width="100">

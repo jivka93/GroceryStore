@@ -85,6 +85,8 @@ namespace Client.WPF
             MessageBoxResult result = MessageBox
                 .Show("Your order is approved!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
+            this.shoppingCart.Clear();
+            this.total.Text = $"{shoppingCart.Total:F2} $";
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)

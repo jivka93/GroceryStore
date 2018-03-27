@@ -12,14 +12,16 @@ namespace Client.WPF
         private readonly IUserContext userContext;
         private readonly IUserService userservice;
         private readonly IAddressService addressService;
+        private readonly IBankCardService bankCardService;
 
-        public MyProfile(IUserContext userContext, IUserService userservice, IAddressService addressService)
+        public MyProfile(IUserContext userContext, IUserService userservice, IAddressService addressService, IBankCardService bankCardService)
         {
             InitializeComponent();
 
             this.userContext = userContext;
             this.userservice = userservice;
             this.addressService = addressService;
+            this.bankCardService = bankCardService;
 
             FillUserInfo();
         }
@@ -158,7 +160,7 @@ namespace Client.WPF
 
         private void UpdateCardsBtn_Click(object sender, RoutedEventArgs e)
         {
-            BankCardsWindow op = new BankCardsWindow(this.userContext, this.userservice);
+            BankCardsWindow op = new BankCardsWindow(this.userContext, this.userservice, this.bankCardService);
             op.Show();
         }
 
