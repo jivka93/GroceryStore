@@ -29,7 +29,6 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding AddressText}" Grid.Column="0" FontWeight="Light" Margin="20 0 5 5" Visibility="Visible"/>
                         <TextBox Text="{Binding AddressText}" Grid.Column="0" FontWeight="Light" Margin="20 0 5 5" Visibility="Collapsed" />
-                        <!--<Button Name="UpdateBtn" Tag="{Binding Id}" Click="UpdateBtn_Click" Grid.Column="1" Content="Update" FontSize="13"  Width="80" Height="20" VerticalAlignment="Center">-->
                         <Button Name="DeleteBtn" Tag="{Binding Id}" Click="DeleteBtn_Click" Grid.Column="1" Content="Delete" FontSize="13"  Width="80" Height="20" VerticalAlignment="Center">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>

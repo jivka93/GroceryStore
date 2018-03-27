@@ -33,7 +33,10 @@ namespace Client.WPF
             this.container = builder.Build();
 
             // Read products from JSON
-            //ReadJsonFile();
+            if (this.context.Products.Count() == 0)
+            {
+                ReadJsonFile("C:/Users/Jivka/Desktop/products.json");
+            }
 
             FillCategories();
         }
@@ -188,10 +191,10 @@ namespace Client.WPF
             this.Total.Text = $"{shoppingCart.Total:F2} $";
         }
 
-        private void ReadJsonFile()
+        private void ReadJsonFile(string fileLocation)
         {
             var reader = this.container.Resolve<JsonFilesReader>();
-            var products = reader.Read();
+            var products = reader.Read(fileLocation);
             var productService = container.Resolve<IProductService>();
             productService.AddProducts(products);
         }
