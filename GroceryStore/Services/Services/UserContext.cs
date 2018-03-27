@@ -15,14 +15,14 @@ namespace Services
         private readonly IEfGenericRepository<User> usersRepo;
         private IMapper mapper;
         private readonly IHashingPassword hashing;
+        private readonly IEfUnitOfWork unitOfWork;
 
-        public UserContext(IEfGenericRepository<User> usersRepo, IMapper mapper, IHashingPassword hashing) 
+        public UserContext(IMapper mapper, IHashingPassword hashing, IEfUnitOfWork unitOfWork) 
         {
-            Guard.WhenArgument(usersRepo, "userRepo").IsNull().Throw();
             Guard.WhenArgument(hashing, "hashing").IsNull().Throw();
-            this.usersRepo = usersRepo;
             this.mapper = mapper;
             this.hashing = hashing;
+            this.unitOfWork = unitOfWork;
         }
 
         public int? LoggedUserId
@@ -48,7 +48,7 @@ namespace Services
             Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
             var hashedPassword = hashing.GetSHA1HashData(password);
 
-            var user = this.usersRepo.All
+            var user = this.unitOfWork.Users.All
                 .Where(x => x.Username == username && x.Password == hashedPassword)
                 .FirstOrDefault();
 

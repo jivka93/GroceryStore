@@ -16,6 +16,7 @@ namespace Client.WPF.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<GroceryStoreContext>().AsSelf().SingleInstance();
+            
 
             // Services
             builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
@@ -35,6 +36,8 @@ namespace Client.WPF.Autofac
             builder.RegisterType<EfGenericRepository<BankCard>>().As<IEfGenericRepository<BankCard>>().InstancePerDependency();
             builder.RegisterType<EfGenericRepository<Order>>().As<IEfGenericRepository<Order>>().InstancePerDependency();
             builder.RegisterType<EfGenericRepository<Inventory>>().As<IEfGenericRepository<Inventory>>().InstancePerDependency();
+
+            builder.RegisterType<EfUnitOfWork>().As<IEfUnitOfWork>().InstancePerDependency();
 
             //DTO Models
             builder.RegisterType<UserModel>().AsSelf();

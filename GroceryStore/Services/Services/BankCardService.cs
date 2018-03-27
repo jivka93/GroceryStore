@@ -13,7 +13,7 @@ namespace Services
 {
     public class BankCardService: IBankCardService
     {
-        public BankCardService(IEfGenericRepository<BankCard> bankCardRepo, IMapper mapper)
+        public BankCardService(IEfUnitOfWork unitOfWork, IMapper mapper)
         {
 
         }

@@ -30,8 +30,7 @@ namespace DAL
         public void Add(T entity)
         {
             var entry = this.Context.Entry(entity);
-            entry.State = EntityState.Added;
-            Context.SaveChanges();            
+            entry.State = EntityState.Added;          
         }
 
         public void Add(ICollection<T> entities)
@@ -42,7 +41,6 @@ namespace DAL
                 entry.State = EntityState.Added;
             }
 
-            Context.SaveChanges();
         }
 
         public void AddOrUpdate(T entity)
@@ -54,7 +52,6 @@ namespace DAL
         {
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Deleted;
-            Context.SaveChanges();
         }
 
         public T GetById(object id)
@@ -66,7 +63,6 @@ namespace DAL
         {
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Modified;
-            Context.SaveChanges();
         }
     }
 }

@@ -14,19 +14,17 @@ namespace Services
 {
     public class ProductService : IProductService
     {
-        private readonly IEfGenericRepository<Product> productsRepo;
+        private readonly IEfUnitOfWork unitOfWork;
         private GroceryStoreContext context;
 
-        public ProductService(IEfGenericRepository<Product> productsRepo, IMapper mapper, GroceryStoreContext context)
+        public ProductService(IEfUnitOfWork unitOfWork, IMapper mapper)
         {
-            Guard.WhenArgument(productsRepo, "productRepo").IsNull().Throw();
-            this.productsRepo = productsRepo;
-            this.context = context;
+            this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<ProductModel> GetAll()
         {
-            return this.productsRepo.All.ProjectTo<ProductModel>();
+            return this.unitOfWork.Products.All.ProjectTo<ProductModel>();
         }
 
         // Used when creating new Order with shoppingCart items
@@ -38,18 +36,18 @@ namespace Services
         public IEnumerable<ProductModel> SearchByName(string productName)
         {
             Guard.WhenArgument(productName, "productName").IsNullOrEmpty().Throw();
-            return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Name.ToUpper().Contains(productName.ToUpper()));
+            return this.unitOfWork.Products.All.ProjectTo<ProductModel>().Where(x => x.Name.ToUpper().Contains(productName.ToUpper()));
         }
 
         public IEnumerable<ProductModel> SearchById(int productId)
         {
-            return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Id == productId);
+            return this.unitOfWork.Products.All.ProjectTo<ProductModel>().Where(x => x.Id == productId);
         }
 
         public IEnumerable<ProductModel> SearchByCategory(string categoryName)
         {
             Guard.WhenArgument(categoryName, "categoryName").IsNullOrEmpty().Throw();
-            return this.productsRepo.All.ProjectTo<ProductModel>().Where(x => x.Category == categoryName);
+            return this.unitOfWork.Products.All.ProjectTo<ProductModel>().Where(x => x.Category == categoryName);
         }
 
         public void AddProducts(ICollection<Product> products) // productsDTO
@@ -59,7 +57,8 @@ namespace Services
             //var p = IQueryable<ProductModel>((x) => Mapper.Map<ProductModel>(x));
             //var products = (IQueryable<ProductModel>(productsDTO)).ProjectTo<Product>();
 
-            this.productsRepo.Add(products);
+            this.unitOfWork.Products.Add(products);
+            unitOfWork.SaveChanges();
         }
     }
 }
