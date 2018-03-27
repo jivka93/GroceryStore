@@ -1,4 +1,5 @@
 ﻿using DTO;
+using Models;
 using Services.Contacts;
 using System;
 using System.Collections.Generic;
@@ -61,8 +62,16 @@ namespace Client.WPF
             decimal total = this.shoppingCart.Total;
             string status = "Approved";
             int userid = this.loggedUser.LoggedUserId.Value;
-            var products = this.shoppingCart.Products;
-            var orderToBeAdded = new OrderModel
+
+            var products = new List<Product>();
+
+            foreach (var item in this.shoppingCart.Products)
+            {
+                var product = this.productService.GetProductDirectlyFromDB(item.Id);
+                products.Add(product);
+            }
+
+            var orderToBeAdded = new Order
             {
                 Date = dateadded,
                 Total = total,
@@ -70,7 +79,11 @@ namespace Client.WPF
                 UserId = userid,
                 Products = products,
             };
-            order.Add(orderToBeAdded);
+
+            order.AddWithoutMapping(orderToBeAdded);
+
+            MessageBoxResult result = MessageBox
+                .Show("Your order is approved!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
         }
 

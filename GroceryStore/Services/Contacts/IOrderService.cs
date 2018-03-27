@@ -1,9 +1,6 @@
 ﻿using DTO;
-using System;
+using Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Contacts
 {
@@ -12,5 +9,7 @@ namespace Services.Contacts
         ICollection<OrderModel> GetAllById(int id);
 
         void Add(OrderModel order);
+
+        void AddWithoutMapping(Order order);
     }
 }

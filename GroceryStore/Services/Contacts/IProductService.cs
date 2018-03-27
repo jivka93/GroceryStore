@@ -8,6 +8,8 @@ namespace Services.Contacts
     {
         IEnumerable<ProductModel> GetAll();
 
+        Product GetProductDirectlyFromDB(int productId);
+
         IEnumerable<ProductModel> SearchByName(string productName);
 
         IEnumerable<ProductModel> SearchById(int productId);

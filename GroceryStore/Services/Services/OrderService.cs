@@ -28,6 +28,11 @@ namespace Services.Contacts
             this.orderRepo.Add(mapped);
         }
 
+        public void AddWithoutMapping(Order order)
+        {
+            this.orderRepo.Add(order);
+        }
+
         public ICollection<OrderModel> GetAllById(int id)
         {
             var allOrders = this.orderRepo.All.ProjectTo<OrderModel>();

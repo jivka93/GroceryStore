@@ -15,7 +15,7 @@ namespace Client.WPF.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<GroceryStoreContext>().AsSelf().InstancePerDependency();
+            builder.RegisterType<GroceryStoreContext>().AsSelf().SingleInstance();
 
             // Services
             builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();

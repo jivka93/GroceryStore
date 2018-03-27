@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
+using DAL;
 using DAL.Contracts;
 using DTO;
 using Models;
 using Services.Contacts;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Services
@@ -13,17 +15,25 @@ namespace Services
     public class ProductService : IProductService
     {
         private readonly IEfGenericRepository<Product> productsRepo;
+        private GroceryStoreContext context;
 
-        public ProductService(IEfGenericRepository<Product> productsRepo, IMapper mapper)
+        public ProductService(IEfGenericRepository<Product> productsRepo, IMapper mapper, GroceryStoreContext context)
         {
             Guard.WhenArgument(productsRepo, "productRepo").IsNull().Throw();
             this.productsRepo = productsRepo;
+            this.context = context;
         }
 
         public IEnumerable<ProductModel> GetAll()
         {
             return this.productsRepo.All.ProjectTo<ProductModel>();
-        }       
+        }
+
+        // Used when creating new Order with shoppingCart items
+        public Product GetProductDirectlyFromDB(int productId)
+        {
+            return this.context.Products.Where(p => p.Id == productId).Single();
+        }
 
         public IEnumerable<ProductModel> SearchByName(string productName)
         {
