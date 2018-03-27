@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Contracts
 {
@@ -13,6 +10,8 @@ namespace DAL.Contracts
         T GetById(object id);
 
         void Add(T entity);
+
+        void Add(ICollection<T> entities);
 
         void Delete(T entity);
 

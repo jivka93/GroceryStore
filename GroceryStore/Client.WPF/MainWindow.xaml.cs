@@ -2,6 +2,7 @@
 using Common;
 using DAL;
 using DAL.Migrations;
+using Json.Reader;
 using Services.Contacts;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -30,6 +31,9 @@ namespace Client.WPF
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
             this.container = builder.Build();
+
+            // Read products from JSON
+            //ReadJsonFile();
 
             FillCategories();
         }
@@ -83,12 +87,14 @@ namespace Client.WPF
         {
             var userContext = this.container.Resolve<IUserContext>();
             var userservice = this.container.Resolve<IUserService>();
-            MyProfile op = new MyProfile(userContext, userservice);
+            var addressService = this.container.Resolve<IAddressService>();
+            MyProfile op = new MyProfile(userContext, userservice, addressService);
             op.Show();           
         }
 
         private void ShoppingCartButton_Click(object sender, RoutedEventArgs e)
         {
+
             var loggedUser = this.container.Resolve<IUserContext>();
 
             if (loggedUser.LoggedUserId == null)
@@ -100,9 +106,11 @@ namespace Client.WPF
             {
                 var shoppingCart = this.container.Resolve<IShoppingCart>();
                 var productService = this.container.Resolve<IProductService>();
+                var user = this.container.Resolve<IUserService>();
+                var order = this.container.Resolve<IOrderService>();
                 var total = this.Total;
 
-                ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser, productService, total);
+                ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser, user, productService, order, total);
                 op.Show();
             }
         }
@@ -178,5 +186,12 @@ namespace Client.WPF
             this.Total.Text = $"{shoppingCart.Total:F2} $";
         }
 
+        private void ReadJsonFile()
+        {
+            var reader = this.container.Resolve<JsonFilesReader>();
+            var products = reader.Read();
+            var productService = container.Resolve<IProductService>();
+            productService.AddProducts(products);
+        }
     }
 }

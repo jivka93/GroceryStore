@@ -1,4 +1,5 @@
 ﻿using DAL.Contracts;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -30,10 +31,19 @@ namespace DAL
         {
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Added;
-            Context.SaveChanges();
-            
+            Context.SaveChanges();            
         }
 
+        public void Add(ICollection<T> entities)
+        {
+            foreach (var e in entities)
+            {
+                var entry = this.Context.Entry(e);
+                entry.State = EntityState.Added;
+            }
+
+            Context.SaveChanges();
+        }
 
         public void AddOrUpdate(T entity)
         {
@@ -44,6 +54,7 @@ namespace DAL
         {
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Deleted;
+            Context.SaveChanges();
         }
 
         public T GetById(object id)

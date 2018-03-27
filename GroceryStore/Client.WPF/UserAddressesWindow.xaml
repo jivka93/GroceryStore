@@ -1,0 +1,38 @@
+﻿<Window x:Class="Client.WPF.UserAddressesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client.WPF"
+        mc:Ignorable="d"
+        Title="UserAddressesWindow" Height="300" Width="400">
+    <Grid Name ="Addresses" Margin="8,10,2,0" Height="35" VerticalAlignment="Top">
+        
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name ="FirstAddress" Text="{}" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" />
+        <Button  Grid.Column="1" Content="Select" Click="SelectFirstBtn_Click" FontWeight="Bold" Foreground="Gray"/>
+        </Grid>
+        <Grid Margin="0,101,0,-101">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name ="SecondAddress" Text="" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" />
+            <Button  Grid.Column="1" Content="Select" Click="SelectSecondBBtn_Click" FontWeight="Bold" Foreground="Gray"/>
+        </Grid>
+        <Grid Margin="0,49,0,-49">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name ="ThirdAddress" Text="" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" />
+            <Button  Grid.Column="1" Content="Select" Click="SelectThirdBtn_Click" FontWeight="Bold" Foreground="Gray"/>
+        </Grid>
+    </Grid>
+        
+
+</Window>

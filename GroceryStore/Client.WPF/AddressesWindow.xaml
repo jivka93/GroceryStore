@@ -29,7 +29,8 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding AddressText}" Grid.Column="0" FontWeight="Light" Margin="20 0 5 5" Visibility="Visible"/>
                         <TextBox Text="{Binding AddressText}" Grid.Column="0" FontWeight="Light" Margin="20 0 5 5" Visibility="Collapsed" />
-                        <Button Name="UpdateBtn" Tag="{Binding Id}" Click="UpdateBtn_Click" Grid.Column="1" Content="Update" FontSize="13"  Width="80" Height="20" VerticalAlignment="Center">
+                        <!--<Button Name="UpdateBtn" Tag="{Binding Id}" Click="UpdateBtn_Click" Grid.Column="1" Content="Update" FontSize="13"  Width="80" Height="20" VerticalAlignment="Center">-->
+                        <Button Name="DeleteBtn" Tag="{Binding Id}" Click="DeleteBtn_Click" Grid.Column="1" Content="Delete" FontSize="13"  Width="80" Height="20" VerticalAlignment="Center">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                             </Button.Effect>
@@ -39,10 +40,10 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <Grid Height="30"/>
+        <Grid Height="20"/>
         
         <StackPanel Name="AddNew" Visibility="Visible">
-            <TextBlock FontWeight="Bold" Margin="20 10 20 0">Add new address</TextBlock>
+            <TextBlock FontWeight="Bold" Margin="20 0 20 0">Add new address</TextBlock>
             <Grid Margin="10 0 0 20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"/>

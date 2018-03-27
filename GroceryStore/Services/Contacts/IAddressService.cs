@@ -1,14 +1,9 @@
-﻿using DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Services.Contacts
+﻿namespace Services.Contacts
 {
     public interface IAddressService
     {
-       
+        void AddNewAddress(string addressText, int userId);
+
+        bool DeleteAddressById(int addressId);
     }
 }

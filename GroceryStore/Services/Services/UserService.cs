@@ -1,5 +1,6 @@
-﻿using AutoMapper;
+﻿ using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Bytes2you.Validation;
 using DAL.Contracts;
 using DTO;
 using Models;
@@ -20,6 +21,8 @@ namespace Services
 
         public UserService(IEfGenericRepository<User> usersRepo, IMapper mapper, IHashingPassword hashing)
         {
+            Guard.WhenArgument(usersRepo, "userRepo").IsNull().Throw();
+            Guard.WhenArgument(hashing, "hashing").IsNull().Throw();
             this.usersRepo = usersRepo;
             this.hashing = hashing;
             this.mapper = mapper;
@@ -32,17 +35,18 @@ namespace Services
 
         public UserModel GetSpecificUser(string userName) //This one will be used to visualize when the user select "MyProfile"
         {
+            Guard.WhenArgument(userName, "userName").IsNullOrEmpty().Throw();
             return this.usersRepo.All.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
         }
 
         public UserModel GetSpecificUser(int userId) //This one will be used when the user select update in "MyProfile"
         {
+            
             return this.usersRepo.All.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
         }
 
-
         public bool RegisterUser
-            (string userName, string password,string phoneNumber, 
+            (string userName, string password, string phoneNumber, 
             string firstName = null, 
             string lastName = null, 
             string address = null, 
@@ -50,6 +54,8 @@ namespace Services
             DateTime? expDate = null, 
             string cardName = null)
         {
+            Guard.WhenArgument(userName, "userName").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
             try
             {
                 var hashedPassword = hashing.GetSHA1HashData(password);
@@ -97,9 +103,11 @@ namespace Services
             }
         }
 
-        public void UpdatePassword(int id, string password)
+        public void UpdatePassword(int userId, string password)
         {
-            var user = this.usersRepo.All.Where(x => x.Id == id).FirstOrDefault();
+            Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
+
+            var user = this.usersRepo.All.Where(x => x.Id == userId).FirstOrDefault();
             var newPassword = hashing.GetSHA1HashData(password);
             user.Password = newPassword;
 

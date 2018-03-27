@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using Bytes2you.Validation;
+using DTO;
 using Services.Contacts;
 using System.Collections.Generic;
 
@@ -6,14 +7,14 @@ namespace Services.Services
 {
     public class ShoppingCart : IShoppingCart
     {
-        private ICollection<ProductModel> products;
+        private IList<ProductModel> products;
 
         public ShoppingCart()
         {
             this.products = new List<ProductModel>();
         }
 
-        public ICollection<ProductModel> Products { get => new List<ProductModel>(this.products); set => this.products = value; }
+        public IList<ProductModel> Products { get => new List<ProductModel>(this.products); set => this.products = value; }
 
         public decimal Total
         {
@@ -30,17 +31,29 @@ namespace Services.Services
 
         public void AddProduct(ProductModel product)
         {
+            Guard.WhenArgument(product, "product").IsNull().Throw();
             this.products.Add(product);
         }
 
         public void RemoveProduct(ProductModel product)
         {
-            this.products.Remove(product);
+            Guard.WhenArgument(product, "product").IsNull().Throw();
+
+            ProductModel toRemove = null;
+            for (int i = 0; i < this.products.Count; i++)
+            {
+                if (product.Id == this.products[i].Id)
+                {
+                    toRemove = this.products[i];
+                    break;
+                }
+            }
+            this.products.Remove(toRemove);
         }
 
         public void Clear()
         {
-            this.Products = new List<ProductModel>();
+            this.products.Clear();
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{1CD6CB6C-D22A-4D05-AB48-D0C68E528610}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoFac", "AutoFac\AutoFac.csproj", "{24DD206A-6A82-468F-A05D-5D7C336EE444}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{76E61952-0F3E-4D44-96D3-4844B18A5154}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Json.Reader", "JsonReader\Json.Reader.csproj", "{C7B2CA45-37A9-4980-B227-59C1B8F0D3FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{76E61952-0F3E-4D44-96D3-4844B18A5154}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76E61952-0F3E-4D44-96D3-4844B18A5154}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76E61952-0F3E-4D44-96D3-4844B18A5154}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7B2CA45-37A9-4980-B227-59C1B8F0D3FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7B2CA45-37A9-4980-B227-59C1B8F0D3FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7B2CA45-37A9-4980-B227-59C1B8F0D3FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7B2CA45-37A9-4980-B227-59C1B8F0D3FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

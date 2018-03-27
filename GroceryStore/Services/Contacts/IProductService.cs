@@ -1,4 +1,5 @@
 ﻿using DTO;
+using Models;
 using System.Collections.Generic;
 
 namespace Services.Contacts
@@ -12,5 +13,7 @@ namespace Services.Contacts
         IEnumerable<ProductModel> SearchById(int productId);
 
         IEnumerable<ProductModel> SearchByCategory(string categoryName);
+
+        void AddProducts(ICollection<Product> products); // TODO use DTO objects
     }
 }

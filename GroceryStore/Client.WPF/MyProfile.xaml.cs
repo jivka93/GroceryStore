@@ -11,13 +11,15 @@ namespace Client.WPF
     {
         private readonly IUserContext userContext;
         private readonly IUserService userservice;
+        private readonly IAddressService addressService;
 
-        public MyProfile(IUserContext userContext, IUserService userservice)
+        public MyProfile(IUserContext userContext, IUserService userservice, IAddressService addressService)
         {
             InitializeComponent();
 
             this.userContext = userContext;
             this.userservice = userservice;
+            this.addressService = addressService;
 
             FillUserInfo();
         }
@@ -60,7 +62,6 @@ namespace Client.WPF
                 this.PhoneText.Text = userModel.PhoneNumber;
 
                 this.AddressesContent.ItemsSource = userModel.Adresses;
-                //this.AddressesContent.DataContext = userModel.Adresses;
                 this.BankCardsContent.ItemsSource = userModel.BankCards;
             }
         }
@@ -151,7 +152,7 @@ namespace Client.WPF
 
         private void UpdateAddressesBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddressesWindow op = new AddressesWindow(this.userContext, this.userservice);
+            AddressesWindow op = new AddressesWindow(this.userContext, this.userservice, this.addressService);
             op.Show();
         }
 
