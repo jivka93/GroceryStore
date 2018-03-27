@@ -6,6 +6,8 @@ namespace DTO
 {
     public class BankCardModel: IMapFrom<BankCard>
     {
+        public int Id { get; set; }
+
         public string Number { get; set; }
 
         public DateTime? ExpirationDate { get; set; }
