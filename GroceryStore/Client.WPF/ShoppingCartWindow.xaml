@@ -32,7 +32,7 @@
                                     <ColumnDefinition Width="4*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding Picture}" Grid.Column="0" Height="85" Width="85" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                                <TextBlock Text="{Binding Name}" Grid.Column="1" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Padding="10 0 0 0"/>
+                                <TextBlock Text="{Binding Name}" Grid.Column="1" TextAlignment="Left" FontSize="15" VerticalAlignment="Center"   FontWeight="DemiBold" Padding="10 0 0 0"/>
                                 <TextBlock Text="{Binding Price}" Grid.Column="2" TextAlignment="Right" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Green" FontWeight="DemiBold" />
                                 <TextBlock Text=" $ " Grid.Column="3" TextAlignment="Left" VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Left"  Foreground="Green" FontWeight="DemiBold"  />
                                 <Button Name="RemoveButton" Tag="{Binding Id}" Click="RemoveButton_Click" Content="Remove" Grid.Column="4" Height="35" Width="80" FontWeight="Bold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Crimson" Foreground="White" Padding="0 0 0 5">
@@ -93,7 +93,7 @@
 
             <!--Delivery details-->
             <StackPanel Name="DeliveryDetails" Visibility="Collapsed">
-                <TextBlock Text="Delivery details:"  HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="15" FontWeight="Bold" Foreground="white"/>
+                <TextBlock Text="Delivery details:"  HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="15" FontWeight="Bold"/>
 
                 <!--Receiver-->
                 <Grid Height="25" Margin="10 10 10 10">
@@ -102,9 +102,9 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Receiver: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
+                    <TextBlock Grid.Column="0" Text="Receiver: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center"   Padding="0 15 0 0"/>
                     <TextBox Name="RecieverName" Grid.Column="1" Margin="10 0 10 0"/>
-                    <Button Grid.Column="2" Content="From profile" Click ="FromProfileBtnReceiver_Click" FontWeight="Bold" Foreground="Gray" >
+                    <Button Grid.Column="2" Content="From profile" Click ="FromProfileBtnReceiver_Click" FontWeight="Bold" Width="110" >
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                         </Button.Effect>
@@ -118,9 +118,9 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Delivery Address: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
+                    <TextBlock Grid.Column="0" Text="Delivery Address: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Padding="0 15 0 0"/>
                     <TextBox Name="AddressForm" Grid.Column="1" Margin="10 0 10 0"/>
-                    <Button Grid.Column="2" Content="From profile" Click="FromProfileBtnAddress_Click" FontWeight="Bold" Foreground="Gray" >
+                    <Button Grid.Column="2" Content="From profile" Click="FromProfileBtnAddress_Click" FontWeight="Bold"  Width="110" >
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                         </Button.Effect>
@@ -134,8 +134,8 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Bank card details:" Grid.Column="1"  HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="#555555"/>
-                    <Button Grid.Column="2" Content="From profile" Click="FromProfileCard_Click" FontWeight="Bold" Foreground="Gray" >
+                    <TextBlock Text="Bank card details:" Grid.Column="1"  HorizontalAlignment="Center" FontSize="15" FontWeight="Bold"/>
+                    <Button Grid.Column="2" Content="From profile" Click="FromProfileCard_Click" FontWeight="Bold" Width="110" >
                         <Button.Effect>
                             <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                         </Button.Effect>
@@ -147,7 +147,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Card Number: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
+                    <TextBlock Grid.Column="0" Text="Card Number: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center"   Padding="0 15 0 0"/>
                     <TextBox Name="NumberForm"  Grid.Column="1" Margin="10 0 10 0"/>
 
                 </Grid>
@@ -156,7 +156,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Expiration date: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
+                    <TextBlock Grid.Column="0" Text="Expiration date: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center"   Padding="0 15 0 0"/>
                     <TextBox Name="ExpDateForm" Grid.Column="1" Margin="10 0 10 0"/>
 
                 </Grid>
@@ -165,7 +165,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Holder: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gray" Padding="0 15 0 0"/>
+                    <TextBlock Grid.Column="0" Text="Holder: " FontWeight="Bold" Height="50" FontSize="12" TextAlignment="Center" VerticalAlignment="Center"   Padding="0 15 0 0"/>
                     <TextBox Name="HolderForm" Grid.Column="1" Margin="10 0 10 0"/>
 
                 </Grid>

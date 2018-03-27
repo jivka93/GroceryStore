@@ -5,45 +5,105 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
-        Title="BankCardSelectionWindow" Height="500" Width="300">
-    <Grid Margin="0,0,0,236">
-        <Grid Margin="0,0,0,118">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <TextBlock Name="FirstNumber" Grid.Row="0" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,0,0,5" />
-            <TextBlock Name="FirstExpDate" Grid.Row="1" Text="asd" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,0,0,10" />
-            <TextBlock Name="FirstName" Grid.Row="2" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,0,0,10" />
-            <Button  Grid.Row="3" Width="100" Content="Select" Click="FirstBtn_Click" FontWeight="Bold" Foreground="Gray" Grid.ColumnSpan="2"/>
+        WindowStartupLocation="CenterScreen" 
+        Width="350"
+        Foreground="LightGray"
+        FontWeight="Bold"
+        SizeToContent="Height"
+        FontSize="15"
+        Background="DarkGreen">
+    
+    <StackPanel >
+
+        <!--Title-->
+        <TextBlock Text="Your bank cards" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 10 0 25" Foreground="White"/>
+
+        <Grid Margin="0 0 0 25" Name="Card1" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="FirstNumber" Grid.Column="0" Text="1111222233334444" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="30,0,0,0" />
+                    <TextBlock Name="FirstExpDate" Grid.Column="1" Text="09/20" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="0,0,0,0" />
+                </Grid>
+            </Grid>
+            <TextBlock Name="FirstName" Grid.Row="1" Text="Ivan Ivanov" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="30,25,0,14"/>
+            <Grid Grid.Column="1">
+                <Button Width="70" Content="Select" Click="FirstBtn_Click" VerticalAlignment="Center">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
         </Grid>
 
-        <Grid Margin="0,115,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <TextBlock Name="SecondNumber" Grid.Row="0" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,4,0,5" />
-            <TextBlock Name="SecondExpDate" Grid.Row="1" Text="asd" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,0,0,10" />
-            <TextBlock Name="SecondName" Grid.Row="1" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,25,0,14" Grid.RowSpan="2" />
-            <Button  Grid.Row="3" Width="100" Content="Select" Click="SecondBtn_Click" FontWeight="Bold" Foreground="Gray" Grid.ColumnSpan="2"/>
+        <Grid Margin="0 0 0 25" Name="Card2" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="SecondNumber" Grid.Column="0" Text="1111222233334444" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="30,0,0,0" />
+                    <TextBlock Name="SecondExpDate" Grid.Column="1" Text="09/20" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="0,0,0,0" />
+                </Grid>
+            </Grid>
+            <TextBlock Name="SecondName" Grid.Row="1" Text="Ivan Ivanov" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="30,25,0,14"/>
+            <Grid Grid.Column="1">
+                <Button Width="70" Content="Select" Click="SecondBtn_Click" VerticalAlignment="Center">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
         </Grid>
 
-        <Grid Margin="0,228,0,-108">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <TextBlock Name="ThirdNumber" Grid.Row="0" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,4,0,5" />
-            <TextBlock Name="ThirdExpDate" Grid.Row="1" Text="asd" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,0,0,10" />
-            <TextBlock Name="ThirdName" Grid.Row="1" Text="asd" Grid.Column="0" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" Margin="0,25,0,14" Grid.RowSpan="2" />
-            <Button  Grid.Row="3" Width="100" Content="Select" Click="ThirdBtn_Click" FontWeight="Bold" Foreground="Gray" Grid.ColumnSpan="2"/>
+        <Grid Margin="0 0 0 25" Name="Card3" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="ThirdNumber" Grid.Column="0" Text="1111222233334444" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="30,0,0,0" />
+                    <TextBlock Name="ThirdExpDate" Grid.Column="1" Text="09/20" TextAlignment="Center" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="0,0,0,0" />
+                </Grid>
+            </Grid>
+            <TextBlock Name="ThirdName" Grid.Row="1" Text="Ivan Ivanov" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="30,25,0,14"/>
+            <Grid Grid.Column="1">
+                <Button Width="70" Content="Select" Click="ThirdBtn_Click" VerticalAlignment="Center">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
         </Grid>
-    </Grid>
+
+    </StackPanel>
 </Window>

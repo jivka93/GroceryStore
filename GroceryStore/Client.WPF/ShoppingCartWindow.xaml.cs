@@ -87,24 +87,62 @@ namespace Client.WPF
 
         private void FromProfileBtnReceiver_Click(object sender, RoutedEventArgs e)
         {
-            var userNameToDisplay = this.user.GetSpecificUser(this.loggedUser.LoggedUserId.Value).FirstName + " " + this.user.GetSpecificUser(this.loggedUser.LoggedUserId.Value).LastName;
-            this.RecieverName.Text = userNameToDisplay;
+            int userId = (int)this.loggedUser.LoggedUserId;
+            var currentUser = this.user.GetSpecificUser(userId);
+
+            if (currentUser.FirstName == null || currentUser.LastName == null || currentUser.FirstName == string.Empty || currentUser.LastName == string.Empty)
+            {
+                MessageBoxResult result = MessageBox
+                    .Show("You don't have a name in your profile!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                var userNameToDisplay = this.user.GetSpecificUser(this.loggedUser.LoggedUserId.Value).FirstName + " " + this.user.GetSpecificUser(this.loggedUser.LoggedUserId.Value).LastName;
+                this.RecieverName.Text = userNameToDisplay;
+            }
         }
 
         private void FromProfileBtnAddress_Click(object sender, RoutedEventArgs e)
         {
-            TextBox addressForm = this.AddressForm;
-            UserAddressesWindow op = new UserAddressesWindow(this.user, this.loggedUser, addressForm);
-            op.Show();
+            int userId = (int)this.loggedUser.LoggedUserId;
+            var currentUser = this.user.GetSpecificUser(userId);
+            var addresses = currentUser.Adresses;
+
+            if (addresses == null || addresses.Count == 0)
+            {
+                MessageBoxResult result = MessageBox
+                    .Show("You have no addresses saved!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                TextBox addressForm = this.AddressForm;
+                UserAddressesWindow op = new UserAddressesWindow(this.user, this.loggedUser, addressForm);
+                op.Show();
+            }
+
         }
 
         private void FromProfileCard_Click(object sender, RoutedEventArgs e)
         {
-            cardInfo.Add(this.NumberForm);
-            cardInfo.Add(this.ExpDateForm);
-            cardInfo.Add(this.HolderForm);
-            BankCardSelectionWindow op = new BankCardSelectionWindow(this.loggedUser, this.user, this.cardInfo);
-            op.Show();
+            int userId = (int)this.loggedUser.LoggedUserId;
+            var currentUser = this.user.GetSpecificUser(userId);
+            var bankCards = currentUser.BankCards;
+
+            if (bankCards == null || bankCards.Count == 0)
+            {
+                MessageBoxResult result = MessageBox
+                    .Show("You have no BankCards saved!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                cardInfo.Add(this.NumberForm);
+                cardInfo.Add(this.ExpDateForm);
+                cardInfo.Add(this.HolderForm);
+                BankCardSelectionWindow op = new BankCardSelectionWindow(this.loggedUser, this.user, this.cardInfo);
+                op.Show();
+            }
+
+
         }
     }
 }

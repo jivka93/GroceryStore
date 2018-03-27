@@ -35,9 +35,19 @@ namespace Client.WPF
         private void Fillinfo()
         {
             var addresses = this.user.GetSpecificUser(loggedUser.LoggedUserId.Value).Adresses.ToList();
-            this.FirstAddress.Text = addresses[0].AddressText;
-            this.SecondAddress.Text = addresses[1].AddressText;
-            this.ThirdAddress.Text = addresses[2].AddressText;
+
+            if (addresses.Count > 0)
+            {
+                this.FirstAddress.Text = addresses[0].AddressText;
+            }
+            if (addresses.Count > 1)
+            {
+                this.SecondAddress.Text = addresses[1].AddressText;
+            }
+            if (addresses.Count > 2)
+            {
+                this.ThirdAddress.Text = addresses[2].AddressText;
+            }
         }
 
         private void SelectFirstBtn_Click(object sender, RoutedEventArgs e)
