@@ -30,6 +30,7 @@ namespace Services
 
         public IEnumerable<UserModel> GetAllUsers()  // We will use this one to check if the inputed username and password match.
         {
+
             return this.usersRepo.All.ProjectTo<UserModel>();
         }
 
