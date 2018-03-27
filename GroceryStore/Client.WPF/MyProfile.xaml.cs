@@ -12,15 +12,16 @@ namespace Client.WPF
         private readonly IUserContext userContext;
         private readonly IUserService userservice;
         private readonly IAddressService addressService;
+        private readonly IOrderService orderServise;
 
-        public MyProfile(IUserContext userContext, IUserService userservice, IAddressService addressService)
+        public MyProfile(IUserContext userContext, IUserService userservice, IAddressService addressService, IOrderService orderServise)
         {
             InitializeComponent();
 
             this.userContext = userContext;
             this.userservice = userservice;
             this.addressService = addressService;
-
+            this.orderServise = orderServise;
             FillUserInfo();
         }
 
@@ -145,9 +146,6 @@ namespace Client.WPF
 
                 doc.Close();
             }
-
-            
-
         }
 
         private void UpdateAddressesBtn_Click(object sender, RoutedEventArgs e)
@@ -164,7 +162,8 @@ namespace Client.WPF
 
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OrderHistoryWindow op = new OrderHistoryWindow(this.orderServise, this.userContext);
+            op.Show();
         }
     }
 }

@@ -88,7 +88,8 @@ namespace Client.WPF
             var userContext = this.container.Resolve<IUserContext>();
             var userservice = this.container.Resolve<IUserService>();
             var addressService = this.container.Resolve<IAddressService>();
-            MyProfile op = new MyProfile(userContext, userservice, addressService);
+            var orderServise = this.container.Resolve<IOrderService>();
+            MyProfile op = new MyProfile(userContext, userservice, addressService, orderServise);
             op.Show();           
         }
 
