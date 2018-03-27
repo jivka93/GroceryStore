@@ -19,7 +19,7 @@ namespace Json.Reader
                 Converters = new List<JsonConverter> { new DecimalConverter() }
             };
 
-            var json = File.ReadAllText("C:/Users/Jivka/Desktop/products.json");
+            var json = File.ReadAllText(fileLocation);
             //var products = JsonConvert.DeserializeObject<List<ProductModel>>(json);  // TODO use DTO objects
             var products = JsonConvert.DeserializeObject<List<Product>>(json);
 

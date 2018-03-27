@@ -33,7 +33,10 @@ namespace Client.WPF
             this.container = builder.Build();
 
             // Read products from JSON
-            //ReadJsonFile();
+            if (this.context.Products.Count() == 0)
+            {
+                ReadJsonFile("C:/Users/Jivka/Desktop/products.json");
+            }
 
             FillCategories();
         }
@@ -88,8 +91,12 @@ namespace Client.WPF
             var userContext = this.container.Resolve<IUserContext>();
             var userservice = this.container.Resolve<IUserService>();
             var addressService = this.container.Resolve<IAddressService>();
+            var bankCardService = this.container.Resolve<IBankCardService>();
             var orderServise = this.container.Resolve<IOrderService>();
-            MyProfile op = new MyProfile(userContext, userservice, addressService, orderServise);
+            MyProfile op = new MyProfile(userContext, userservice, addressService, orderServise, bankCardService);
+            
+
+            //MyProfile op = new MyProfile(userContext, userservice, addressService, bankCardService);
             op.Show();           
         }
 
@@ -187,10 +194,10 @@ namespace Client.WPF
             this.Total.Text = $"{shoppingCart.Total:F2} $";
         }
 
-        private void ReadJsonFile()
+        private void ReadJsonFile(string fileLocation)
         {
             var reader = this.container.Resolve<JsonFilesReader>();
-            var products = reader.Read();
+            var products = reader.Read(fileLocation);
             var productService = container.Resolve<IProductService>();
             productService.AddProducts(products);
         }

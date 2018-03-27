@@ -3,6 +3,7 @@ using Models;
 using Services.Contacts;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -58,33 +59,77 @@ namespace Client.WPF
 
         private void PayButton_Click(object sender, RoutedEventArgs e)
         {
-            DateTime dateadded = DateTime.Now;
-            decimal total = this.shoppingCart.Total;
-            string status = "Approved";
-            int userid = this.loggedUser.LoggedUserId.Value;
-
-            var products = new List<Product>();
-
-            foreach (var item in this.shoppingCart.Products)
+            if (this.shoppingCart.Total == 0)
             {
-                var product = this.productService.GetProductDirectlyFromDB(item.Id);
-                products.Add(product);
+                MessageBoxResult message = MessageBox.Show("Your shopping cart is empty!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
             }
-
-            var orderToBeAdded = new Order
+            else if (this.RecieverName.Text == null || this.RecieverName.Text.ToString().Trim().Length < 3)
             {
-                Date = dateadded,
-                Total = total,
-                Status = status,
-                UserId = userid,
-                Products = products,
-            };
+                MessageBoxResult message = MessageBox.Show("Invalid receiver name!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.RecieverName.Text = "";
+            }
+            else if (this.AddressForm.Text == null || this.AddressForm.Text.ToString().Trim().Length < 5)
+            {
+                MessageBoxResult message = MessageBox.Show("Invalid delivery address!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.AddressForm.Text = "";
+            }
+            else if (this.NumberForm.Text == null || this.NumberForm.Text.ToString().Trim().Length != 16)
+            {
+                MessageBoxResult message = MessageBox.Show("Invalid bank card number!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.NumberForm.Text = "";
+            }
+            else if (this.HolderForm.Text == null || this.HolderForm.Text.ToString().Trim().Length < 3)
+            {
+                MessageBoxResult message = MessageBox.Show("Invalid card holder name!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.HolderForm.Text = "";
+            }
+            else
+            {
+                try
+                {
+                    var expDate = DateTime.ParseExact(this.ExpDateForm.Text.Trim(), "MM-yyyy", CultureInfo.InvariantCulture);
+                    if (expDate < DateTime.Now)
+                    {
+                        MessageBoxResult op = MessageBox.Show("Expired card!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.ExpDateForm.Text = "";
+                    }
+                    else
+                    {
+                        DateTime dateadded = DateTime.Now;
+                        decimal total = this.shoppingCart.Total;
+                        string status = "Approved";
+                        int userid = this.loggedUser.LoggedUserId.Value;
+                        var products = new List<Product>();
 
-            order.AddWithoutMapping(orderToBeAdded);
+                        foreach (var item in this.shoppingCart.Products)
+                        {
+                            var product = this.productService.GetProductDirectlyFromDB(item.Id);
+                            products.Add(product);
+                        }
 
-            MessageBoxResult result = MessageBox
-                .Show("Your order is approved!", "", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close();
+                        var orderToBeAdded = new Order
+                        {
+                            Date = dateadded,
+                            Total = total,
+                            Status = status,
+                            UserId = userid,
+                            Products = products,
+                        };
+
+                        order.AddWithoutMapping(orderToBeAdded);
+                        MessageBoxResult result = MessageBox.Show("Your order is approved!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+                        this.shoppingCart.Clear();
+                        this.total.Text = $"{shoppingCart.Total:F2} $";
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBoxResult op = MessageBox.Show("Invalid date format!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.ExpDateForm.Text = "";
+                }
+            }
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -105,8 +150,7 @@ namespace Client.WPF
 
             if (currentUser.FirstName == null || currentUser.LastName == null || currentUser.FirstName == string.Empty || currentUser.LastName == string.Empty)
             {
-                MessageBoxResult result = MessageBox
-                    .Show("You don't have a name in your profile!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBoxResult result = MessageBox.Show("You don't have a name in your profile!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -123,8 +167,7 @@ namespace Client.WPF
 
             if (addresses == null || addresses.Count == 0)
             {
-                MessageBoxResult result = MessageBox
-                    .Show("You have no addresses saved!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBoxResult result = MessageBox.Show("You have no addresses saved!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -143,8 +186,7 @@ namespace Client.WPF
 
             if (bankCards == null || bankCards.Count == 0)
             {
-                MessageBoxResult result = MessageBox
-                    .Show("You have no BankCards saved!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBoxResult result = MessageBox.Show("You have no BankCards saved!", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -154,8 +196,6 @@ namespace Client.WPF
                 BankCardSelectionWindow op = new BankCardSelectionWindow(this.loggedUser, this.user, this.cardInfo);
                 op.Show();
             }
-
-
         }
     }
 }

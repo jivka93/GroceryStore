@@ -12,7 +12,7 @@ namespace Services
 {
     public class InventoryService : IInventoryService
     {
-        public InventoryService(IEfGenericRepository<Inventory> inventoryRepo, IMapper mapper) 
+        public InventoryService(IEfUnitOfWork unitOfWork, IMapper mapper) 
         {
 
         }

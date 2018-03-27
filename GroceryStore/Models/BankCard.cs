@@ -5,6 +5,8 @@ namespace Models
 {
     public class BankCard
     {
+        public int Id { get; set; }
+
         [Required]
         [MaxLength(16)]
         [MinLength(16)]

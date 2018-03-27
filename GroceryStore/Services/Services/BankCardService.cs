@@ -13,9 +13,46 @@ namespace Services
 {
     public class BankCardService: IBankCardService
     {
-        public BankCardService(IEfGenericRepository<BankCard> bankCardRepo, IMapper mapper)
-        {
+        private readonly IEfUnitOfWork unitOfWork;
+        private readonly IMapper mapper;
+        private readonly IUserService userService;
 
+        public BankCardService(IEfUnitOfWork unitOfWork, IMapper mapper, IUserService userService)
+        {
+            this.unitOfWork = unitOfWork;
+            this.mapper = mapper;
+            this.userService = userService;
+        }
+
+        public void AddNewBankCard(string number, DateTime expDate, string holderName, int userId)
+        {
+            var user = this.userService.GetSpecificUser(userId);
+
+            BankCardModel bankCardDTO = new BankCardModel()
+            {
+                Number = number,
+                ExpirationDate = expDate,
+                Name = holderName,
+                UserId = userId
+            };
+
+            unitOfWork.BankCards.Add(this.mapper.Map<BankCard>(bankCardDTO));
+            unitOfWork.SaveChanges();
+        }
+
+        public bool DeleteCardById(int cardId)
+        {
+            try
+            {
+                var card = unitOfWork.BankCards.GetById(cardId);
+                unitOfWork.BankCards.Delete(card);
+                unitOfWork.SaveChanges();
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
         }
 
         public void GetUserBankCards(UserModel user)

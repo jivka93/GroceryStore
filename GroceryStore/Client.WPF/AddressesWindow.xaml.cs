@@ -78,6 +78,8 @@ namespace Client.WPF
                 this.addressService.AddNewAddress(newAddress, (int)this.userContext.LoggedUserId);
                 MessageBoxResult message = MessageBox
                     .Show("Address is saved successfully", "", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                FillInfo();
             }
         }
 

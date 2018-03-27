@@ -1,6 +1,7 @@
 ﻿ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
+using DAL;
 using DAL.Contracts;
 using DTO;
 using Models;
@@ -14,36 +15,34 @@ namespace Services
 {
     public class UserService : IUserService
     {
-
-        private readonly IEfGenericRepository<User> usersRepo;
         private readonly IHashingPassword hashing;
+        private readonly IEfUnitOfWork unitOfWork;
         private readonly IMapper mapper;
 
-        public UserService(IEfGenericRepository<User> usersRepo, IMapper mapper, IHashingPassword hashing)
+        public UserService( IMapper mapper, IHashingPassword hashing, IEfUnitOfWork unitOfWork)
         {
-            Guard.WhenArgument(usersRepo, "userRepo").IsNull().Throw();
             Guard.WhenArgument(hashing, "hashing").IsNull().Throw();
-            this.usersRepo = usersRepo;
             this.hashing = hashing;
+            this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
 
         public IEnumerable<UserModel> GetAllUsers()  // We will use this one to check if the inputed username and password match.
         {
 
-            return this.usersRepo.All.ProjectTo<UserModel>();
+            return this.unitOfWork.Users.All.ProjectTo<UserModel>();
         }
 
         public UserModel GetSpecificUser(string userName) //This one will be used to visualize when the user select "MyProfile"
         {
             Guard.WhenArgument(userName, "userName").IsNullOrEmpty().Throw();
-            return this.usersRepo.All.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
+            return this.unitOfWork.Users.All.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
         }
 
         public UserModel GetSpecificUser(int userId) //This one will be used when the user select update in "MyProfile"
         {
             
-            return this.usersRepo.All.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
+            return this.unitOfWork.Users.All.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
         }
 
         public bool RegisterUser
@@ -95,7 +94,8 @@ namespace Services
                     userToAdd.BankCards.Add(cardToAdd);
                 }
 
-                usersRepo.Add(userToAdd);
+                unitOfWork.Users.Add(userToAdd);
+                unitOfWork.SaveChanges();
                 return true;
             }
             catch (System.Exception)
@@ -108,16 +108,17 @@ namespace Services
         {
             Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
 
-            var user = this.usersRepo.All.Where(x => x.Id == userId).FirstOrDefault();
+            var user = this.unitOfWork.Users.All.Where(x => x.Id == userId).FirstOrDefault();
             var newPassword = hashing.GetSHA1HashData(password);
             user.Password = newPassword;
 
-            this.usersRepo.Update(user);
+            unitOfWork.Users.Update(user);
+            unitOfWork.SaveChanges();
         }
 
         public void UpdateProfileInfo(int id, string firstName = null, string lastName = null, string phone = null)
         {
-            var user = this.usersRepo.All.Where(x => x.Id == id).FirstOrDefault();
+            var user = this.unitOfWork.Users.All.Where(x => x.Id == id).FirstOrDefault();
 
             if (firstName != null && firstName != string.Empty)
             {
@@ -134,7 +135,8 @@ namespace Services
                 user.PhoneNumber = phone;
             }
 
-            this.usersRepo.Update(user);
+            unitOfWork.Users.Update(user);
+            unitOfWork.SaveChanges();
         }
 
     }
