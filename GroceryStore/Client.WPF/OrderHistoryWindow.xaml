@@ -38,11 +38,6 @@
                         <TextBlock Grid.Column="4" Text="Total: " HorizontalAlignment="Right"/>
                         <TextBlock Grid.Column="5" Text="{Binding Total}" HorizontalAlignment="Right"/>
                         <TextBlock Grid.Column="6" Text=" $ " HorizontalAlignment="Left"/>
-                        <Button x:Name="OrderReport" Grid.Column="1" Content="PdfGeneratorTest" Click="GeneratePdf_Click" Width="130" Height="29" Margin="0 30 0 20">
-                            <Button.Effect>
-                                <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
-                            </Button.Effect>
-                        </Button>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

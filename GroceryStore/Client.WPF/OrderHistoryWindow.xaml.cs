@@ -31,7 +31,7 @@ namespace Client.WPF
         public OrderHistoryWindow(IOrderService orderServise, IUserContext userContext, IUserService userservice)
         {
             InitializeComponent();
-
+            
             this.orderServise = orderServise;
             this.userContext = userContext;
             this.userservice = userservice;
@@ -50,7 +50,7 @@ namespace Client.WPF
             string hi = "";
             if (folderDialog.ShowDialog() == Forms.DialogResult.OK)
             {
-                hi = folderDialog.SelectedPath.Replace("\\", "/") + "/Test.pdf";
+                hi = folderDialog.SelectedPath.Replace("\\", "/") + "/Report.pdf";
                 MessageBox.Show(hi);
 
                 //Doc Setup
