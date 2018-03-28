@@ -35,7 +35,7 @@ namespace Client.WPF
             // Read products from JSON
             if (this.context.Products.Count() == 0)
             {
-                ReadJsonFile("C:/Users/Jivka/Desktop/products.json");
+                ReadJsonFile("C:/Users/Tung/Desktop/products.json");
             }
 
             FillCategories();

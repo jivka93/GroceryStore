@@ -3,7 +3,6 @@ using iTextSharp.text.pdf;
 using Services.Contacts;
 using System.IO;
 using System.Windows;
-using Forms = System.Windows.Forms;
 
 namespace Client.WPF
 {
@@ -125,31 +124,7 @@ namespace Client.WPF
             }
         }
 
-        private void GeneratePdf_Click(object sender, RoutedEventArgs e)
-        {
-            Forms.FolderBrowserDialog folderDialog = new Forms.FolderBrowserDialog();
-            string hi = "";
-            if (folderDialog.ShowDialog() == Forms.DialogResult.OK)
-            {
-                hi = folderDialog.SelectedPath.Replace("\\", "/") + "/Test.pdf";
-                MessageBox.Show(hi);
-
-                //Doc Setup
-                Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
-                PdfWriter writter = PdfWriter.GetInstance(doc, new FileStream(hi, FileMode.Create));
-                var user = userservice.GetSpecificUser((int)userContext.LoggedUserId);
-                doc.Open();
-
-                //Editting Doc
-                foreach (var item in user.Adresses)
-                {
-                    Paragraph paragraph = new Paragraph(item.AddressText);
-                    doc.Add(paragraph);
-                }
-
-                doc.Close();
-            }
-        }
+        
 
         private void UpdateAddressesBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -165,7 +140,7 @@ namespace Client.WPF
 
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
-            OrderHistoryWindow op = new OrderHistoryWindow(this.orderServise, this.userContext);
+            OrderHistoryWindow op = new OrderHistoryWindow(this.orderServise, this.userContext, this.userservice);
             op.Show();
         }
     }
