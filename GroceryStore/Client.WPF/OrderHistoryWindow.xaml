@@ -43,5 +43,11 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
+        <Button x:Name="GenerateReport" Grid.Column="1" Content="PdfGeneratorTest" Click="GeneratePdf_Click" Width="130" Height="29" Margin="0 30 0 20">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+            </Button.Effect>
+        </Button>
+
     </StackPanel>
 </Window>
