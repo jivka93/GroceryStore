@@ -6,13 +6,11 @@ namespace Client.WPF
     public partial class ChangePasswordWindow : Window
     {
         private readonly IUserService userservice;
-        private readonly IHashingPassword hashing;
 
-        public ChangePasswordWindow(IUserService userservice, IHashingPassword hashing)
+        public ChangePasswordWindow(IUserService userservice)
         {
             InitializeComponent();
             this.userservice = userservice;
-            this.hashing = hashing;
         }
 
         private void UpdatePasswordButton_Click(object sender, RoutedEventArgs e)
@@ -23,8 +21,6 @@ namespace Client.WPF
             var newPassword2= this.Password2TextBox.Password;
 
             var user = this.userservice.GetSpecificUser(userName);
-
-            var hashedPassword = hashing.GetSHA1HashData(oldPassword);
 
             if (newPassword1 != newPassword2)
             {
@@ -39,7 +35,7 @@ namespace Client.WPF
                 this.Password1TextBox.Password = "";
                 this.Password2TextBox.Password = "";
             }
-            else if ( user == null || user.Password != hashedPassword)
+            else if ( user == null || user.Password != oldPassword)
             {
                 MessageBoxResult result = MessageBox
                     .Show("User not found! Please try again!", "", MessageBoxButton.OKCancel, MessageBoxImage.Information);

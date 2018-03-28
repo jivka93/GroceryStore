@@ -1,12 +1,14 @@
-﻿using AutoMapper;
+﻿ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
+using DAL;
 using DAL.Contracts;
 using DTO;
 using Models;
 using Services.Contacts;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Services
@@ -25,19 +27,21 @@ namespace Services
             this.mapper = mapper;
         }
 
-        public IEnumerable<UserModel> GetAllUsers()
+        public IEnumerable<UserModel> GetAllUsers()  // We will use this one to check if the inputed username and password match.
         {
+
             return this.unitOfWork.Users.All.ProjectTo<UserModel>();
         }
 
-        public UserModel GetSpecificUser(string userName)
+        public UserModel GetSpecificUser(string userName) //This one will be used to visualize when the user select "MyProfile"
         {
             Guard.WhenArgument(userName, "userName").IsNullOrEmpty().Throw();
             return this.unitOfWork.Users.All.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
         }
 
-        public UserModel GetSpecificUser(int userId)
-        {           
+        public UserModel GetSpecificUser(int userId) //This one will be used when the user select update in "MyProfile"
+        {
+            
             return this.unitOfWork.Users.All.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
         }
 
@@ -66,6 +70,7 @@ namespace Services
                 };
 
                 var userToAdd = Mapper.Map<User>(userModel);
+
                 var user = this.GetSpecificUser(userModel.Username);
 
                 if (address != string.Empty && address != string.Empty)

@@ -12,6 +12,7 @@ namespace Services
     public class UserContext : IUserContext
     {
         private int? loggedUserId;
+        private readonly IEfGenericRepository<User> usersRepo;
         private IMapper mapper;
         private readonly IHashingPassword hashing;
         private readonly IEfUnitOfWork unitOfWork;

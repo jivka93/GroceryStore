@@ -13,9 +13,8 @@ namespace Client.WPF
         private readonly IAddressService addressService;
         private readonly IBankCardService bankCardService;
         private readonly IOrderService orderServise;
-        private readonly IHashingPassword hashing;
 
-        public MyProfile(IUserContext userContext, IUserService userservice, IAddressService addressService, IOrderService orderServise, IBankCardService bankCardService, IHashingPassword hashing)
+        public MyProfile(IUserContext userContext, IUserService userservice, IAddressService addressService, IOrderService orderServise, IBankCardService bankCardService)
         {
             InitializeComponent();
 
@@ -24,14 +23,13 @@ namespace Client.WPF
             this.addressService = addressService;
             this.orderServise = orderServise;
             this.bankCardService = bankCardService;
-            this.hashing = hashing;
 
             FillUserInfo();
         }
 
         private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
         {
-            ChangePasswordWindow op = new ChangePasswordWindow(this.userservice, this.hashing);
+            ChangePasswordWindow op = new ChangePasswordWindow(this.userservice);
             op.Show();
         }
 
