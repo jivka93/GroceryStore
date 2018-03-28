@@ -1,5 +1,4 @@
-﻿using Common;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,8 +17,8 @@ namespace Models
         public int Id { get; set; }
 
         [Required]
-        [MinLength(Constants.UserNameMinLength)]
-        [MaxLength(Constants.UserNameMaxLength)]
+        [MinLength(5)]
+        [MaxLength(15)]
         [Index(IsUnique = true)]
         public string Username { get; set; }
 
@@ -27,16 +26,16 @@ namespace Models
         public string Password { get; set; }
 
         [Required]
-        [MinLength(Constants.PhoneNumberMinLength)]
-        [MaxLength(Constants.PhoneNumberMaxLength)]
+        [MinLength(5)]
+        [MaxLength(15)]
         [Column("Phone number")]
         public string PhoneNumber { get; set; }
 
-        [MaxLength(Constants.NameMaxLength)]
+        [MaxLength(20)]
         [Column("First name")]
         public string FirstName { get; set; }
 
-        [MaxLength(Constants.NameMaxLength)]
+        [MaxLength(20)]
         [Column("Last name")]
         public string LastName { get; set; }
 
