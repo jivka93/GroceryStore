@@ -4,6 +4,7 @@ using Services.Contacts;
 using System.IO;
 using System.Windows;
 
+
 namespace Client.WPF
 {
     public partial class MyProfile : Window

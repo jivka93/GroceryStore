@@ -3,7 +3,6 @@ using iTextSharp.text.pdf;
 using Services.Contacts;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,9 +16,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Forms = System.Windows.Forms;
-using System.Web.UI;
-using iTextSharp.text.html.simpleparser;
-using System.Web;
 
 namespace Client.WPF
 {
@@ -31,7 +27,6 @@ namespace Client.WPF
         private readonly IOrderService orderServise;
         private readonly IUserContext userContext;
         private readonly IUserService userservice;
-
 
         public OrderHistoryWindow(IOrderService orderServise, IUserContext userContext, IUserService userservice)
         {
@@ -48,11 +43,9 @@ namespace Client.WPF
             //var b = orderServise.GetAllById(14);
             this.OrdersContent.ItemsSource = orderServise.GetAllById(this.userContext.LoggedUserId.Value);
         }
+
         private void GeneratePdf_Click(object sender, RoutedEventArgs e)
         {
-            var orders = orderServise.GetAllById(this.userContext.LoggedUserId.Value);
-
-
             Forms.FolderBrowserDialog folderDialog = new Forms.FolderBrowserDialog();
             string hi = "";
             if (folderDialog.ShowDialog() == Forms.DialogResult.OK)
@@ -63,92 +56,33 @@ namespace Client.WPF
                 //Doc Setup
                 Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
                 PdfWriter writter = PdfWriter.GetInstance(doc, new FileStream(hi, FileMode.Create));
+                var order = orderServise.GetAllById((int)userContext.LoggedUserId);
                 doc.Open();
 
                 //Editting Doc
-                foreach (var order in orders)
+                foreach (var item in order)
                 {
-                    string companyName = "The Serious Crocodiles";
-                    int orderNo = order.Id;
-                    DataTable dt = new DataTable();
-                    dt.Columns.AddRange(new DataColumn[3] {
-                            new DataColumn("ProductId", typeof(string)),
-                            new DataColumn("Product", typeof(string)),
-                            new DataColumn("Price", typeof(int))
-                            });
-                    foreach (var product in order.Products)
+                    iTextSharp.text.Paragraph paragraph = new iTextSharp.text.Paragraph($"Customer ID:{userContext.LoggedUserId}" + "   " + $"OrderId:{item.Id}" +"   " + $"OrderedTime:{item.Date}");
+                    doc.Add(paragraph);
+
+                    doc.Add(new Chunk("\n"));
+                    doc.Add(new Chunk("\n"));
+
+                    PdfPTable table = new PdfPTable(3);
+                    table.AddCell("ProductID");
+                    table.AddCell("ProductName");
+                    table.AddCell("ProdutPrice");
+                    foreach (var product in item.Products)
                     {
-                        dt.Rows.Add(product.Id, product.Name, product.Price);
+                        table.AddCell($"{product.Id}");
+                        table.AddCell($"{product.Name}");
+                        table.AddCell($"{product.Price}");
                     }
-                    using (StringWriter sw = new StringWriter())
-                    {
-                        using (HtmlTextWriter hw = new HtmlTextWriter(sw))
-                        {
-                            StringBuilder sb = new StringBuilder();
-
-                            //Generate Invoice (Bill) Header.
-                            sb.Append("<table width='100%' cellspacing='0' cellpadding='2'>");
-                            sb.Append("<tr><td align='center' style='background-color: #18B5F0' colspan = '2'><b>Order Sheet</b></td></tr>");
-                            sb.Append("<tr><td colspan = '2'></td></tr>");
-                            sb.Append("<tr><td><b>Order No: </b>");
-                            sb.Append(orderNo);
-                            sb.Append("</td><td align = 'right'><b>Date: </b>");
-                            sb.Append(DateTime.Now);
-                            sb.Append(" </td></tr>");
-                            sb.Append("<tr><td colspan = '2'><b>Company Name: </b>");
-                            sb.Append(companyName);
-                            sb.Append("</td></tr>");
-                            sb.Append("</table>");
-                            sb.Append("<br />");
-
-                            //Generate Invoice (Bill) Items Grid.
-                            sb.Append("<table border = '1'>");
-                            sb.Append("<tr>");
-                            foreach (DataColumn column in dt.Columns)
-                            {
-                                sb.Append("<th style = 'background-color: #D20B0C;color:#ffffff'>");
-                                sb.Append(column.ColumnName);
-                                sb.Append("</th>");
-                            }
-                            sb.Append("</tr>");
-                            foreach (DataRow row in dt.Rows)
-                            {
-                                sb.Append("<tr>");
-                                foreach (DataColumn column in dt.Columns)
-                                {
-                                    sb.Append("<td>");
-                                    sb.Append(row[column]);
-                                    sb.Append("</td>");
-                                }
-                                sb.Append("</tr>");
-                            }
-                            sb.Append("<tr><td align = 'right' colspan = '");
-                            sb.Append(dt.Columns.Count - 1);
-                            sb.Append("'>Total</td>");
-                            sb.Append("<td>");
-                            sb.Append(dt.Compute("sum(Total)", ""));
-                            sb.Append("</td>");
-                            sb.Append("</tr></table>");
-
-                            //Export HTML String as PDF.
-                            StringReader sr = new StringReader(sb.ToString());
-                            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-                            HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
-                            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, System.Web.HttpContext.Current.Response.OutputStream);
-                            pdfDoc.Open();
-                            htmlparser.Parse(sr);
-                            pdfDoc.Close();
-                            System.Web.HttpContext.Current.Response.ContentType = "application/pdf";
-                            System.Web.HttpContext.Current.Response.AddHeader("content-disposition", "attachment;filename=Invoice_" + orderNo + ".pdf");
-                            System.Web.HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                            System.Web.HttpContext.Current.Response.Write(pdfDoc);
-                            System.Web.HttpContext.Current.Response.End();
-                        }
-
-
-                        doc.Close();
-                    }
+                    doc.Add(table);
+                    doc.NewPage();
                 }
+
+                doc.Close();
             }
         }
     }
