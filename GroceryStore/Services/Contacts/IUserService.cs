@@ -1,4 +1,5 @@
 ﻿using DTO;
+using DTO.Contracts;
 using System;
 using System.Collections.Generic;
 
@@ -6,11 +7,11 @@ namespace Services.Contacts
 {
     public interface IUserService
     {
-        IEnumerable<UserModel> GetAllUsers();
+        IEnumerable<IUserModel> GetAllUsers();
 
-        UserModel GetSpecificUser(string userName);
+        IUserModel GetSpecificUser(string userName);
 
-        UserModel GetSpecificUser(int userId);
+        IUserModel GetSpecificUser(int userId);
 
         void UpdatePassword(int userId, string password);
 

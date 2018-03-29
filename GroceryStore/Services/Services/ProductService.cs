@@ -14,7 +14,7 @@ namespace Services
     {
         private readonly IEfUnitOfWork unitOfWork;
 
-        public ProductService(IEfUnitOfWork unitOfWork, IMapper mapper)
+        public ProductService(IEfUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
@@ -46,12 +46,8 @@ namespace Services
             return this.unitOfWork.Products.All.ProjectTo<ProductModel>().Where(x => x.Category == categoryName);
         }
 
-        public void AddProducts(ICollection<Product> products) // productsDTO
+        public void AddProducts(ICollection<Product> products)
         {
-            // TODO use DTO objects
-            //var p = IQueryable<ProductModel>((x) => Mapper.Map<ProductModel>(x));
-            //var products = (IQueryable<ProductModel>(productsDTO)).ProjectTo<Product>();
-
             this.unitOfWork.Products.Add(products);
             unitOfWork.SaveChanges();
         }

@@ -1,10 +1,11 @@
 ﻿using Common.Mapping;
+using DTO.Contracts;
 using Models;
 using System;
 
 namespace DTO
 {
-    public class BankCardModel: IMapFrom<BankCard>
+    public class BankCardModel: IMapFrom<BankCard>, IBankCardModel
     {
         public int Id { get; set; }
 

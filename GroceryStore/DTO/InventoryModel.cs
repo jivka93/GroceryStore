@@ -1,14 +1,10 @@
 ﻿using Common.Mapping;
+using DTO.Contracts;
 using Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class InventoryModel: IMapFrom<Inventory>
+    public class InventoryModel: IMapFrom<Inventory>, IInventoryModel
     {
         public int ProductId { get; set; }
 

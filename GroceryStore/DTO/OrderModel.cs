@@ -1,11 +1,12 @@
 ﻿using Common.Mapping;
+using DTO.Contracts;
 using Models;
 using System;
 using System.Collections.Generic;
 
 namespace DTO
 {
-    public class OrderModel : IMapFrom<Order>
+    public class OrderModel : IMapFrom<Order>, IOrderModel
     {
         public int Id { get; set; }
 

@@ -10,7 +10,6 @@
         FontSize="15" FontWeight="Bold" 
         Background="DarkGreen"
         Foreground="LightGray">
-    <!--Foreground="#555555"-->
 
     <StackPanel Background="Transparent" VerticalAlignment="Top" Height="590" Margin="20,0,20,0">
 

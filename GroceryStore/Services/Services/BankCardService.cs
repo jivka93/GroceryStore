@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DAL.Contracts;
 using DTO;
+using DTO.Contracts;
 using Models;
 using Services.Contacts;
 using System;
@@ -28,7 +29,7 @@ namespace Services
         {
             var user = this.userService.GetSpecificUser(userId);
 
-            BankCardModel bankCardDTO = new BankCardModel()
+            IBankCardModel bankCardDTO = new BankCardModel()
             {
                 Number = number,
                 ExpirationDate = expDate,
@@ -53,11 +54,6 @@ namespace Services
             {
                 return false;
             }
-        }
-
-        public void GetUserBankCards(UserModel user)
-        {
-
         }
     }
 }

@@ -1,17 +1,18 @@
 ﻿using DTO;
+using DTO.Contracts;
 using System.Collections.Generic;
 
 namespace Services.Contacts
 {
     public interface IShoppingCart
     {
-        IList<ProductModel> Products { get; set; }
+        IList<IProductModel> Products { get; set; }
 
         decimal Total { get; }
 
-        void AddProduct(ProductModel product);
+        void AddProduct(IProductModel product);
 
-        void RemoveProduct(ProductModel product);
+        void RemoveProduct(IProductModel product);
 
         void Clear();
     }

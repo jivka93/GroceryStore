@@ -1,9 +1,10 @@
 ﻿using Common.Mapping;
+using DTO.Contracts;
 using Models;
 
 namespace DTO
 {
-    public class AddressModel : IMapFrom<Address>
+    public class AddressModel : IMapFrom<Address>, IAddressModel
     {
         public int Id { get; set; }
 

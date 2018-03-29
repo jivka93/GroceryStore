@@ -143,12 +143,16 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="OrdersButton" Grid.Column="0" Content="Orders history" Click="OrdersButton_Click"  Width="130" Height="29" Margin="80,25,82,25" Grid.ColumnSpan="2">
+            <Button x:Name="OrdersButton" Grid.Column="0" Content="Orders history" Click="OrdersButton_Click"  Width="130" Height="29" Margin="0 30 0 20">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                 </Button.Effect>
             </Button>
-            
+            <Button x:Name="GeneratePdf" Grid.Column="1" Content="PdfGeneratorTest" Click="GeneratePdf_Click" Width="130" Height="29" Margin="0 30 0 20">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
+                </Button.Effect>
+            </Button>
         </Grid>
 
     </StackPanel>

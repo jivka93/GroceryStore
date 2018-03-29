@@ -3,7 +3,7 @@ using iTextSharp.text.pdf;
 using Services.Contacts;
 using System.IO;
 using System.Windows;
-
+using Forms = System.Windows.Forms;
 
 namespace Client.WPF
 {
@@ -14,8 +14,9 @@ namespace Client.WPF
         private readonly IAddressService addressService;
         private readonly IBankCardService bankCardService;
         private readonly IOrderService orderServise;
+        private readonly IHashingPassword hashing;
 
-        public MyProfile(IUserContext userContext, IUserService userservice, IAddressService addressService, IOrderService orderServise, IBankCardService bankCardService)
+        public MyProfile(IUserContext userContext, IUserService userservice, IAddressService addressService, IOrderService orderServise, IBankCardService bankCardService, IHashingPassword hashing)
         {
             InitializeComponent();
 
@@ -24,13 +25,14 @@ namespace Client.WPF
             this.addressService = addressService;
             this.orderServise = orderServise;
             this.bankCardService = bankCardService;
+            this.hashing = hashing;
 
             FillUserInfo();
         }
 
         private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
         {
-            ChangePasswordWindow op = new ChangePasswordWindow(this.userservice);
+            ChangePasswordWindow op = new ChangePasswordWindow(this.userservice, this.hashing);
             op.Show();
         }
 
@@ -125,7 +127,31 @@ namespace Client.WPF
             }
         }
 
-        
+        private void GeneratePdf_Click(object sender, RoutedEventArgs e)
+        {
+            Forms.FolderBrowserDialog folderDialog = new Forms.FolderBrowserDialog();
+            string hi = "";
+            if (folderDialog.ShowDialog() == Forms.DialogResult.OK)
+            {
+                hi = folderDialog.SelectedPath.Replace("\\", "/") + "/Test.pdf";
+                MessageBox.Show(hi);
+
+                //Doc Setup
+                Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
+                PdfWriter writter = PdfWriter.GetInstance(doc, new FileStream(hi, FileMode.Create));
+                var user = userservice.GetSpecificUser((int)userContext.LoggedUserId);
+                doc.Open();
+
+                //Editting Doc
+                foreach (var item in user.Adresses)
+                {
+                    Paragraph paragraph = new Paragraph(item.AddressText);
+                    doc.Add(paragraph);
+                }
+
+                doc.Close();
+            }
+        }
 
         private void UpdateAddressesBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -141,7 +167,7 @@ namespace Client.WPF
 
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
-            OrderHistoryWindow op = new OrderHistoryWindow(this.orderServise, this.userContext, this.userservice);
+            OrderHistoryWindow op = new OrderHistoryWindow(this.orderServise, this.userContext);
             op.Show();
         }
     }

@@ -34,7 +34,7 @@
                         <TextBlock Grid.Column="0" Text="Date: " HorizontalAlignment="Left"/>
                         <TextBlock Grid.Column="1" Text="{Binding Date}" HorizontalAlignment="Left"/>
                         <TextBlock Grid.Column="2" Text="Order ID: " HorizontalAlignment="Right"/>
-                        <TextBlock x:Name="OrderId" Grid.Column="3" Text="{Binding Id}" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Id}" HorizontalAlignment="Left"/>
                         <TextBlock Grid.Column="4" Text="Total: " HorizontalAlignment="Right"/>
                         <TextBlock Grid.Column="5" Text="{Binding Total}" HorizontalAlignment="Right"/>
                         <TextBlock Grid.Column="6" Text=" $ " HorizontalAlignment="Left"/>
@@ -42,12 +42,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-
-        <Button x:Name="GenerateReport" Grid.Column="1" Content="PdfGeneratorTest" Click="GeneratePdf_Click" Width="130" Height="29" Margin="0 30 0 20">
-            <Button.Effect>
-                <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
-            </Button.Effect>
-        </Button>
 
     </StackPanel>
 </Window>

@@ -1,14 +1,13 @@
-﻿ using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Bytes2you.Validation;
-using DAL;
 using DAL.Contracts;
 using DTO;
+using DTO.Contracts;
 using Models;
 using Services.Contacts;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace Services
@@ -21,27 +20,27 @@ namespace Services
 
         public UserService( IMapper mapper, IHashingPassword hashing, IEfUnitOfWork unitOfWork)
         {
+            Guard.WhenArgument(mapper, "mapper").IsNull().Throw();
             Guard.WhenArgument(hashing, "hashing").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
             this.hashing = hashing;
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
 
-        public IEnumerable<UserModel> GetAllUsers()  // We will use this one to check if the inputed username and password match.
+        public IEnumerable<IUserModel> GetAllUsers()
         {
-
             return this.unitOfWork.Users.All.ProjectTo<UserModel>();
         }
 
-        public UserModel GetSpecificUser(string userName) //This one will be used to visualize when the user select "MyProfile"
+        public IUserModel GetSpecificUser(string userName)
         {
             Guard.WhenArgument(userName, "userName").IsNullOrEmpty().Throw();
             return this.unitOfWork.Users.All.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
         }
 
-        public UserModel GetSpecificUser(int userId) //This one will be used when the user select update in "MyProfile"
-        {
-            
+        public IUserModel GetSpecificUser(int userId)
+        {           
             return this.unitOfWork.Users.All.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
         }
 
@@ -56,6 +55,7 @@ namespace Services
         {
             Guard.WhenArgument(userName, "userName").IsNullOrEmpty().Throw();
             Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(phoneNumber, "phoneNumber").IsNullOrEmpty().Throw();
             try
             {
                 var hashedPassword = hashing.GetSHA1HashData(password);
@@ -70,7 +70,6 @@ namespace Services
                 };
 
                 var userToAdd = Mapper.Map<User>(userModel);
-
                 var user = this.GetSpecificUser(userModel.Username);
 
                 if (address != string.Empty && address != string.Empty)

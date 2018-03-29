@@ -18,13 +18,8 @@ namespace DAL
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
-            //// Composite key:
-            //modelBuilder.Entity<BankCard>().HasKey(x => new { x.Number, x.ExpirationDate });
-
-
             // One-One relation between Inventory and Product
             modelBuilder.Entity<Inventory>().HasRequired(i => i.Product );
-
 
             base.OnModelCreating(modelBuilder);
         }

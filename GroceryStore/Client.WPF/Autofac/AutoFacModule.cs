@@ -3,6 +3,7 @@ using AutoMapper;
 using DAL;
 using DAL.Contracts;
 using DTO;
+using DTO.Contracts;
 using Json.Reader;
 using Models;
 using Services;
@@ -15,9 +16,10 @@ namespace Client.WPF.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+            // Data
             builder.RegisterType<GroceryStoreContext>().AsSelf().SingleInstance();
+            builder.RegisterType<EfUnitOfWork>().As<IEfUnitOfWork>().InstancePerDependency();
             
-
             // Services
             builder.RegisterType<UserContext>().As<IUserContext>().SingleInstance();
             builder.RegisterType<ShoppingCart>().As<IShoppingCart>().SingleInstance();
@@ -37,11 +39,10 @@ namespace Client.WPF.Autofac
             builder.RegisterType<EfGenericRepository<Order>>().As<IEfGenericRepository<Order>>().InstancePerDependency();
             builder.RegisterType<EfGenericRepository<Inventory>>().As<IEfGenericRepository<Inventory>>().InstancePerDependency();
 
-            builder.RegisterType<EfUnitOfWork>().As<IEfUnitOfWork>().InstancePerDependency();
+            // DTO Models
+            builder.RegisterType<UserModel>().As<IUserModel>();
 
-            //DTO Models
-            builder.RegisterType<UserModel>().AsSelf();
-
+            // Common
             builder.Register(x => Mapper.Instance);
             builder.RegisterType<JsonFilesReader>().AsSelf().SingleInstance();
 

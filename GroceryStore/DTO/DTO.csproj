@@ -46,7 +46,12 @@
   <ItemGroup>
     <Compile Include="AddressModel.cs" />
     <Compile Include="BankCardModel.cs" />
-    <Compile Include="FullUserView.cs" />
+    <Compile Include="Contracts\IAddressModel.cs" />
+    <Compile Include="Contracts\IBankCardModel.cs" />
+    <Compile Include="Contracts\IInventoryModel.cs" />
+    <Compile Include="Contracts\IOrderModel.cs" />
+    <Compile Include="Contracts\IProductModel.cs" />
+    <Compile Include="Contracts\IUserModel.cs" />
     <Compile Include="InventoryModel.cs" />
     <Compile Include="OrderModel.cs" />
     <Compile Include="ProductModel.cs" />

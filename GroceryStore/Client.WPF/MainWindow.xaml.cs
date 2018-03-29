@@ -35,7 +35,7 @@ namespace Client.WPF
             // Read products from JSON
             if (this.context.Products.Count() == 0)
             {
-                ReadJsonFile("C:/Users/Tung/Desktop/products.json");
+                ReadJsonFile("C:/Users/Jivka/Desktop/products.json");
             }
 
             FillCategories();
@@ -93,10 +93,9 @@ namespace Client.WPF
             var addressService = this.container.Resolve<IAddressService>();
             var bankCardService = this.container.Resolve<IBankCardService>();
             var orderServise = this.container.Resolve<IOrderService>();
-            MyProfile op = new MyProfile(userContext, userservice, addressService, orderServise, bankCardService);
+            var hashing = this.container.Resolve<IHashingPassword>();
+            MyProfile op = new MyProfile(userContext, userservice, addressService, orderServise, bankCardService, hashing);
             
-
-            //MyProfile op = new MyProfile(userContext, userservice, addressService, bankCardService);
             op.Show();           
         }
 

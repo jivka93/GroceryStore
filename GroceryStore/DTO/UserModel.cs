@@ -1,12 +1,11 @@
-﻿
-using Common.Mapping;
+﻿using Common.Mapping;
+using DTO.Contracts;
 using Models;
-using AutoMapper;
 using System.Collections.Generic;
 
-namespace DTO  //We create the model that will be exposed to the client through the Service/Logic
+namespace DTO
 {
-    public class UserModel : IMapFrom<User>  //IHaveCustomMappings  for custom mapping
+    public class UserModel : IMapFrom<User>, IUserModel
     {
         public int Id { get; set; }
 
@@ -19,7 +18,6 @@ namespace DTO  //We create the model that will be exposed to the client through 
         public string FirstName { get; set; }
         
         public string LastName { get; set; }
-
 
         public ICollection<AddressModel> Adresses { get; set; }
         public ICollection<BankCardModel> BankCards { get; set; }
