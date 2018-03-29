@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="AutomapperConfiguration.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="IMappingProvider.cs" />
+    <Compile Include="MappingProvider.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMapFrom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

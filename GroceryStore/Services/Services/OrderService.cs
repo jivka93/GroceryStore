@@ -1,44 +1,43 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
+﻿using Common;
 using DAL.Contracts;
 using DTO;
 using Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Contacts
 {
     public class OrderService: IOrderService
     {
         private readonly IEfUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
+        private readonly IMappingProvider mapper;
+        private readonly IEfGenericRepository<Order> orders;
 
-        public OrderService(IEfUnitOfWork unitOfWork, IMapper mapper)            
+        public OrderService(IEfUnitOfWork unitOfWork, IMappingProvider mapper, IEfGenericRepository<Order> orders)            
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
+            this.orders = orders;
         }
 
         public void Add(OrderModel order)
         {
-            var mapped = mapper.Map<Order>(order);
-            unitOfWork.Orders.Add(mapped);
+            var mapped = mapper.Map<OrderModel, Order>(order);
+            this.orders.Add(mapped);
             unitOfWork.SaveChanges();
         }
 
         public void AddWithoutMapping(Order order)
         {
-            unitOfWork.Orders.Add(order);
+            this.orders.Add(order);
             unitOfWork.SaveChanges();
         }
 
         public ICollection<OrderModel> GetAllById(int id)
         {
-            var allOrders = this.unitOfWork.Orders.All.ProjectTo<OrderModel>();
-            return allOrders.Where(x => x.UserId == id).ToList();
+            //var allOrders = this.orders.All.ProjectTo<OrderModel>().Where(x => x.UserId == id).ToList();
+            var allOrders = mapper.ProjectTo<Order, OrderModel>(this.orders.All).Where(x => x.UserId == id).ToList();
+            return allOrders;
         }
     }
 }

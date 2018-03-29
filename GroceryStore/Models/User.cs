@@ -15,7 +15,7 @@ namespace Models
         }
 
         [Key]
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
         [Required]
         [MinLength(Constants.UserNameMinLength)]
@@ -24,7 +24,7 @@ namespace Models
         public string Username { get; set; }
 
         [Required]
-        public string Password { get; set; }
+        public virtual string Password { get; set; }
 
         [Required]
         [MinLength(Constants.PhoneNumberMinLength)]

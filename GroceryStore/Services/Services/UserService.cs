@@ -1,6 +1,5 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Bytes2you.Validation;
+﻿using Bytes2you.Validation;
+using Common;
 using DAL.Contracts;
 using DTO;
 using DTO.Contracts;
@@ -16,32 +15,35 @@ namespace Services
     {
         private readonly IHashingPassword hashing;
         private readonly IEfUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
+        private readonly IMappingProvider mapper;
+        private readonly IEfGenericRepository<User> users;
 
-        public UserService( IMapper mapper, IHashingPassword hashing, IEfUnitOfWork unitOfWork)
+        public UserService( IMappingProvider mapper, IHashingPassword hashing, IEfUnitOfWork unitOfWork, IEfGenericRepository<User> users)
         {
             Guard.WhenArgument(mapper, "mapper").IsNull().Throw();
             Guard.WhenArgument(hashing, "hashing").IsNull().Throw();
             Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
+            Guard.WhenArgument(users, "userRepo").IsNull().Throw();
             this.hashing = hashing;
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
+            this.users = users;
         }
 
         public IEnumerable<IUserModel> GetAllUsers()
         {
-            return this.unitOfWork.Users.All.ProjectTo<UserModel>();
+            return mapper.ProjectTo<User, UserModel>(this.users.All);
         }
 
         public IUserModel GetSpecificUser(string userName)
         {
             Guard.WhenArgument(userName, "userName").IsNullOrEmpty().Throw();
-            return this.unitOfWork.Users.All.ProjectTo<UserModel>().Where(x => x.Username == userName).FirstOrDefault();
+            return mapper.ProjectTo<User, UserModel>(this.users.All).Where(x => x.Username == userName).FirstOrDefault();
         }
 
         public IUserModel GetSpecificUser(int userId)
         {           
-            return this.unitOfWork.Users.All.ProjectTo<UserModel>().Where(x => x.Id == userId).FirstOrDefault();
+            return mapper.ProjectTo<User, UserModel>(this.users.All).Where(x => x.Id == userId).FirstOrDefault();
         }
 
         public bool RegisterUser
@@ -69,13 +71,13 @@ namespace Services
                     LastName = lastName,
                 };
 
-                var userToAdd = Mapper.Map<User>(userModel);
+                var userToAdd = this.mapper.Map<UserModel,User>(userModel);
                 var user = this.GetSpecificUser(userModel.Username);
 
                 if (address != string.Empty && address != string.Empty)
                 {
                     var a = new AddressModel() { AddressText = address };
-                    var addressToAdd = this.mapper.Map<Address>(a);
+                    var addressToAdd = this.mapper.Map<AddressModel, Address>(a);
                     userToAdd.Adresses.Add(addressToAdd);
                 }
 
@@ -89,11 +91,11 @@ namespace Services
                         User = userToAdd
                     };
 
-                    var cardToAdd = this.mapper.Map<BankCard>(c);
+                    var cardToAdd = this.mapper.Map<BankCardModel,BankCard>(c);
                     userToAdd.BankCards.Add(cardToAdd);
                 }
 
-                unitOfWork.Users.Add(userToAdd);
+                this.users.Add(userToAdd);
                 unitOfWork.SaveChanges();
                 return true;
             }
@@ -107,17 +109,17 @@ namespace Services
         {
             Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
 
-            var user = this.unitOfWork.Users.All.Where(x => x.Id == userId).FirstOrDefault();
+            var user = this.users.All.Where(x => x.Id == userId).FirstOrDefault();
             var newPassword = hashing.GetSHA1HashData(password);
             user.Password = newPassword;
 
-            unitOfWork.Users.Update(user);
-            unitOfWork.SaveChanges();
+            this.users.Update(user);
+            this.unitOfWork.SaveChanges();
         }
 
         public void UpdateProfileInfo(int id, string firstName = null, string lastName = null, string phone = null)
         {
-            var user = this.unitOfWork.Users.All.Where(x => x.Id == id).FirstOrDefault();
+            var user = this.users.All.Where(x => x.Id == id).FirstOrDefault();
 
             if (firstName != null && firstName != string.Empty)
             {
@@ -134,7 +136,7 @@ namespace Services
                 user.PhoneNumber = phone;
             }
 
-            unitOfWork.Users.Update(user);
+            this.users.Update(user);
             unitOfWork.SaveChanges();
         }
 

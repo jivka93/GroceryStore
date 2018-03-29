@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using Bytes2you.Validation;
-using DAL;
 using DAL.Contracts;
 using Models;
 using Services.Contacts;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Services
@@ -15,13 +13,15 @@ namespace Services
         private IMapper mapper;
         private readonly IHashingPassword hashing;
         private readonly IEfUnitOfWork unitOfWork;
+        private readonly IEfGenericRepository<User> users;
 
-        public UserContext(IMapper mapper, IHashingPassword hashing, IEfUnitOfWork unitOfWork) 
+        public UserContext(IMapper mapper, IHashingPassword hashing, IEfUnitOfWork unitOfWork, IEfGenericRepository<User> users) 
         {
             Guard.WhenArgument(hashing, "hashing").IsNull().Throw();
             this.mapper = mapper;
             this.hashing = hashing;
             this.unitOfWork = unitOfWork;
+            this.users = users;
         }
 
         public int? LoggedUserId
@@ -47,7 +47,7 @@ namespace Services
             Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
             var hashedPassword = hashing.GetSHA1HashData(password);
 
-            var user = this.unitOfWork.Users.All
+            var user = this.users.All
                 .Where(x => x.Username == username && x.Password == hashedPassword)
                 .FirstOrDefault();
 

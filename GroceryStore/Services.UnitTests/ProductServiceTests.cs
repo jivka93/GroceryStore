@@ -1,12 +1,8 @@
-﻿using DAL;
+﻿using Common;
 using DAL.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models;
 using Moq;
-using Services.Contacts;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 
 namespace Services.UnitTests
 {
@@ -18,9 +14,11 @@ namespace Services.UnitTests
         {
             // Arrange
             var unitOfWorkMock = new Mock<IEfUnitOfWork>();
+            var repoMock = new Mock<IEfGenericRepository<Product>>();
+            var mapperMock = new Mock<IMappingProvider>();
 
             // Assert
-            Assert.IsInstanceOfType(new ProductService(unitOfWorkMock.Object), typeof(ProductService));
+            Assert.IsInstanceOfType(new ProductService(unitOfWorkMock.Object,repoMock.Object, mapperMock.Object), typeof(ProductService));
         }
 
 

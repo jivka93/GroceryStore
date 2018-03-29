@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using AutoMapper;
+using Common;
 using DAL;
 using DAL.Contracts;
 using DTO;
@@ -44,6 +45,7 @@ namespace Client.WPF.Autofac
 
             // Common
             builder.Register(x => Mapper.Instance);
+            builder.RegisterType<MappingProvider>().As<IMappingProvider>().SingleInstance();
             builder.RegisterType<JsonFilesReader>().AsSelf().SingleInstance();
 
         }

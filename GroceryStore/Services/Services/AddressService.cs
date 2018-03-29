@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Common;
 using DAL.Contracts;
 using DTO;
 using Models;
@@ -9,14 +10,16 @@ namespace Services
     public class AddressService: IAddressService
     {
         private readonly IEfUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
+        private readonly IMappingProvider mapper;
         private readonly IUserService userService;
+        private readonly IEfGenericRepository<Address> addresses;
 
-        public AddressService(IEfUnitOfWork unitOfWork, IMapper mapper, IUserService userService)
+        public AddressService(IEfUnitOfWork unitOfWork, IMappingProvider mapper, IUserService userService, IEfGenericRepository<Address> addresses)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
             this.userService = userService;
+            this.addresses = addresses;
         }
 
         public void AddNewAddress(string addressText, int userId)
@@ -29,7 +32,7 @@ namespace Services
                 UserId = userId
             };
 
-            unitOfWork.Addresses.Add(this.mapper.Map<Address>(addressDTO));
+            this.addresses.Add(this.mapper.Map<AddressModel, Address>(addressDTO));
             unitOfWork.SaveChanges();
 
         }
@@ -38,8 +41,8 @@ namespace Services
         {
             try
             {
-                var address = this.unitOfWork.Addresses.GetById(addressId);
-                unitOfWork.Addresses.Delete(address);
+                var address = this.addresses.GetById(addressId);
+                this.addresses.Delete(address);
                 unitOfWork.SaveChanges();
                 return true;
             }

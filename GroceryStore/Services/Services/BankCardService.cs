@@ -5,10 +5,6 @@ using DTO.Contracts;
 using Models;
 using Services.Contacts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services
 {
@@ -17,12 +13,14 @@ namespace Services
         private readonly IEfUnitOfWork unitOfWork;
         private readonly IMapper mapper;
         private readonly IUserService userService;
+        private readonly IEfGenericRepository<BankCard> bankCards;
 
-        public BankCardService(IEfUnitOfWork unitOfWork, IMapper mapper, IUserService userService)
+        public BankCardService(IEfUnitOfWork unitOfWork, IMapper mapper, IUserService userService, IEfGenericRepository<BankCard> bankCards)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
             this.userService = userService;
+            this.bankCards = bankCards;
         }
 
         public void AddNewBankCard(string number, DateTime expDate, string holderName, int userId)
@@ -37,7 +35,7 @@ namespace Services
                 UserId = userId
             };
 
-            unitOfWork.BankCards.Add(this.mapper.Map<BankCard>(bankCardDTO));
+            this.bankCards.Add(this.mapper.Map<BankCard>(bankCardDTO));
             unitOfWork.SaveChanges();
         }
 
@@ -45,8 +43,8 @@ namespace Services
         {
             try
             {
-                var card = unitOfWork.BankCards.GetById(cardId);
-                unitOfWork.BankCards.Delete(card);
+                var card = this.bankCards.GetById(cardId);
+                this.bankCards.Delete(card);
                 unitOfWork.SaveChanges();
                 return true;
             }
