@@ -3,16 +3,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.Services;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Models;
+
 
 namespace Models.UnitTests.Users
 {
     [TestClass]
-    public class User
+    public class UserTests
     {
         [TestMethod]
         public void ShouldHaveParameterlessConstructor()
         {
-            Assert.IsInstanceOfType(new User(), typeof(User));
+            Assert.IsInstanceOfType(new Models.User(), typeof(Models.User));
         }
 
         [TestMethod]

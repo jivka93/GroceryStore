@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Bytes2you.Validation;
 using Common;
 using DAL.Contracts;
 using DTO;
@@ -16,6 +17,10 @@ namespace Services
 
         public AddressService(IEfUnitOfWork unitOfWork, IMappingProvider mapper, IUserService userService, IEfGenericRepository<Address> addresses)
         {
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
+            Guard.WhenArgument(mapper, "mapper").IsNull().Throw();
+            Guard.WhenArgument(userService, "userService").IsNull().Throw();
+            Guard.WhenArgument(addresses, "addresses").IsNull().Throw();
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
             this.userService = userService;
