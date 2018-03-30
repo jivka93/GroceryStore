@@ -4,7 +4,6 @@ using DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models;
 using Moq;
-using Services.Contacts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -118,30 +117,6 @@ namespace Services.UnitTests
             // Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => productService.SearchByCategory(null));
         }
-
-        [TestMethod]
-        public void SearchByCategory_ShouldCallRepoAllProjectTo()
-        {
-            // Arrange
-            var mapperMock = new Mock<IMappingProvider>();
-            var unitOfWorkMock = new Mock<IEfUnitOfWork>();
-            var repoMock = new Mock<IEfGenericRepository<Product>>();
-
-            var collectionMock = new Mock<IQueryable<Product>>();
-            repoMock.Setup(x => x.All).Returns(collectionMock.Object);
-
-            repoMock.Setup(x => x.All).Verifiable();
-            mapperMock.Setup(x => x.ProjectTo<Product, ProductModel>(It.IsAny<IQueryable<Product>>())).Verifiable();
-
-            // Act
-            var productService = new ProductService(unitOfWorkMock.Object, repoMock.Object, mapperMock.Object);
-            var users = productService.GetAll();
-
-            // Assert
-            mapperMock.Verify(x => x.ProjectTo<Product, ProductModel>(It.IsAny<IQueryable<Product>>()), Times.Once);
-            repoMock.Verify(x => x.All, Times.Once);
-        }
     }
-
 
 }

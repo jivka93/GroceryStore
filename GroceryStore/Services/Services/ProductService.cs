@@ -51,6 +51,7 @@ namespace Services
 
         public void AddProducts(ICollection<Product> products)
         {
+            Guard.WhenArgument(products, "products").IsNull().Throw();
             this.products.Add(products);
             unitOfWork.SaveChanges();
         }
