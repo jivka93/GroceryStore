@@ -9,9 +9,9 @@ namespace Models
     {
         public User()
         {
-            this.Adresses = new HashSet<Address>();
-            this.BankCards = new HashSet<BankCard>();
-            this.Orders = new HashSet<Order>();
+            //this.Adresses = new HashSet<Address>();
+            //this.BankCards = new HashSet<BankCard>();
+            //this.Orders = new HashSet<Order>();
         }
 
         [Key]
@@ -21,7 +21,7 @@ namespace Models
         [MinLength(Constants.UserNameMinLength)]
         [MaxLength(Constants.UserNameMaxLength)]
         [Index(IsUnique = true)]
-        public string Username { get; set; }
+        public virtual string Username { get; set; }
 
         [Required]
         public virtual string Password { get; set; }
@@ -30,15 +30,15 @@ namespace Models
         [MinLength(Constants.PhoneNumberMinLength)]
         [MaxLength(Constants.PhoneNumberMaxLength)]
         [Column("Phone number")]
-        public string PhoneNumber { get; set; }
+        public virtual string PhoneNumber { get; set; }
 
         [MaxLength(Constants.NameMaxLength)]
         [Column("First name")]
-        public string FirstName { get; set; }
+        public virtual string FirstName { get; set; }
 
         [MaxLength(Constants.NameMaxLength)]
         [Column("Last name")]
-        public string LastName { get; set; }
+        public virtual string LastName { get; set; }
 
 
         public virtual ICollection<Address> Adresses { get; set; }
