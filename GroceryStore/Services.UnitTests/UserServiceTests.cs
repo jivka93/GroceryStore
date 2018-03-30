@@ -198,35 +198,35 @@ namespace Services.UnitTests
         //    unitOfWorkMock.Verify(x => x.SaveChanges(), Times.Once);
         //}
 
-        //[TestMethod]
-        //public void UpdateProfileInfo_ShouldCallUnitOfWorkSaveChanges()
-        //{
-        //    // Arrange
-        //    var mapperMock = new Mock<IMappingProvider>();
-        //    var hashingMock = new Mock<IHashingPassword>();
-        //    var unitOfWorkMock = new Mock<IEfUnitOfWork>();
-        //    var repoMock = new Mock<IEfGenericRepository<User>>();
+        [TestMethod]
+        public void UpdateProfileInfo_ShouldCallUnitOfWorkSaveChanges()
+        {
+            // Arrange
+            var mapperMock = new Mock<IMappingProvider>();
+            var hashingMock = new Mock<IHashingPassword>();
+            var unitOfWorkMock = new Mock<IEfUnitOfWork>();
+            var repoMock = new Mock<IEfGenericRepository<User>>();
 
-        //    int userId = 1;
-        //    string password = "11111";
+            int userId = 1;
+            string password = "11111";
 
-        //    var userMock = new Mock<User>();
-        //    userMock.Setup(x => x.Id).Returns(userId);
-        //    userMock.Setup(x => x.FirstName).Returns("");
+            var userMock = new Mock<User>();
+            userMock.Setup(x => x.Id).Returns(userId);
+            userMock.Setup(x => x.FirstName).Returns("");
 
-        //    var collection = new List<User>() { userMock.Object };
-        //    repoMock.Setup(x => x.All).Returns(collection.AsQueryable);
+            var collection = new List<User>() { userMock.Object };
+            repoMock.Setup(x => x.All).Returns(collection.AsQueryable);
 
-        //    hashingMock.Setup(x => x.GetSHA1HashData(It.IsAny<string>())).Returns(password);
+            hashingMock.Setup(x => x.GetSHA1HashData(It.IsAny<string>())).Returns(password);
 
-        //    unitOfWorkMock.Setup(x => x.SaveChanges()).Verifiable();
+            unitOfWorkMock.Setup(x => x.SaveChanges()).Verifiable();
 
-        //    // Act
-        //    var userService = new UserService(mapperMock.Object, hashingMock.Object, unitOfWorkMock.Object, repoMock.Object);
-        //    userService.UpdateProfileInfo(userId, "Pesho");
+            // Act
+            var userService = new UserService(mapperMock.Object, hashingMock.Object, unitOfWorkMock.Object, repoMock.Object);
+            userService.UpdateProfileInfo(userId, "Pesho");
 
-        //    // Assert
-        //    unitOfWorkMock.Verify(x => x.SaveChanges(), Times.Once);
-        //}
+            // Assert
+            unitOfWorkMock.Verify(x => x.SaveChanges(), Times.Once);
+        }
     }
 }

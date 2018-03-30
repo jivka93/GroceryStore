@@ -1,5 +1,4 @@
-﻿using AutoMapper.QueryableExtensions;
-using Bytes2you.Validation;
+﻿using Bytes2you.Validation;
 using Common;
 using DAL.Contracts;
 using DTO;
@@ -25,7 +24,6 @@ namespace Services
 
         public IEnumerable<ProductModel> GetAll()
         {
-            //return this.products.All.ProjectTo<ProductModel>();
             return mapper.ProjectTo<Product, ProductModel>(this.products.All);
         }
 
@@ -37,20 +35,17 @@ namespace Services
         public IEnumerable<ProductModel> SearchByName(string productName)
         {
             Guard.WhenArgument(productName, "productName").IsNullOrEmpty().Throw();
-            //return this.products.All.ProjectTo<ProductModel>().Where(x => x.Name.ToUpper().Contains(productName.ToUpper()));
             return mapper.ProjectTo<Product, ProductModel>(this.products.All).Where(x => x.Name.ToUpper().Contains(productName.ToUpper()));
         }
 
         public IEnumerable<ProductModel> SearchById(int productId)
         {
-            //return this.products.All.ProjectTo<ProductModel>().Where(x => x.Id == productId);
             return mapper.ProjectTo<Product, ProductModel>(this.products.All).Where(x => x.Id == productId);
         }
 
         public IEnumerable<ProductModel> SearchByCategory(string categoryName)
         {
             Guard.WhenArgument(categoryName, "categoryName").IsNullOrEmpty().Throw();
-            //return this.products.All.ProjectTo<ProductModel>().Where(x => x.Category == categoryName);
             return mapper.ProjectTo<Product, ProductModel>(this.products.All).Where(x => x.Category == categoryName);
         }
 
