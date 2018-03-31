@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="AddressServiceTests.cs" />
     <Compile Include="BankCardServiceTests.cs" />
+    <Compile Include="HashingPasswordUnitTests.cs" />
     <Compile Include="InventoryServiceTests.cs" />
     <Compile Include="OrderServiceTests.cs" />
     <Compile Include="AddressServicesUnitTests.cs" />

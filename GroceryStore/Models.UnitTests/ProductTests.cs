@@ -45,7 +45,7 @@ namespace Models.UnitTests
             var user = new Product { Price = testPrice };
 
             //Assert
-            Assert.AreSame(testPrice, user.Price);
+            Assert.AreEqual(testPrice, user.Price);
         }
         [TestMethod]
         public void Picture_ShouldBeSetAndGottenCorrectly()
