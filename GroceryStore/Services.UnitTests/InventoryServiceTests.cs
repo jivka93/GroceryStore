@@ -36,7 +36,7 @@ namespace Services.UnitTests
             var unitOfWorkMock = new Mock<IEfUnitOfWork>();
             var mapperMock = new Mock<IMapper>();
 
-            Assert.ThrowsException<ArgumentNullException>(() => new Inventory(unitOfWorkMock.Object, mapperMock.Object, null));
+            Assert.ThrowsException<ArgumentNullException>(() => new InventoryService(unitOfWorkMock.Object, mapperMock.Object, null));
         }
     }
 }
