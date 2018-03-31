@@ -30,8 +30,7 @@ namespace DAL
         public void Add(T entity)
         {
             var entry = this.Context.Entry(entity);
-            entry.State = EntityState.Added;    
-            
+            entry.State = EntityState.Added;               
         }
 
         public void Add(ICollection<T> entities)

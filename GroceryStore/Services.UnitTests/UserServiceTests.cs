@@ -123,7 +123,7 @@ namespace Services.UnitTests
             var unitOfWorkMock = new Mock<IEfUnitOfWork>();
             var repoMock = new Mock<IEfGenericRepository<User>>();
 
-            var collectionMock = new Mock <IQueryable<User>>();
+            var collectionMock = new Mock<IQueryable<User>>();
             repoMock.Setup(x => x.All).Returns(collectionMock.Object);
 
             mapperMock.Setup(x => x.ProjectTo<User, UserModel>(collectionMock.Object)).Verifiable();
@@ -136,66 +136,5 @@ namespace Services.UnitTests
             mapperMock.Verify(x => x.ProjectTo<User, UserModel>(collectionMock.Object), Times.Once);
         }
 
-        [TestMethod]
-        public void UpdatePassword_ShouldCallRepoUpdate()
-        {
-            // Arrange
-            var mapperMock = new Mock<IMappingProvider>();
-            var hashingMock = new Mock<IHashingPassword>();
-            var unitOfWorkMock = new Mock<IEfUnitOfWork>();
-            var repoMock = new Mock<IEfGenericRepository<User>>();
-
-            int userId = 1;
-            string password = "11111";
-
-            var userMock = new Mock<User>();
-            userMock.Setup(x => x.Id).Returns(userId);
-            userMock.Setup(x => x.Password).Returns("");
-
-            var collection = new List<User>() { userMock.Object};
-            repoMock.Setup(x => x.All).Returns(collection.AsQueryable);
-
-            hashingMock.Setup(x => x.GetSHA1HashData(It.IsAny<string>())).Returns(password);
-
-            repoMock.Setup(x => x.Update(userMock.Object)).Verifiable();
-
-            // Act
-            var userService = new UserService(mapperMock.Object, hashingMock.Object, unitOfWorkMock.Object, repoMock.Object);
-            userService.UpdatePassword(userId,password);
-
-            // Assert
-            repoMock.Verify(x => x.Update(userMock.Object), Times.Once);
-        }
-
-        [TestMethod]
-        public void UpdatePassword_ShouldCallUnitOfWorkSaveChanges()
-        {
-            // Arrange
-            var mapperMock = new Mock<IMappingProvider>();
-            var hashingMock = new Mock<IHashingPassword>();
-            var unitOfWorkMock = new Mock<IEfUnitOfWork>();
-            var repoMock = new Mock<IEfGenericRepository<User>>();
-
-            int userId = 1;
-            string password = "11111";
-
-            var userMock = new Mock<User>();
-            userMock.Setup(x => x.Id).Returns(userId);
-            userMock.Setup(x => x.Password).Returns("");
-
-            var collection = new List<User>() { userMock.Object };
-            repoMock.Setup(x => x.All).Returns(collection.AsQueryable);
-
-            hashingMock.Setup(x => x.GetSHA1HashData(It.IsAny<string>())).Returns(password);
-
-            unitOfWorkMock.Setup(x => x.SaveChanges()).Verifiable();
-
-            // Act
-            var userService = new UserService(mapperMock.Object, hashingMock.Object, unitOfWorkMock.Object, repoMock.Object);
-            userService.UpdatePassword(userId, password);
-
-            // Assert
-            unitOfWorkMock.Verify(x => x.SaveChanges(), Times.Once);
-        }
     }
 }
