@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Bytes2you.Validation;
+using Common;
 using DAL.Contracts;
 using Models;
 using Services.Contacts;

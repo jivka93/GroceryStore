@@ -18,6 +18,9 @@ namespace Services
 
         public ProductService(IEfUnitOfWork unitOfWork, IEfGenericRepository<Product> products, IMappingProvider mapper)
         {
+            Guard.WhenArgument(unitOfWork, "unitofwork").IsNull().Throw();
+            Guard.WhenArgument(products, "GenRepo").IsNull().Throw();
+            Guard.WhenArgument(mapper, "mapper").IsNull().Throw();
             this.unitOfWork = unitOfWork;
             this.products = products;
             this.mapper = mapper;
