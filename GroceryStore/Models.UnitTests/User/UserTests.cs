@@ -104,11 +104,53 @@ namespace Models.UnitTests.Users
             Assert.AreEqual(Constants.PhoneNumberMinLength, minLengthAttribute.Length);
         }
 
-
         [TestMethod]
-        public void Test1()
+        public void Username_ShouldBeSetAndGottenCorrectly()
         {
-            var shoppingCart = new ShoppingCart();
+            //Arrange
+            var testUsername = "slimshady";
+
+            //Act
+            var user = new Models.User { Username = testUsername };
+
+            //Assert
+            Assert.AreSame(testUsername, user.Username);
+        }
+        [TestMethod]
+        public void FirstName_ShouldBeSetAndGottenCorrectly()
+        {
+            //Arrange
+            var testFirstName = "Anton";
+
+            //Act
+            var user = new Models.User { FirstName = testFirstName };
+
+            //Assert
+            Assert.AreSame(testFirstName, user.FirstName);
+        }
+        [TestMethod]
+        public void LastName_ShouldBeSetAndGottenCorrectly()
+        {
+            //Arrange
+            var testLastName = "Angelov";
+
+            //Act
+            var user = new Models.User { LastName = testLastName };
+
+            //Assert
+            Assert.AreSame(testLastName, user.LastName);
+        }
+        [TestMethod]
+        public void PhoneNumber_ShouldBeSetAndGottenCorrectly()
+        {
+            //Arrange
+            var testPhoneNumber = "08758649645";
+
+            //Act
+            var user = new Models.User { PhoneNumber = testPhoneNumber };
+
+            //Assert
+            Assert.AreSame(testPhoneNumber, user.PhoneNumber);
         }
     }
 }
