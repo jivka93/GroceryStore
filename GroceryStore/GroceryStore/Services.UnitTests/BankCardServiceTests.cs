@@ -9,7 +9,7 @@ using System;
 namespace Services.UnitTests
 {
     [TestClass]
-    class BankCardServiceTests
+    public class BankCardServiceTests
     {
         [TestMethod]
         public void Constructor_ShouldThrowArgumentNullException_WhenUnitOfWorkIsNull()

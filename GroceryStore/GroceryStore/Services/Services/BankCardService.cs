@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Bytes2you.Validation;
 using DAL.Contracts;
 using DTO;
 using DTO.Contracts;
@@ -17,6 +18,10 @@ namespace Services
 
         public BankCardService(IEfUnitOfWork unitOfWork, IMapper mapper, IUserService userService, IEfGenericRepository<BankCard> bankCards)
         {
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
+            Guard.WhenArgument(mapper, "mapper").IsNull().Throw();
+            Guard.WhenArgument(userService, "userService").IsNull().Throw();
+            Guard.WhenArgument(bankCards, "bankCards").IsNull().Throw();
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
             this.userService = userService;
@@ -25,6 +30,9 @@ namespace Services
 
         public void AddNewBankCard(string number, DateTime expDate, string holderName, int userId)
         {
+            Guard.WhenArgument(number, "number").IsNull().Throw();
+            Guard.WhenArgument(holderName, "holderName").IsNull().Throw();
+
             var user = this.userService.GetSpecificUser(userId);
 
             IBankCardModel bankCardDTO = new BankCardModel()
