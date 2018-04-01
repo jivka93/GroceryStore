@@ -17,10 +17,6 @@ namespace DAL
             : base(connection, true)
         {
         }
-        public GroceryStoreContext(DbConnection connection)
-            : base(connection, true)
-        {
-        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
