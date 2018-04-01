@@ -40,7 +40,6 @@ namespace DAL
                 var entry = this.Context.Entry(e);
                 entry.State = EntityState.Added;
             }
-
         }
 
         public void AddOrUpdate(T entity)

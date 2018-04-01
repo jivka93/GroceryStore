@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using AutoMapper;
+using Common;
 using DAL.Contracts;
 using DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -22,6 +23,41 @@ namespace Services.UnitTests
         //mockSet.As<IQueryable<User>>().Setup(x => x.Expression).Returns(data.Expression);
         //mockSet.As<IQueryable<User>>().Setup(x => x.ElementType).Returns(data.ElementType);
         //mockSet.As<IQueryable<User>>().Setup(x => x.GetEnumerator()).Returns(data.GetEnumerator());
+
+        [TestMethod]
+        public void MARTOO_GetUserByID()
+        {
+            //Arrange
+            var stubMapper = new Mock<IMappingProvider>();
+            var hashingMock = new Mock<IHashingPassword>();
+            var unitOfWorkMock = new Mock<IEfUnitOfWork>();
+            var repoMock = new Mock<IEfGenericRepository<User>>();
+            var fakeUserService = new UserService(stubMapper.Object, hashingMock.Object, unitOfWorkMock.Object, repoMock.Object);
+
+            var data = new List<User>
+            {
+                new User { Id = 1},
+                new User { Id = 3 ,FirstName="pesho"},
+                new User { Id = 4 }
+            }.AsQueryable();
+
+            var returnedData = new List<UserModel>
+            {
+                new UserModel { Id = 1},
+                new UserModel { Id = 3 ,FirstName="pesho"},
+                new UserModel { Id = 4 }
+            }.AsQueryable();
+
+            repoMock.Setup(x => x.All).Returns(data);
+            stubMapper.Setup(x => x.ProjectTo<User, UserModel>(data)).Returns(returnedData);
+            //Act 
+            var returnedUser = fakeUserService.GetSpecificUser(3);
+
+            //Assert
+            Assert.IsInstanceOfType(returnedUser, typeof(UserModel));
+            Assert.AreEqual("pesho", returnedUser.FirstName);
+            Assert.AreEqual(3, returnedUser.Id);
+        }
 
         [TestMethod]
         public void Constructor_ShouldThrowArgumentNullException_WhenMapperIsNull()

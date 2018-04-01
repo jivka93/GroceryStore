@@ -26,7 +26,8 @@ namespace Client.WPF
             this.context = new GroceryStoreContext();
 
             // From StartUp:
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<GroceryStoreContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<GroceryStoreContext, Configuration>());
+
             AutomapperConfiguration.Initialize();
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());

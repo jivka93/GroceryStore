@@ -29,6 +29,7 @@ namespace Services
 
         public void AddNewAddress(string addressText, int userId)
         {
+            Guard.WhenArgument(addressText, "addressText").IsNull().Throw();
             var user = this.userService.GetSpecificUser(userId);
 
             AddressModel addressDTO = new AddressModel()
@@ -39,7 +40,6 @@ namespace Services
 
             this.addresses.Add(this.mapper.Map<AddressModel, Address>(addressDTO));
             unitOfWork.SaveChanges();
-
         }
 
         public bool DeleteAddressById(int addressId)

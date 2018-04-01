@@ -1,5 +1,6 @@
 ﻿using DAL.Contracts;
 using Models;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -12,9 +13,14 @@ namespace DAL
         {
 
         }
+        public GroceryStoreContext(DbConnection connection)
+            : base(connection, true)
+        {
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+           
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
