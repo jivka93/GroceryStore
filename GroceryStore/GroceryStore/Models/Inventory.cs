@@ -10,7 +10,6 @@ namespace Models
         [Index(IsUnique = true)]
         public int ProductId { get; set; }
 
-
         [Column("Quantity In Stock")]
         public int QuantityInStock { get; set; }
 
