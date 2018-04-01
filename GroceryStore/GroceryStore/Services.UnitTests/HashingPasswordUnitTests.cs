@@ -1,16 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Services.Contacts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.UnitTests
 {
     [TestClass]
-    class HashingPasswordUnitTests
+    public class HashingPasswordUnitTests
     {
         [TestMethod]
         public void GetSHA1HashData_ShouldChangeTheInputValue()

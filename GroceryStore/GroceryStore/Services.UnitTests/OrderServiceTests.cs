@@ -1,5 +1,6 @@
 ﻿using Common;
 using DAL.Contracts;
+using DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models;
 using Moq;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 namespace Services.UnitTests
 {
     [TestClass]
-    class OrderServiceTests
+    public class OrderServiceTests
     {
         [TestMethod]
         public void Constructor_ShouldThrowArgumentNullException_WhenMapperIsNull()
@@ -67,16 +68,31 @@ namespace Services.UnitTests
             Assert.ThrowsException<ArgumentNullException>(() => orderService.AddWithoutMapping(null));
         }
 
-        //[TestMethod]
-        //public void GetAllByIdMethod_ShouldThrowArgumentException_WhenZeroIsPassed()
-        //{
-        //    var mapperMock = new Mock<IMappingProvider>();
-        //    var unitOfWorkMock = new Mock<IEfUnitOfWork>();
-        //    var repoMock = new Mock<IEfGenericRepository<Order>>();
+        [TestMethod]
+        public void AddMethod_ShouldWorkCorrectly()
+        {
+            // Arrange
+            var mapperMock = new Mock<IMappingProvider>();
+            var unitOfWorkMock = new Mock<IEfUnitOfWork>();
+            var repoMock = new Mock<IEfGenericRepository<Order>>();
 
-        //    var orderService = new OrderService(unitOfWorkMock.Object, mapperMock.Object, repoMock.Object);
+            var order = new Order();
 
-        //    Assert.ThrowsException<ArgumentNullException>(() => orderService.GetAllById(0));
-        //}
+            mapperMock.Setup(x => x.Map<OrderModel, Order>(It.IsAny<OrderModel>())).Returns(order);
+            mapperMock.Setup(x => x.Map<OrderModel, Order>(It.IsAny<OrderModel>())).Verifiable();
+            repoMock.Setup(x => x.Add(It.IsAny<Order>())).Verifiable();
+            unitOfWorkMock.Setup(x => x.SaveChanges()).Verifiable();
+
+            var orderService = new OrderService(unitOfWorkMock.Object, mapperMock.Object, repoMock.Object);
+
+            // Act
+            orderService.Add(new OrderModel());
+
+            // Assert
+            mapperMock.Verify(x => x.Map<OrderModel, Order>(It.IsAny<OrderModel>()), Times.Once);
+            repoMock.Verify(x => x.Add(It.IsAny<Order>()), Times.Once);
+            unitOfWorkMock.Verify(x => x.SaveChanges(), Times.Once);
+        }
+
     }
 }

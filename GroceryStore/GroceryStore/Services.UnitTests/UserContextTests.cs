@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Common;
+﻿using Common;
 using DAL.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models;
