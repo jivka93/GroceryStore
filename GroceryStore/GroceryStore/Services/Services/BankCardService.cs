@@ -1,8 +1,7 @@
-﻿using AutoMapper;
-using Bytes2you.Validation;
+﻿using Bytes2you.Validation;
+using Common;
 using DAL.Contracts;
 using DTO;
-using DTO.Contracts;
 using Models;
 using Services.Contacts;
 using System;
@@ -12,11 +11,11 @@ namespace Services
     public class BankCardService: IBankCardService
     {
         private readonly IEfUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
+        private readonly IMappingProvider mapper;
         private readonly IUserService userService;
         private readonly IEfGenericRepository<BankCard> bankCards;
 
-        public BankCardService(IEfUnitOfWork unitOfWork, IMapper mapper, IUserService userService, IEfGenericRepository<BankCard> bankCards)
+        public BankCardService(IEfUnitOfWork unitOfWork, IMappingProvider mapper, IUserService userService, IEfGenericRepository<BankCard> bankCards)
         {
             Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
             Guard.WhenArgument(mapper, "mapper").IsNull().Throw();
@@ -33,9 +32,7 @@ namespace Services
             Guard.WhenArgument(number, "number").IsNull().Throw();
             Guard.WhenArgument(holderName, "holderName").IsNull().Throw();
 
-            var user = this.userService.GetSpecificUser(userId);
-
-            IBankCardModel bankCardDTO = new BankCardModel()
+            BankCardModel bankCardDTO = new BankCardModel()
             {
                 Number = number,
                 ExpirationDate = expDate,
@@ -43,7 +40,7 @@ namespace Services
                 UserId = userId
             };
 
-            this.bankCards.Add(this.mapper.Map<BankCard>(bankCardDTO));
+            this.bankCards.Add(this.mapper.Map<BankCardModel, BankCard>(bankCardDTO));
             unitOfWork.SaveChanges();
         }
 

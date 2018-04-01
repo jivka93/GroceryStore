@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Bytes2you.Validation;
+﻿using Bytes2you.Validation;
 using Common;
 using DAL.Contracts;
 using Models;
@@ -11,14 +10,17 @@ namespace Services
     public class UserContext : IUserContext
     {
         private int? loggedUserId;
-        private IMapper mapper;
+        private IMappingProvider mapper;
         private readonly IHashingPassword hashing;
         private readonly IEfUnitOfWork unitOfWork;
         private readonly IEfGenericRepository<User> users;
 
-        public UserContext(IMapper mapper, IHashingPassword hashing, IEfUnitOfWork unitOfWork, IEfGenericRepository<User> users) 
+        public UserContext(IMappingProvider mapper, IHashingPassword hashing, IEfUnitOfWork unitOfWork, IEfGenericRepository<User> users) 
         {
+            Guard.WhenArgument(mapper, "mapper").IsNull().Throw();
             Guard.WhenArgument(hashing, "hashing").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
+            Guard.WhenArgument(users, "users").IsNull().Throw();
             this.mapper = mapper;
             this.hashing = hashing;
             this.unitOfWork = unitOfWork;
@@ -34,7 +36,6 @@ namespace Services
         public void Login(int userId)
         {
             this.LoggedUserId = userId;
-
         }
 
         public void Logout()
@@ -44,8 +45,11 @@ namespace Services
 
         public User CheckLogin(string username, string password)
         {
-            Guard.WhenArgument(username, "userName").IsNullOrEmpty().Throw();
-            Guard.WhenArgument(password, "password").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(username, "userName").IsNull().Throw();
+            Guard.WhenArgument(password, "password").IsNull().Throw();
+            Guard.WhenArgument(username, "userName").IsEmpty().Throw();
+            Guard.WhenArgument(password, "password").IsEmpty().Throw();
+
             var hashedPassword = hashing.GetSHA1HashData(password);
 
             var user = this.users.All

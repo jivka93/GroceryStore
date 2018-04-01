@@ -113,28 +113,5 @@ namespace Services.UnitTests
             unitOfWorkMock.Verify(x => x.SaveChanges(), Times.Once);
             Assert.AreEqual(true, result);
         }
-
-
-         public void TryingToSetup_AddAddress()
-         {
-            // Arrange
-            var unitOfWorkMock = new Mock<IEfUnitOfWork>();
-            var mapperMock = new Mock<IMappingProvider>();
-            var userServiceMock = new Mock<IUserService>();
-            var genericRepoMock = new Mock<IEfGenericRepository<Address>>();
-            var addressService = new AddressService
-                (unitOfWorkMock.Object, mapperMock.Object, userServiceMock.Object, genericRepoMock.Object);
-
-            genericRepoMock.Setup(x => x.Add(It.IsAny<Address>())).Verifiable();
-
-            var someAddressText = "Pesho";
-            var someUserId = 5;
-
-            // Act
-            addressService.AddNewAddress(someAddressText, someUserId);
-            // Assert
-            genericRepoMock.Verify(x => x.Add(It.IsAny<Address>()), Times.Once);
-
-        }
     }
 }
