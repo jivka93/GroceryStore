@@ -136,5 +136,75 @@ namespace Services.UnitTests
             mapperMock.Verify(x => x.ProjectTo<User, UserModel>(collectionMock.Object), Times.Once);
         }
 
+        [TestMethod]
+        public void GetSpecificUserByID_ShouldWorkCorrectly()
+        {
+            //Arrange
+            var stubMapper = new Mock<IMappingProvider>();
+            var hashingMock = new Mock<IHashingPassword>();
+            var unitOfWorkMock = new Mock<IEfUnitOfWork>();
+            var repoMock = new Mock<IEfGenericRepository<User>>();
+            var fakeUserService = new UserService(stubMapper.Object, hashingMock.Object, unitOfWorkMock.Object, repoMock.Object);
+
+            var data = new List<User>
+            {
+                new User { Id = 1},
+                new User { Id = 3 ,FirstName="pesho"},
+                new User { Id = 4 }
+            }.AsQueryable();
+
+            var returnedData = new List<UserModel>
+            {
+                new UserModel { Id = 1},
+                new UserModel { Id = 3 ,FirstName="pesho"},
+                new UserModel { Id = 4 }
+            }.AsQueryable();
+
+            repoMock.Setup(x => x.All).Returns(data);
+            stubMapper.Setup(x => x.ProjectTo<User, UserModel>(data)).Returns(returnedData);
+            //Act 
+            var returnedUser = fakeUserService.GetSpecificUser(3);
+
+            //Assert
+            Assert.IsInstanceOfType(returnedUser, typeof(UserModel));
+            Assert.AreEqual("pesho", returnedUser.FirstName);
+            Assert.AreEqual(3, returnedUser.Id);
+        }
+
+        [TestMethod]
+        public void GetSpecificUserByName_ShouldWorkCorrectly()
+        {
+            //Arrange
+            var stubMapper = new Mock<IMappingProvider>();
+            var hashingMock = new Mock<IHashingPassword>();
+            var unitOfWorkMock = new Mock<IEfUnitOfWork>();
+            var repoMock = new Mock<IEfGenericRepository<User>>();
+            var fakeUserService = new UserService(stubMapper.Object, hashingMock.Object, unitOfWorkMock.Object, repoMock.Object);
+
+            var data = new List<User>
+            {
+                new User { Id = 1},
+                new User { Id = 3 ,FirstName="pesho", Username="pesho123"},
+                new User { Id = 4 }
+            }.AsQueryable();
+
+            var returnedData = new List<UserModel>
+            {
+                new UserModel { Id = 1},
+                new UserModel { Id = 3 ,FirstName="pesho", Username="pesho123"},
+                new UserModel { Id = 4 }
+            }.AsQueryable();
+
+            repoMock.Setup(x => x.All).Returns(data);
+            stubMapper.Setup(x => x.ProjectTo<User, UserModel>(data)).Returns(returnedData);
+            //Act 
+            var returnedUser = fakeUserService.GetSpecificUser("pesho123");
+
+            //Assert
+            Assert.IsInstanceOfType(returnedUser, typeof(UserModel));
+            Assert.AreEqual("pesho", returnedUser.FirstName);
+            Assert.AreEqual(3, returnedUser.Id);
+        }
+
     }
 }

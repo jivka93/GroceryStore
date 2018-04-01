@@ -88,6 +88,7 @@
     <Compile Include="AddressServicesUnitTests.cs" />
     <Compile Include="ProductServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryTests.cs" />
     <Compile Include="ShoppingCartTests.cs" />
     <Compile Include="UserContextTests.cs" />
     <Compile Include="UserServiceTests.cs" />
