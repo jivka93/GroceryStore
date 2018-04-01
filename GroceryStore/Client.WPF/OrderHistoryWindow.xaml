@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Width="550"
         WindowStartupLocation="CenterScreen"        
-        Foreground="LightGray"
         SizeToContent="Height"
         FontSize="15"
-        Background="DarkGreen"
+        Foreground="#513F1E"
+        Background="#DAC9AA"
         FontWeight="DemiBold">
 
     <StackPanel Margin="25 20 25 20">
 
         <!--Title-->
-        <TextBlock Text="Orders History" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 0 0 10" Foreground="White"/>
+        <TextBlock Text="Orders History" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 0 0 10"/>
 
         <ItemsControl Name="OrdersContent" >
             <ItemsControl.ItemTemplate>

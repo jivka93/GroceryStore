@@ -8,19 +8,20 @@
         Height="226.381" Width="300"
         WindowStartupLocation="CenterOwner" 
         Left="390" Top="300"
-        FontSize="15" FontWeight="Bold" Foreground="#555555"
-        Background="DarkGreen">
+        FontSize="15" FontWeight="Bold" 
+        Foreground="#513F1E"
+        Background="#DAC9AA">
     
     <StackPanel HorizontalAlignment="Left" Height="178" Margin="10,10,0,0" VerticalAlignment="Top" Width="280">
         
         
-        <TextBlock Text="Username:" Margin="20 10 20 0" Foreground="LightGray"/>
+        <TextBlock Text="Username:" Margin="20 10 20 0" Foreground="White"/>
         <TextBox x:Name="UsernameTextBox" Margin="20 2 20 0"/>
 
-        <TextBlock Text="Password:" Margin="20 10 20 0" Foreground="LightGray"/>
+        <TextBlock Text="Password:" Margin="20 10 20 0" Foreground="White"/>
         <PasswordBox x:Name="PasswordTextBox" PasswordChar="*"  Margin="20 2 20 0"/>
 
-        <Button x:Name="SignInButton" Click="SignInButton_Click"  Content="Sign in"   Margin="90 30 90 0">
+        <Button x:Name="SignInButton" Click="SignInButton_Click"  Content="Sign in"   Margin="90 30 90 0" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
             </Button.Effect>

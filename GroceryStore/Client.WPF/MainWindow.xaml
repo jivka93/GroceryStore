@@ -6,48 +6,51 @@
         xmlns:local="clr-namespace:Client.WPF"
         mc:Ignorable="d"
         WindowState="Maximized"
-        WindowStyle="ThreeDBorderWindow"        
-        Background="#1E9E1E">
+        WindowStyle="SingleBorderWindow"
+        Background="#DAC9AA">
 
     <ScrollViewer>
         <Border>
             <StackPanel>
 
                 <StackPanel>
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="http://www.decospan.com/media/img/pics/_banner/FOTO_KWALITEIT_Classic.jpg"  Stretch="Fill"/>
+                    </StackPanel.Background>
 
                     <!--Navigation-->
                     <Grid Margin="10 10 10 0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="103*"/>
+                            <ColumnDefinition Width="115*"/>
+                            <ColumnDefinition Width="340*"/>
+                            <ColumnDefinition Width="166*"/>
                         </Grid.ColumnDefinitions>
-                        
-                        <Button x:Name="LoginButton" Click="LoginButton_Click" Width="120" HorizontalAlignment="Left" Margin="10 5 0 5" Background="#0B610B" FontWeight="Bold" Foreground="LightGray" Grid.Column="0" Content="Login" FontSize="20" BorderBrush="#0B610B" Visibility="Visible">
+
+                        <Button x:Name="LoginButton" Click="LoginButton_Click" Width="120" HorizontalAlignment="Left" Margin="10,5,0,4.667" Background="#755A27" FontWeight="Bold" Foreground="LightGray" Grid.Column="0" Content="Login" FontSize="20" BorderBrush="#513F1E" Visibility="Visible" BorderThickness="0.4" Grid.ColumnSpan="2">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
                         </Button>
-                        <Button x:Name="MyProfileButton" Click="MyProfileButton_Click" Width="120" HorizontalAlignment="Left" Margin="10 5 0 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray"  Grid.Column="0" Content="My profile" FontSize="20" BorderBrush="#0B610B" Visibility="Hidden">
+                        <Button x:Name="MyProfileButton" Click="MyProfileButton_Click" Width="120" HorizontalAlignment="Left" Margin="10,5,0,4.667" Background="#755A27" FontWeight="Bold" Foreground="LightGray"  Grid.Column="0" Content="My profile" FontSize="20" BorderBrush="#513F1E" Visibility="Hidden" BorderThickness="0.4" Grid.ColumnSpan="2">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
                         </Button>
-                        <Button x:Name="RegisterButton" Click="RegisterButton_Click" Width="120" HorizontalAlignment="Left" Margin="0 5 0 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="1" Content="Register" FontSize="20" BorderBrush="#0B610B" Visibility="Visible">
+                        <Button x:Name="RegisterButton" Click="RegisterButton_Click" Width="120" HorizontalAlignment="Left" Margin="0.667,5,0,4.667" Background="#755A27" FontWeight="Bold" Foreground="LightGray" Grid.Column="1" Content="Register" FontSize="20" BorderBrush="#513F1E" Visibility="Visible" BorderThickness="0.4" Grid.ColumnSpan="2">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
                         </Button>
-                        <Button x:Name="LogoutButton" Click="LogoutButton_Click" Width="120" HorizontalAlignment="Left" Margin="0 5 0 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="1" Content="Logout" FontSize="20" BorderBrush="#0B610B" Visibility="Hidden">
+                        <Button x:Name="LogoutButton" Click="LogoutButton_Click" Width="120" HorizontalAlignment="Left" Margin="0.667,5,0,4.667" Background="#755A27" FontWeight="Bold" Foreground="LightGray" Grid.Column="1" Content="Logout" FontSize="20" BorderBrush="#513F1E" Visibility="Hidden" BorderThickness="0.4" Grid.ColumnSpan="2">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
                         </Button>
-                        
+
                         <!--Grocery Store-->
-                        <TextBlock Grid.Column="2" Text="Grocery Store" FontWeight="Bold" Height="50" FontSize="35" Padding="10 0 0 0" TextAlignment="Center" Foreground="White"/>
-                        <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Width="160" HorizontalAlignment="Right" Margin="0 5 10 5" Background="DarkGreen" FontWeight="Bold" Foreground="LightGray" Grid.Column="2" Content="ShoppingCart" FontSize="20" Grid.ColumnSpan="2" BorderBrush="#0B610B">
+                        <TextBlock Grid.Column="1" Text="Grocery Store" FontWeight="Bold" FontSize="35" Padding="10 0 0 0" TextAlignment="Center" Foreground="White" Margin="107.667,0,1,-0.333" Grid.ColumnSpan="2"/>
+                        <Button x:Name="ShoppingCartButton" Click="ShoppingCartButton_Click" Width="160" HorizontalAlignment="Right" Margin="0,5,10,4.667" Background="#755A27" FontWeight="Bold" Foreground="LightGray" Grid.Column="2" Content="ShoppingCart" FontSize="20" Grid.ColumnSpan="2" BorderBrush="#513F1E" BorderThickness="0.4">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
                             </Button.Effect>
@@ -63,7 +66,7 @@
                     <Canvas>
                         <StackPanel>
                             <TextBlock  Text="Categories" FontWeight="Bold" FontSize="20" Padding="20 0 0 5" Foreground="White"/>
-                            <ComboBox SelectedIndex="0" Name="cmbCategories" Width="290" FontSize="20" Margin="10 0 0 10" Foreground="DarkGreen" FontWeight="DemiBold" Height="34" SelectionChanged="cmbCategories_SelectionChanged">
+                            <ComboBox SelectedIndex="0" Name="cmbCategories" Width="290" FontSize="20" Margin="10 0 0 10" Foreground="#513F1E" FontWeight="DemiBold" Height="34" SelectionChanged="cmbCategories_SelectionChanged">
                             </ComboBox>
                         </StackPanel>
                     </Canvas>
@@ -76,38 +79,40 @@
 
                 <Image Source="https://serving.photos.photobox.com/80767000b7ef3c80748c0f2da58531e94a0232aff34cad2de9870851e4c52826d3fdaf90.jpg"></Image>
 
-                <!--Products-->
-                <StackPanel Background="White" Margin="100 20 100 20">
-                    <StackPanel.Effect>
-                        <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
-                    </StackPanel.Effect>
+                <Grid >
+                    <!--Products-->
+                    <StackPanel Background="White" Margin="100 20 100 20">
+                        <StackPanel.Effect>
+                            <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+                        </StackPanel.Effect>
 
-                    <ItemsControl Name="ProductsContent">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Margin="10 5 0 10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="4*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Source="{Binding Picture}" Grid.Column="0" Height="150" Width="150" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                                    <TextBlock Text="{Binding Name}" Grid.Column="1" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" />
-                                    <TextBlock Text="{Binding Price}" Grid.Column="2" TextAlignment="Right" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Green" FontWeight="DemiBold" />
-                                    <TextBlock Text=" $ " Grid.Column="3" TextAlignment="Left" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Left"  Foreground="Green" FontWeight="DemiBold"  />
-                                    <Button Tag="{Binding Name}" Click="BuyButton_Click" Content="Buy" Grid.Column="4" Height="35" Width="110" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Green" Foreground="White" Padding="0 0 0 5">
-                                        <Button.Effect>
-                                            <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="2"/>
-                                        </Button.Effect>
-                                    </Button>
-                                </Grid>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        <ItemsControl Name="ProductsContent">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="10 5 0 10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="{Binding Picture}" Grid.Column="0" Height="150" Width="150" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                        <TextBlock Text="{Binding Name}" Grid.Column="1" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" Foreground="Gray" FontWeight="DemiBold" />
+                                        <TextBlock Text="{Binding Price}" Grid.Column="2" TextAlignment="Right" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Green" FontWeight="DemiBold" />
+                                        <TextBlock Text=" $ " Grid.Column="3" TextAlignment="Left" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Left"  Foreground="Green" FontWeight="DemiBold"  />
+                                        <Button Tag="{Binding Name}" Click="BuyButton_Click" Content="Buy" Grid.Column="4" Height="35" Width="110" FontWeight="Bold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Green" Foreground="White" Padding="0 0 0 5">
+                                            <Button.Effect>
+                                                <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="2"/>
+                                            </Button.Effect>
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
 
-                </StackPanel>
+                    </StackPanel>
+                </Grid>
 
                 <!--Search bar-->
                 <!--TOTAL-->

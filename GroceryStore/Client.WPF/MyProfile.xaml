@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Width="300"
         WindowStartupLocation="CenterScreen"        
-        Foreground="LightGray"
         FontWeight="Bold"
         SizeToContent="Height"
         FontSize="15"
-        Background="DarkGreen">
+        Foreground="#513F1E"
+        Background="#DAC9AA">
 
     <StackPanel Name="Data">
 
         <!--Main Profile Info-->
-        <TextBlock Text="Profile information" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 10 0 10" Foreground="White"/>
+        <TextBlock Text="Profile information" FontWeight="Bold" TextAlignment="Center" FontSize="20" Margin="0 10 0 10" Foreground="White"/>
 
         <!--Username-->
         <Grid>
@@ -62,17 +62,17 @@
         </Grid>
 
         <!--Buttons-->
-        <Button x:Name="UpdateButton" Click="UpdateButton_Click" Content="Update Info" Width="130" Margin="0 25 0 20" Visibility="Visible">
+        <Button x:Name="UpdateButton" Click="UpdateButton_Click" Content="Update Info" Width="130" Margin="0 25 0 20" Visibility="Visible" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click" Content="Change password" Width="130" Margin="0 0 0 20" Visibility="Visible">
+        <Button x:Name="ChangePasswordButton" Click="ChangePasswordButton_Click" Content="Change password" Width="130" Margin="0 0 0 20" Visibility="Visible" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="SaveChangesButton" Click="SaveChangesButton_Click"  Content="Save changes" Width="130" Margin="0 25 0 20" Visibility="Collapsed">
+        <Button x:Name="SaveChangesButton" Click="SaveChangesButton_Click"  Content="Save changes" Width="130" Margin="0 25 0 20" Visibility="Collapsed" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
             </Button.Effect>
@@ -85,7 +85,7 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" FontWeight="Bold" Margin="20 10 20 0">Addresses:</TextBlock>
-            <Button Name="UpdateAddressesBtn" Click="UpdateAddressesBtn_Click" Grid.Column="1" FontSize="13" Content="Update" Width="80" Height="20" VerticalAlignment="Bottom">
+            <Button Name="UpdateAddressesBtn" Click="UpdateAddressesBtn_Click" Grid.Column="1" FontSize="13" Content="Update" Width="80" Height="20" VerticalAlignment="Bottom" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                 </Button.Effect>
@@ -115,7 +115,7 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" FontWeight="Bold" Margin="20 15 20 0">Bank Cards:</TextBlock>
-            <Button Name="UpdateCardsBtn" Click="UpdateCardsBtn_Click" Grid.Column="1" Content="Update" FontSize="13"  Width="80" Height="20" VerticalAlignment="Bottom">
+            <Button Name="UpdateCardsBtn" Click="UpdateCardsBtn_Click" Grid.Column="1" Content="Update" FontSize="13"  Width="80" Height="20" VerticalAlignment="Bottom" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                 </Button.Effect>
@@ -143,12 +143,12 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="OrdersButton" Grid.Column="0" Content="Orders history" Click="OrdersButton_Click"  Width="130" Height="29" Margin="0 30 0 20">
+            <Button x:Name="OrdersButton" Grid.Column="0" Content="Orders history" Click="OrdersButton_Click"  Width="130" Height="29" Margin="0 30 0 20" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                 </Button.Effect>
             </Button>
-            <Button x:Name="GeneratePdf" Grid.Column="1" Content="PdfGeneratorTest" Click="GeneratePdf_Click" Width="130" Height="29" Margin="0 30 0 20">
+            <Button x:Name="GeneratePdf" Grid.Column="1" Content="PdfGeneratorTest" Click="GeneratePdf_Click" Width="130" Height="29" Margin="0 30 0 20" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                 </Button.Effect>

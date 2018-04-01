@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
         Width="350"
-        Foreground="LightGray"
         FontWeight="Bold"
         SizeToContent="Height"
         FontSize="15"
-        Background="DarkGreen">
+        Foreground="#513F1E"
+        Background="#DAC9AA">
     
     <StackPanel Name ="Addresses" Margin="20 20 20 20">
 
         <!--Title-->
-        <TextBlock Text="Your addresses" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 0 0 25" Foreground="White"/>
+        <TextBlock Text="Your addresses" FontWeight="Bold" TextAlignment="Center" FontSize="20" Margin="0 0 0 25" Foreground="White"/>
 
         <Grid Name="Address1" Margin="0 0 0 30" Visibility="Collapsed">
         <Grid.ColumnDefinitions>
@@ -24,7 +24,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
             <TextBlock Name ="FirstAddress" Text="Some address 1" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="0 0 20 0"/>
-            <Button  Grid.Column="1" Content="Select" Click="SelectFirstBtn_Click" FontWeight="Bold">
+            <Button  Grid.Column="1" Content="Select" Click="SelectFirstBtn_Click" FontWeight="Bold" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                 </Button.Effect>
@@ -37,7 +37,7 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Name ="SecondAddress" Text="Some address 2" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="0 0 20 0"/>
-            <Button  Grid.Column="1" Content="Select" Click="SelectSecondBBtn_Click" FontWeight="Bold">
+            <Button  Grid.Column="1" Content="Select" Click="SelectSecondBBtn_Click" FontWeight="Bold" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                 </Button.Effect>
@@ -50,7 +50,7 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Name ="ThirdAddress" Text="Some address 3" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="0 0 20 0"/>
-            <Button  Grid.Column="1" Content="Select" Click="SelectThirdBtn_Click" FontWeight="Bold">
+            <Button  Grid.Column="1" Content="Select" Click="SelectThirdBtn_Click" FontWeight="Bold" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                 </Button.Effect>

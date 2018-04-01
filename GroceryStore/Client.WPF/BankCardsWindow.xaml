@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
         Width="450"
-        Foreground="LightGray"
         FontWeight="Bold"
         SizeToContent="Height"
         FontSize="15"
-        Background="DarkGreen">
+        Foreground="#513F1E"
+        Background="#DAC9AA">
 
     <StackPanel Name="Data">
         
@@ -30,7 +30,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding Number}" Grid.Column="0" FontWeight="Light" Margin="20 0 5 5" Visibility="Visible"/>
                         <TextBlock Text="{Binding ExpDateAsString}" Grid.Column="1" FontWeight="Light" Margin="0 0 20 5" Visibility="Visible" />
-                        <Button Name="RemoveBtn" Tag="{Binding Id}" Click="RemoveBtn_Click" Grid.Column="2" Content="Delete" FontSize="13"  Width="80" Height="20" VerticalAlignment="Bottom">
+                        <Button Name="RemoveBtn" Tag="{Binding Id}" Click="RemoveBtn_Click" Grid.Column="2" Content="Delete" FontSize="13"  Width="80" Height="20" VerticalAlignment="Bottom" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                             </Button.Effect>
@@ -53,7 +53,7 @@
             <TextBox  x:Name="NewCardName" Foreground="#555555" Margin="20 0 20 30" />
 
             <!--Save-->
-            <Button x:Name="SaveButton" Click="SaveButton_Click" Foreground="#555555" Content="Save" HorizontalAlignment="Center" Width="100">
+            <Button x:Name="SaveButton" Click="SaveButton_Click" Content="Save" HorizontalAlignment="Center" Width="100"  Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                 </Button.Effect>

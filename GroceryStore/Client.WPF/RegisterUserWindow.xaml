@@ -8,8 +8,8 @@
         WindowStartupLocation="CenterScreen" 
         Left="430" Top="150" Height="620" Width="350"
         FontSize="15" FontWeight="Bold" 
-        Background="DarkGreen"
-        Foreground="LightGray">
+        Foreground="#513F1E"
+        Background="#DAC9AA">
 
     <StackPanel Background="Transparent" VerticalAlignment="Top" Height="590" Margin="20,0,20,0">
 
@@ -43,7 +43,7 @@
         <TextBox  x:Name="CardNameTextBox" Foreground="#555555" Margin="20 0 20 30" />
 
         <!--Submit-->
-        <Button x:Name="SubmitButton" Click="SubmitButton_Click" Foreground="#555555" Content="Submit" HorizontalAlignment="Center" Width="100">
+        <Button x:Name="SubmitButton" Click="SubmitButton_Click" Content="Submit" HorizontalAlignment="Center" Width="100" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
             </Button.Effect>

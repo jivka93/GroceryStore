@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
         Width="350"
-        Foreground="LightGray"
+        Foreground="#513F1E"
         FontWeight="Bold"
         SizeToContent="Height"
         FontSize="15"
-        Background="DarkGreen">
+        Background="#DAC9AA">
     
     <StackPanel >
 
         <!--Title-->
-        <TextBlock Text="Your bank cards" FontWeight="Bold" TextAlignment="Center" FontSize="18" Margin="0 10 0 25" Foreground="White"/>
+        <TextBlock Text="Your bank cards" FontWeight="Bold" TextAlignment="Center" FontSize="20" Margin="0 10 0 25" Foreground="White"/>
 
         <Grid Margin="0 0 0 25" Name="Card1" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
@@ -39,7 +39,7 @@
             </Grid>
             <TextBlock Name="FirstName" Grid.Row="1" Text="Ivan Ivanov" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="30,25,0,14"/>
             <Grid Grid.Column="1">
-                <Button Width="70" Content="Select" Click="FirstBtn_Click" VerticalAlignment="Center">
+                <Button Width="70" Content="Select" Click="FirstBtn_Click" VerticalAlignment="Center" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                     </Button.Effect>
@@ -68,7 +68,7 @@
             </Grid>
             <TextBlock Name="SecondName" Grid.Row="1" Text="Ivan Ivanov" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="30,25,0,14"/>
             <Grid Grid.Column="1">
-                <Button Width="70" Content="Select" Click="SecondBtn_Click" VerticalAlignment="Center">
+                <Button Width="70" Content="Select" Click="SecondBtn_Click" VerticalAlignment="Center" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                     </Button.Effect>
@@ -97,7 +97,7 @@
             </Grid>
             <TextBlock Name="ThirdName" Grid.Row="1" Text="Ivan Ivanov" Grid.Column="0" TextAlignment="Left" FontSize="15" VerticalAlignment="Center" FontWeight="DemiBold" Margin="30,25,0,14"/>
             <Grid Grid.Column="1">
-                <Button Width="70" Content="Select" Click="ThirdBtn_Click" VerticalAlignment="Center">
+                <Button Width="70" Content="Select" Click="ThirdBtn_Click" VerticalAlignment="Center" Background="#755A27" Foreground="LightGray" BorderBrush="#513F1E" BorderThickness="0.4">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="9" Direction="-50" RenderingBias="Quality" ShadowDepth="1"/>
                     </Button.Effect>
