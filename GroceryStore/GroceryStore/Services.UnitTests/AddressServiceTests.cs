@@ -88,13 +88,18 @@ namespace Services.UnitTests
         }
 
         [TestMethod]
+<<<<<<< HEAD:GroceryStore/GroceryStore/Services.UnitTests/AddressServiceTests.cs
         public void DeleteAddressById_ShouldWorkCorrectly()
+=======
+        public void TryingToSetup_AddAddress()
+>>>>>>> 0f0e76c26fcf8fa5b0f9d9e2f96f8a232e544439:GroceryStore/Services.UnitTests/AddressServiceTests.cs
         {
             // Arrange
             var unitOfWorkMock = new Mock<IEfUnitOfWork>();
             var mapperMock = new Mock<IMappingProvider>();
             var userServiceMock = new Mock<IUserService>();
             var genericRepoMock = new Mock<IEfGenericRepository<Address>>();
+<<<<<<< HEAD:GroceryStore/GroceryStore/Services.UnitTests/AddressServiceTests.cs
 
             var addressService = new AddressService
                 (unitOfWorkMock.Object, mapperMock.Object, userServiceMock.Object, genericRepoMock.Object);
@@ -112,6 +117,20 @@ namespace Services.UnitTests
             genericRepoMock.Verify(x => x.Delete(It.IsAny<Address>()), Times.Once);
             unitOfWorkMock.Verify(x => x.SaveChanges(), Times.Once);
             Assert.AreEqual(true, result);
+=======
+            var addressService = new AddressService
+                (unitOfWorkMock.Object, mapperMock.Object, userServiceMock.Object, genericRepoMock.Object);
+
+            genericRepoMock.Setup(x => x.Add(It.IsAny<Address>())).Verifiable();
+
+            var someAddressText = "Pesho";
+            var someUserId = 5;
+
+            // Act
+            addressService.AddNewAddress(someAddressText, someUserId);
+            // Assert
+            genericRepoMock.Verify(x => x.Add(It.IsAny<Address>()), Times.Once);
+>>>>>>> 0f0e76c26fcf8fa5b0f9d9e2f96f8a232e544439:GroceryStore/Services.UnitTests/AddressServiceTests.cs
         }
     }
 }

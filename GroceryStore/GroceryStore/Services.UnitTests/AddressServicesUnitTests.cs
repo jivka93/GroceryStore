@@ -21,7 +21,7 @@ namespace Services.UnitTests
             var unitOfWorkMock = new Mock<IEfUnitOfWork>();
             var addressesMock = new Mock<IEfGenericRepository<Address>>();
 
-            Assert.ThrowsException<ArgumentNullException>(() => new AddressService(unitOfWorkMock.Object,null, userServiceMock.Object, addressesMock.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new AddressService(unitOfWorkMock.Object, null, userServiceMock.Object, addressesMock.Object));
         }
         public void Constructor_ShouldThrowArgumentNullException_WhenUserServiceIsNull()
         {

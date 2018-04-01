@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-
 namespace Common
 {
     public static class AutomapperConfiguration
@@ -23,7 +22,6 @@ namespace Common
 
             Mapper.Initialize(cfg => Load(types, cfg));
         }
-
 
         private static void Load(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
         {
@@ -55,7 +53,6 @@ namespace Common
                   .Where(t => !t.IsInterface && !t.IsAbstract)
                   .Where(t => t.GetInterfaces().Any(i => typeof(IHaveCustomMappings).IsAssignableFrom(i)))
                           .Select(x => (IHaveCustomMappings)Activator.CreateInstance(x)).ToArray();
-
 
             foreach (var type in typesFoundForMapping)
             {

@@ -11,7 +11,11 @@ namespace DAL
         public GroceryStoreContext()
             : base("GroceryStore")
         {
+        }
 
+        public GroceryStoreContext(DbConnection connection)
+            : base(connection, true)
+        {
         }
         public GroceryStoreContext(DbConnection connection)
             : base(connection, true)
