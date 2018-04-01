@@ -42,10 +42,15 @@ namespace Services.Contacts
             unitOfWork.SaveChanges();
         }
 
-        public ICollection<OrderModel> GetAllById(int id)
+        public ICollection<OrderModel> GetAllById(int userId)
         {
-            var allOrders = mapper.ProjectTo<Order, OrderModel>(this.orders.All).Where(x => x.UserId == id).ToList();
-            return allOrders;
+            var allOrders = this.orders.All;
+            var userOrders = allOrders.Where(x => x.UserId == userId).AsQueryable();
+            var mapped = mapper.ProjectTo<Order, OrderModel>(userOrders);
+            return mapped.ToList();
+
+            //var allOrders = mapper.ProjectTo<Order, OrderModel>(this.orders.All).Where(x => x.UserId == userId).ToList();
+            //return allOrders;
         }
     }
 }
