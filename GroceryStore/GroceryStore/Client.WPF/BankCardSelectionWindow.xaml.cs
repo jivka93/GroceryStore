@@ -51,7 +51,6 @@ namespace Client.WPF
                 this.ThirdExpDate.Text = date2;
                 this.ThirdName.Text = cards[2].Name;
             }
-
         }
 
         private void FirstBtn_Click(object sender, RoutedEventArgs e)

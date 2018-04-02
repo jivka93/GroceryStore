@@ -82,7 +82,6 @@ namespace Client.WPF
                 MessageBoxResult message = MessageBox
                     .Show("Invalid expiry date!", "", MessageBoxButton.OK, MessageBoxImage.Information);               
             }
-
         }
 
         private void RemoveBtn_Click(object sender, RoutedEventArgs e)

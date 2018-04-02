@@ -44,9 +44,12 @@ namespace Client.WPF
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            var userContext = this.container.Resolve<IUserContext>();
-            LoginWindow op = new LoginWindow(userContext, this);
-            op.Show();
+            if (!Application.Current.Windows.OfType<LoginWindow>().Any())
+            {
+                var userContext = this.container.Resolve<IUserContext>();
+                LoginWindow op = new LoginWindow(userContext, this);
+                op.Show();
+            }
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
@@ -62,9 +65,12 @@ namespace Client.WPF
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            var userservice = this.container.Resolve<IUserService>();
-            RegisterUserWindow op = new RegisterUserWindow(userservice);
-            op.Show();
+            if (!Application.Current.Windows.OfType<RegisterUserWindow>().Any())
+            {
+                var userservice = this.container.Resolve<IUserService>();
+                RegisterUserWindow op = new RegisterUserWindow(userservice);
+                op.Show();
+            }
         }
 
         public void DisplayLoggedUserView()
@@ -89,20 +95,22 @@ namespace Client.WPF
 
         private void MyProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            var userContext = this.container.Resolve<IUserContext>();
-            var userservice = this.container.Resolve<IUserService>();
-            var addressService = this.container.Resolve<IAddressService>();
-            var bankCardService = this.container.Resolve<IBankCardService>();
-            var orderServise = this.container.Resolve<IOrderService>();
-            var hashing = this.container.Resolve<IHashingPassword>();
-            MyProfile op = new MyProfile(userContext, userservice, addressService, orderServise, bankCardService, hashing);
-            
-            op.Show();           
+            if (!Application.Current.Windows.OfType<MyProfile>().Any())
+            {
+                var userContext = this.container.Resolve<IUserContext>();
+                var userservice = this.container.Resolve<IUserService>();
+                var addressService = this.container.Resolve<IAddressService>();
+                var bankCardService = this.container.Resolve<IBankCardService>();
+                var orderServise = this.container.Resolve<IOrderService>();
+                var hashing = this.container.Resolve<IHashingPassword>();
+
+                MyProfile op = new MyProfile(userContext, userservice, addressService, orderServise, bankCardService, hashing);
+                op.Show();
+            }        
         }
 
         private void ShoppingCartButton_Click(object sender, RoutedEventArgs e)
-        {
-
+        {   
             var loggedUser = this.container.Resolve<IUserContext>();
 
             if (loggedUser.LoggedUserId == null)
@@ -118,8 +126,11 @@ namespace Client.WPF
                 var order = this.container.Resolve<IOrderService>();
                 var total = this.Total;
 
-                ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser, user, productService, order, total);
-                op.Show();
+                if (!Application.Current.Windows.OfType<ShoppingCartWindow>().Any())
+                {
+                    ShoppingCartWindow op = new ShoppingCartWindow(shoppingCart, loggedUser, user, productService, order, total);
+                    op.Show();
+                }
             }
         }
 
