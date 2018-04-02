@@ -48,9 +48,6 @@ namespace Services.Contacts
             var userOrders = allOrders.Where(x => x.UserId == userId).AsQueryable();
             var mapped = mapper.ProjectTo<Order, OrderModel>(userOrders);
             return mapped.ToList();
-
-            //var allOrders = mapper.ProjectTo<Order, OrderModel>(this.orders.All).Where(x => x.UserId == userId).ToList();
-            //return allOrders;
         }
     }
 }
