@@ -1,7 +1,6 @@
 ﻿using Models;
 using Services.Contacts;
 using System.Windows;
-using System.Windows.Input;
 
 namespace Client.WPF
 {
@@ -16,15 +15,6 @@ namespace Client.WPF
             this.userContext = userContext;
             this.mainWindow = mainWindow;
         }
-
-
-        //private void SignIn_Enter(object sender, KeyEventArgs e)
-        //{
-        //    if (e.Key == Key.Enter)
-        //    {
-        //        SignInButton_Click()
-        //    }
-        //}
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
@@ -62,8 +52,6 @@ namespace Client.WPF
                     this.PasswordTextBox.Password = "";
                 }
             }
-
-
         }
     }
 }

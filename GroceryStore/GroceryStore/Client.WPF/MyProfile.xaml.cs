@@ -2,6 +2,7 @@
 using iTextSharp.text.pdf;
 using Services.Contacts;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using Forms = System.Windows.Forms;
 
@@ -32,8 +33,11 @@ namespace Client.WPF
 
         private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
         {
-            ChangePasswordWindow op = new ChangePasswordWindow(this.userservice, this.hashing);
-            op.Show();
+            if (!Application.Current.Windows.OfType<ChangePasswordWindow>().Any())
+            {
+                ChangePasswordWindow op = new ChangePasswordWindow(this.userservice, this.hashing);
+                op.Show();
+            }
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -172,20 +176,29 @@ namespace Client.WPF
 
         private void UpdateAddressesBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddressesWindow op = new AddressesWindow(this.userContext, this.userservice, this.addressService);
-            op.Show();
+            if (!Application.Current.Windows.OfType<AddressesWindow>().Any())
+            {
+                AddressesWindow op = new AddressesWindow(this.userContext, this.userservice, this.addressService);
+                op.Show();
+            }
         }
 
         private void UpdateCardsBtn_Click(object sender, RoutedEventArgs e)
         {
-            BankCardsWindow op = new BankCardsWindow(this.userContext, this.userservice, this.bankCardService);
-            op.Show();
+            if (!Application.Current.Windows.OfType<BankCardsWindow>().Any())
+            {
+                BankCardsWindow op = new BankCardsWindow(this.userContext, this.userservice, this.bankCardService);
+                op.Show();
+            }
         }
 
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
-            OrderHistoryWindow op = new OrderHistoryWindow(this.orderServise, this.userContext);
-            op.Show();
+            if (!Application.Current.Windows.OfType<OrderHistoryWindow>().Any())
+            {
+                OrderHistoryWindow op = new OrderHistoryWindow(this.orderServise, this.userContext);
+                op.Show();
+            }
         }
     }
 }

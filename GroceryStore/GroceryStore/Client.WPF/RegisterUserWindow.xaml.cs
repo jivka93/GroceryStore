@@ -26,6 +26,7 @@ namespace Client.WPF
             var address = this.AddressTextBox.Text.Trim();
             var cardNumber = this.CardNumberTextBox.Text.Trim();
             DateTime? expDate = null;
+
             if (this.ExpDateTextBox.Text.Trim() != string.Empty)
             {
                 try
@@ -36,9 +37,11 @@ namespace Client.WPF
                 {
                     MessageBoxResult op = MessageBox
                         .Show("Invalid date format!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+
                     return;
                 }
             }
+
             var cardName = this.CardNameTextBox.Text.Trim();
 
             // Validations:
@@ -51,7 +54,7 @@ namespace Client.WPF
                 return;
             }
 
-            bool result = this.userservice.RegisterUser(userName,password,phoneNumber, 
+            bool result = this.userservice.RegisterUser(userName, password, phoneNumber, 
                 firstName, 
                 lastName,
                 address,

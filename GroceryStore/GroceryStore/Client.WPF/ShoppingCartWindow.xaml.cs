@@ -1,5 +1,4 @@
-﻿using DTO;
-using Models;
+﻿using Models;
 using Services.Contacts;
 using System;
 using System.Collections.Generic;
@@ -171,11 +170,13 @@ namespace Client.WPF
             }
             else
             {
-                TextBox addressForm = this.AddressForm;
-                UserAddressesWindow op = new UserAddressesWindow(this.user, this.loggedUser, addressForm);
-                op.Show();
+                if (!Application.Current.Windows.OfType<UserAddressesWindow>().Any())
+                {
+                    TextBox addressForm = this.AddressForm;
+                    UserAddressesWindow op = new UserAddressesWindow(this.user, this.loggedUser, addressForm);
+                    op.Show();
+                }
             }
-
         }
 
         private void FromProfileCard_Click(object sender, RoutedEventArgs e)
@@ -190,11 +191,14 @@ namespace Client.WPF
             }
             else
             {
-                cardInfo.Add(this.NumberForm);
-                cardInfo.Add(this.ExpDateForm);
-                cardInfo.Add(this.HolderForm);
-                BankCardSelectionWindow op = new BankCardSelectionWindow(this.loggedUser, this.user, this.cardInfo);
-                op.Show();
+                if (!Application.Current.Windows.OfType<BankCardSelectionWindow>().Any())
+                {
+                    cardInfo.Add(this.NumberForm);
+                    cardInfo.Add(this.ExpDateForm);
+                    cardInfo.Add(this.HolderForm);
+                    BankCardSelectionWindow op = new BankCardSelectionWindow(this.loggedUser, this.user, this.cardInfo);
+                    op.Show();
+                }
             }
         }
     }
