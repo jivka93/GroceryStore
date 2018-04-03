@@ -139,19 +139,36 @@ namespace Client.WPF
                 //Doc Setup
                 Document doc = new Document(iTextSharp.text.PageSize.LETTER, 10, 10, 42, 35);
                 PdfWriter writter = PdfWriter.GetInstance(doc, new FileStream(hi, FileMode.Create));
-                var user = userservice.GetSpecificUser((int)userContext.LoggedUserId);
+                var order = orderServise.GetAllById((int)userContext.LoggedUserId);
                 doc.Open();
 
                 //Editting Doc
-                foreach (var item in user.Adresses)
+                foreach (var item in order)
                 {
-                    Paragraph paragraph = new Paragraph(item.AddressText);
+                    iTextSharp.text.Paragraph paragraph = new iTextSharp.text.Paragraph($"Customer ID:{userContext.LoggedUserId}" + "   " + $"OrderId:{item.Id}" + "   " + $"OrderedTime:{item.Date}");
                     doc.Add(paragraph);
+
+                    doc.Add(new Chunk("\n"));
+                    doc.Add(new Chunk("\n"));
+
+                    PdfPTable table = new PdfPTable(3);
+                    table.AddCell("ProductID");
+                    table.AddCell("ProductName");
+                    table.AddCell("ProdutPrice");
+                    foreach (var product in item.Products)
+                    {
+                        table.AddCell($"{product.Id}");
+                        table.AddCell($"{product.Name}");
+                        table.AddCell($"{product.Price}");
+                    }
+                    doc.Add(table);
+                    doc.NewPage();
                 }
 
                 doc.Close();
             }
         }
+
 
         private void UpdateAddressesBtn_Click(object sender, RoutedEventArgs e)
         {
